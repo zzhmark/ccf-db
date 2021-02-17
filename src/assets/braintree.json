@@ -1,0 +1,17 @@
+[{
+    "id": 0,
+    "name": "Whole",
+    "load": false,
+    "visible": true,
+    "url": "/root.gltf",
+    "color": "#00fff0",
+    "children": [{
+        "id": 1,
+        "name": "MOp",
+        "load": false,
+        "visible": true,
+        "url": "/MOp.gltf",
+        "color": "#8000ff",
+        "children": []
+    }]
+}]
