@@ -1,83 +1,52 @@
 /*
-这个page作为工作台/workbench，负责核心的数据展示和操作功能
-利用zustand保存状态
+用于检查收集的数据
 */
 
 import React from "react";
 
-// @material-ui/icons
-import DataUsageIcon from "@material-ui/icons/DataUsage";
-import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import LocalOffer from "@material-ui/icons/LocalOffer";
-import GamesIcon from "@material-ui/icons/Games";
-
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
-import Card from "components/Card/Card.js";
-import NavPills from "components/NavPills/NavPills.js";
+import {
+  Table,
+  TableBody,
+  TableContainer,
+  TableCell,
+  TableHead,
+  TableRow,
+  Typography,
+  Paper,
+  Collapse,
+  Container,
+  Box,
+  IconButton,
+} from "@material-ui/core";
+import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
+import { makeStyles } from "@material-ui/core/styles";
 
-// personal import
-import BasicViewer from "components/Viewer/BasicViewer.js";
-import BrainTreeView from "components/Brain/BrainTreeView.js";
-import BrainList from "components/Brain/BrainList.js";
-import BrainStacks from "components/Brain/BrainStacks.js";
+let shoppingList = [
+  { title: "lkaflk", content: "2019389014809184" },
+  { title: "lk222", content: "2019389014809184" },
+  { title: "lffffk", content: "2019389014809184" },
+  { title: "bbbbbb", content: "2019389014809184" },
+  { title: "keimimimim", content: "2019389014809184" },
+  { title: "zzhjj", content: "2019389014809184" },
+  { title: "mei", content: "2019389014809184" },
+  { title: "mei", content: "2019389014809184" },
+  { title: "mei", content: "2019389014809184" },
+  { title: "mei", content: "2019389014809184" },
+  { title: "mei", content: "2019389014809184" },
+  { title: "mei", content: "2019389014809184" },
+];
 
-export default function Workbench() {
-  return (
-    <GridContainer>
-      <GridItem xs={12} sm={12} md={12} lg={12} xl={8}>
-        <Card>
-          <BasicViewer
-            canvasStyle={{
-              height: "calc(min(80vw, 80vh))",
-              backgroundColor: "#e6e6e3",
-            }}
-            cameraStyle={{
-              far: 10000,
-              position: [300, 300, -300],
-            }}
-          >
-            <BrainStacks />
-          </BasicViewer>
-        </Card>
-      </GridItem>
-      <GridItem xs={12} sm={12} md={12} lg={12} xl={4}>
-        <NavPills
-          color="primary"
-          tabs={[
-            {
-              tabButton: "Anatomy",
-              tabIcon: LocalOffer,
-              tabContent: (
-                <BrainTreeView
-                  treeviewStyle={{
-                    height: "calc(min(80vw, 80vh) - 10rem)",
-                  }}
-                />
-              ),
-            },
-            {
-              thinPadding: true,
-              tabButton: "Data",
-              tabIcon: DataUsageIcon,
-              tabContent: <div></div>,
-            },
-            {
-              tabButton: "History",
-              thinPadding: true,
-              tabIcon: AccessTimeIcon,
-              tabContent: <BrainList />,
-            },
-            {
-              thinPadding: true,
-              tabButton: "Control",
-              tabIcon: GamesIcon,
-              tabContent: <div></div>,
-            },
-          ]}
-        />
-      </GridItem>
-    </GridContainer>
-  );
+const useRowStyles = makeStyles({
+  root: {
+    "& > *": {
+      borderBottom: "unset",
+    },
+  },
+});
+
+export default function DataBrowse() {
+  return <GridContainer></GridContainer>;
 }

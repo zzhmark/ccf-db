@@ -17,63 +17,72 @@ import Close from "@material-ui/icons/Close";
 import styles from "assets/jss/material-dashboard-react/components/tasksStyle.js";
 import Muted from "components/Typography/Muted";
 
-import useModel from "helpers/model";
+import useBrains from "hooks/brains";
 import BrainTag from "./BrainTag";
+import shallow from "zustand/shallow";
 
 const useStyles = makeStyles(styles);
 
 export default function BrainList(props) {
   const classes = useStyles();
-  const brains = useModel((state) => state.brains);
-  const updateBrains = useModel((state) => state.update);
+  const [brains, update, del] = useBrains(
+    (state) => [state.brains, state.update, state.del],
+    shallow
+  );
   const { rtlActive } = props;
   const tableCellClasses = classnames(classes.tableCell, {
     [classes.tableCellRTL]: rtlActive,
   });
-
-  let tabRows = [];
-  for (let i in brains) {
-    tabRows.push(
-      <TableRow key={i} className={classes.tableRow} hover>
-        <TableCell className={tableCellClasses} align="left">
-          <BrainTag name={brains[i].name} color={brains[i].color} />
-        </TableCell>
-        <TableCell className={tableCellClasses} align="left">
-          <Muted>{brains[i].description}</Muted>
-        </TableCell>
-        <TableCell
-          className={tableCellClasses}
-          align="right"
-          style={{
-            paddingRight: "1rem",
-          }}
-        >
-          <Checkbox
-            color="primary"
-            checked={brains[i].visible}
-            tabIndex={-1}
-            onChange={(e) => {
-              e.stopPropagation();
-              updateBrains((state) => {
-                state.brains[i].visible = !brains[i].visible;
-              });
-            }}
-            checkedIcon={<VisibilityIcon />}
-            icon={<VisibilityOutlinedIcon />}
-          />
-          <IconButton aria-label="Remove" className={classes.tableActionButton}>
-            <Close
-              className={classes.tableActionButtonIcon + " " + classes.close}
-            />
-          </IconButton>
-        </TableCell>
-      </TableRow>
-    );
-  }
+  const toggleVisible = (id) =>
+    update(id, ["visible"], !brains.get(id).visible);
 
   return (
     <Table className={classes.table}>
-      <TableBody>{tabRows}</TableBody>
+      <TableBody>
+        {Array.from(brains.values(), (brain, ind) => (
+          <TableRow key={ind} className={classes.tableRow} hover>
+            <TableCell className={tableCellClasses} align="left">
+              <BrainTag color={brain.color}>{brain.name}</BrainTag>
+            </TableCell>
+            <TableCell className={tableCellClasses} align="left">
+              <Muted>{brain.description}</Muted>
+            </TableCell>
+            <TableCell
+              className={tableCellClasses}
+              align="right"
+              style={{
+                paddingRight: "1rem",
+              }}
+            >
+              <Checkbox
+                color="primary"
+                checked={brain.visible}
+                tabIndex={-1}
+                onChange={(e) => {
+                  e.stopPropagation();
+                  toggleVisible(brain.id);
+                }}
+                checkedIcon={<VisibilityIcon />}
+                icon={<VisibilityOutlinedIcon />}
+              />
+              <IconButton
+                aria-label="Remove"
+                className={classes.tableActionButton}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  del(brain.id);
+                }}
+              >
+                <Close
+                  className={
+                    classes.tableActionButtonIcon + " " + classes.close
+                  }
+                />
+              </IconButton>
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
     </Table>
   );
 }

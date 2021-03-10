@@ -6,21 +6,23 @@
 */
 
 import React from "react";
-import useModel from "helpers/model";
+import useBrains from "hooks/brains";
 import BrainLoader from "./BrainLoader.js";
 
 export default function BrainStacks(props) {
-  let regions = [];
-  const brains = useModel((state) => state.brains);
-  for (let id in brains) {
-    regions.push(
-      <BrainLoader
-        key={"brains." + id}
-        url={brains[id].url}
-        color={brains[id].color}
-        visible={brains[id].visible}
-      ></BrainLoader>
-    );
-  }
-  return <group>{regions}</group>;
+  const brains = useBrains((state) => state.brains);
+  // array.from 转化出来的id通常和元素的id是一致的，是在map中的实际id
+
+  return (
+    <group>
+      {Array.from(brains.values(), (brain, ind) => (
+        <BrainLoader
+          key={ind}
+          url={brain.url}
+          color={brain.color}
+          visible={brain.visible}
+        />
+      ))}
+    </group>
+  );
 }

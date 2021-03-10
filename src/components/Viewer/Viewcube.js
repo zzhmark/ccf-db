@@ -13,7 +13,6 @@ export default function Viewcube() {
   const axref2 = useRef();
   const [hover, set] = useState(null);
   const matrix = new Matrix4();
-
   useFrame(() => {
     matrix.copy(camera.matrix).invert();
     ref.current.quaternion.setFromRotationMatrix(matrix);

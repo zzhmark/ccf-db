@@ -2,7 +2,7 @@ import React from "react";
 import Button from "components/CustomButtons/Button";
 
 export default function BrainTag(props) {
-  const { color, name } = props;
+  const { color, ...rest } = props;
   return (
     <Button
       style={{
@@ -31,9 +31,8 @@ export default function BrainTag(props) {
       }}
       disableElevation
       disableRipple
-      size="small"
-    >
-      {name}
-    </Button>
+      size="sm"
+      {...rest}
+    ></Button>
   );
 }

@@ -18,10 +18,13 @@ import Card from "components/Card/Card.js";
 import NavPills from "components/NavPills/NavPills.js";
 
 // personal import
-import BasicViewer from "components/Viewer/BasicViewer.js";
-import BrainTreeView from "components/Brain/BrainTreeView.js";
-import BrainList from "components/Brain/BrainList.js";
-import BrainStacks from "components/Brain/BrainStacks.js";
+import BasicViewer from "components/Viewer/BasicViewer";
+import BrainTreeView from "components/Brain/BrainTreeView";
+import BrainList from "components/Brain/BrainList";
+import BrainStacks from "components/Brain/BrainStacks";
+
+import DataStacks from "components/DataDisplay/DataStacks";
+import DataList from "components/DataDisplay/DataList";
 
 export default function Workbench() {
   return (
@@ -39,6 +42,7 @@ export default function Workbench() {
             }}
           >
             <BrainStacks />
+            <DataStacks />
           </BasicViewer>
         </Card>
       </GridItem>
@@ -61,7 +65,16 @@ export default function Workbench() {
               thinPadding: true,
               tabButton: "Data",
               tabIcon: DataUsageIcon,
-              tabContent: <div></div>,
+              tabContent: (
+                <div
+                  style={{
+                    height: "calc(min(80vw, 80vh) - 9.1rem)",
+                    padding: "0.5rem",
+                  }}
+                >
+                  <DataList />
+                </div>
+              ),
             },
             {
               tabButton: "History",

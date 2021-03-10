@@ -1,19 +1,22 @@
 import React from "react";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
-
 export default function BrainLoader(props) {
-  const gltf = useGLTF(process.env.PUBLIC_URL + props.url);
-  for (let key in gltf.materials) {
-    gltf.materials[key].opacity = props.opacity;
-    gltf.materials[key].transparent = props.transparent;
-    gltf.materials[key].metalness = props.metalness;
-    gltf.materials[key].roughness = props.roughness;
-    gltf.materials[key].color.set(props.color);
-    gltf.materials[key].side = THREE.DoubleSide;
-    gltf.materials[key].depthWrite = false;
-  }
-  return <primitive object={gltf.scene} visible={props.visible} />;
+  const { nodes } = useGLTF(process.env.PUBLIC_URL + props.url);
+  return (
+    <mesh visible={props.visible}>
+      <primitive object={Object.values(nodes)[0].geometry} attach="geometry" />
+      <meshStandardMaterial
+        opacity={props.opacity}
+        transparent={props.transparent}
+        metalness={props.metalness}
+        roughness={props.roughness}
+        color={props.color}
+        side={THREE.DoubleSide}
+        depthWrite={false}
+      />
+    </mesh>
+  );
 }
 
 BrainLoader.defaultProps = {

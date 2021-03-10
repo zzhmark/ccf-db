@@ -82,6 +82,7 @@ export default function NavPills(props) {
         {tabs.map((prop, key) => {
           return (
             <Card
+              key={key}
               style={{
                 backgroundColor: "#ffffff55",
                 boderWidth: 2,
