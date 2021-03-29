@@ -24,7 +24,6 @@ export default function Viewcube() {
     gl.clearDepth();
     gl.render(virtualScene, virtualCam.current);
   }, 1);
-
   const ax1 = new THREE.AxesHelper(100);
   const ax2 = new THREE.AxesHelper(100);
 

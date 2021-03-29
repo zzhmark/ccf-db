@@ -313,6 +313,18 @@ let rowcoord = [
 //   });
 // });
 
+function matrix2list(dt) {
+  let output = []
+  for (let i in dt){
+    for (let j in dt[i]){
+      output.push([Number(j), Number(i), dt[i][j]])
+    }
+  }
+  return output
+}
+
+const dt2 = matrix2list(dt);
+
 const useData = create((set) => ({
   data: new Map([
     [
@@ -323,37 +335,64 @@ const useData = create((set) => ({
         visible: true,
         type: "relation matrix",
         mode: "ball",
-        data: {
-          byRow: true,
-          visible: [false, false, false, false, false, false],
-          matrix: dt,
-          rowid: rowid,
-          colid: colid,
-          rowname: rowname,
-          colname: colname,
-          rowcoord: rowcoord,
-          colcoord: colcoord,
+        chart: {
+          tooltip: {
+            position: "top",
+          },
+          grid: {
+            height: "50%",
+            top: "10%",
+          },
+          xAxis: {
+            type: "category",
+            data: colname,
+            splitArea: {
+              show: true,
+            },
+          },
+          yAxis: {
+            type: "category",
+            data: rowname,
+            splitArea: {
+              show: true,
+            },
+          },
+          visualMap: {
+            min: dt2.map((v,i) => (v[2])).reduce((a,b) => (Math.min(a,b))),
+            max: dt2.map((v,i) => (v[2])).reduce((a,b) => (Math.max(a,b))),
+            calculable: true,
+            orient: "horizontal",
+            left: "center",
+            bottom: "15%",
+            inRange: {color: ['blue', 'white', 'red',]},
+            
+          },
+          series: [
+            {
+              name: "Demo",
+              type: "heatmap",
+              data: dt2,
+              label: {
+                show: false,
+              },
+              emphasis: {
+                itemStyle: {
+                  shadowBlur: 10,
+                  shadowColor: "rgba(0, 0, 0, 0.5)",
+                },
+              },
+            },
+          ],
+          
         },
-      },
-    ],
-    [
-      "1",
-      {
-        id: "1",
-        name: "test",
-        visible: true,
-        type: "relation matrix",
-        mode: "ball",
-        data: {
-          byRow: true,
-          visible: [false, false, false, false, false, false],
+        viewer: {
+          visible: dt.map((v, i) => v.map((v, i) => false)),
           matrix: dt,
           rowid: rowid,
           colid: colid,
-          rowname: rowname,
-          colname: colname,
           rowcoord: rowcoord,
           colcoord: colcoord,
+          // transparent: dt.map((v, i) => v.map((v, i) => true)),
         },
       },
     ],

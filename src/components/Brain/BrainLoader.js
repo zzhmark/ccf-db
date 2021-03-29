@@ -4,8 +4,7 @@ import * as THREE from "three";
 export default function BrainLoader(props) {
   const { nodes } = useGLTF(process.env.PUBLIC_URL + props.url);
   return (
-    <mesh visible={props.visible}>
-      <primitive object={Object.values(nodes)[0].geometry} attach="geometry" />
+    <primitive object={Object.values(nodes)[0]} visible={props.visible}>
       <meshStandardMaterial
         opacity={props.opacity}
         transparent={props.transparent}
@@ -15,7 +14,7 @@ export default function BrainLoader(props) {
         side={THREE.DoubleSide}
         depthWrite={false}
       />
-    </mesh>
+    </primitive>
   );
 }
 

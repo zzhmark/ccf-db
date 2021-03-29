@@ -25,6 +25,7 @@ import BrainStacks from "components/Brain/BrainStacks";
 
 import DataStacks from "components/DataDisplay/DataStacks";
 import DataList from "components/DataDisplay/DataList";
+import Panel from 'components/Controls/Panel'
 
 export default function Workbench() {
   return (
@@ -83,10 +84,9 @@ export default function Workbench() {
               tabContent: <BrainList />,
             },
             {
-              thinPadding: true,
               tabButton: "Control",
               tabIcon: GamesIcon,
-              tabContent: <div></div>,
+              tabContent: <Panel />,
             },
           ]}
         />

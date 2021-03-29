@@ -14,7 +14,7 @@ export default function BrainStacks(props) {
   // array.from 转化出来的id通常和元素的id是一致的，是在map中的实际id
 
   return (
-    <group>
+    <group name="brains">
       {Array.from(brains.values(), (brain, ind) => (
         <BrainLoader
           key={ind}
