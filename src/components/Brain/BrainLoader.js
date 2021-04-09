@@ -2,7 +2,9 @@ import React from "react";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 export default function BrainLoader(props) {
-  const { nodes } = useGLTF(process.env.PUBLIC_URL + props.url);
+  // const { nodes } = useGLTF(process.env.PUBLIC_URL + props.url);
+  const { nodes } = useGLTF('http://192.168.3.174:7000/Gltf/GetGltfByID?id=' + props.id);
+  console.log(props.id)
   return (
     <primitive object={Object.values(nodes)[0]} visible={props.visible}>
       <meshStandardMaterial

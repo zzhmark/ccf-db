@@ -12,7 +12,7 @@ function RainBowColor(length, maxLength) {
   return "rgb(" + r + "," + g + "," + b + ")";
 }
 
-const ball = (data, visible) => {
+const bone = (data, visible) => {
   const { matrix, colid, rowid, colcoord, rowcoord } = data;
   let regions = [];
   let max;
@@ -134,8 +134,8 @@ export default function DataParser(props) {
   switch (type) {
     case "relation matrix":
       switch (mode) {
-        case "ball":
-          return ball(data, visible);
+        case "bone":
+          return bone(data, visible);
         case "brain":
           return brain(data, visible);
       }

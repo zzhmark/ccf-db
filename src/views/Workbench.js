@@ -39,7 +39,7 @@ export default function Workbench() {
             }}
             cameraStyle={{
               far: 10000,
-              position: [300, 300, -300],
+              position: [300, 300, 300],
             }}
           >
             <BrainStacks />

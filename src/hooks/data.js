@@ -314,13 +314,19 @@ let rowcoord = [
 // });
 
 function matrix2list(dt) {
-  let output = []
-  for (let i in dt){
-    for (let j in dt[i]){
-      output.push([Number(j), Number(i), dt[i][j]])
+  let output = [];
+  for (let i in dt) {
+    for (let j in dt[i]) {
+      output.push([Number(j), Number(i), dt[i][j]]);
     }
   }
-  return output
+  return output.map((arr) => {
+    return {
+      regions1: arr[0],
+      regions2: arr[1],
+      score: arr[2],
+    }
+  })
 }
 
 const dt2 = matrix2list(dt);
@@ -334,56 +340,22 @@ const useData = create((set) => ({
         name: "test",
         visible: true,
         type: "relation matrix",
-        mode: "ball",
+        mode: "bone",
         chart: {
-          tooltip: {
-            position: "top",
-          },
-          grid: {
-            height: "50%",
-            top: "10%",
-          },
-          xAxis: {
-            type: "category",
-            data: colname,
-            splitArea: {
-              show: true,
+          data: dt2,
+          scale: {
+            regions1: {
+              type: 'cat',
+              values: colname,
             },
-          },
-          yAxis: {
-            type: "category",
-            data: rowname,
-            splitArea: {
-              show: true,
+            regions2: {
+              type: 'cat',
+              values: rowname,
             },
-          },
-          visualMap: {
-            min: dt2.map((v,i) => (v[2])).reduce((a,b) => (Math.min(a,b))),
-            max: dt2.map((v,i) => (v[2])).reduce((a,b) => (Math.max(a,b))),
-            calculable: true,
-            orient: "horizontal",
-            left: "center",
-            bottom: "15%",
-            inRange: {color: ['blue', 'white', 'red',]},
-            
-          },
-          series: [
-            {
-              name: "Demo",
-              type: "heatmap",
-              data: dt2,
-              label: {
-                show: false,
-              },
-              emphasis: {
-                itemStyle: {
-                  shadowBlur: 10,
-                  shadowColor: "rgba(0, 0, 0, 0.5)",
-                },
-              },
-            },
-          ],
-          
+            score: {
+              nice: true,
+            }
+          }
         },
         viewer: {
           visible: dt.map((v, i) => v.map((v, i) => false)),

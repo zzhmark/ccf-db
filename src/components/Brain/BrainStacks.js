@@ -18,7 +18,8 @@ export default function BrainStacks(props) {
       {Array.from(brains.values(), (brain, ind) => (
         <BrainLoader
           key={ind}
-          url={brain.url}
+          // url={brain.url}
+          id={brain.id}
           color={brain.color}
           visible={brain.visible}
         />

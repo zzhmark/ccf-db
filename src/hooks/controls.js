@@ -13,11 +13,32 @@ import { useControlled } from "_@material-ui_core@4.10.0@@material-ui/core";
 const useControls = create((set) => ({
   controls: {
     oit: false,
+    grid: true,
+    axis: [true, true, true],
+    background: true,
   },
   setOit: (flag) =>
     set(
       produce((state) => {
         state.controls.oit = flag;
+      })
+    ),
+  setGrid: (flag) =>
+    set(
+      produce((state) => {
+        state.controls.grid = flag;
+      })
+    ),
+  setAxis: (i, flag) =>
+    set(
+      produce((state) => {
+        state.controls.axis[i] = flag;
+      })
+    ),
+    setBackground: (flag) =>
+    set(
+      produce((state) => {
+        state.controls.background = flag;
       })
     ),
 }));

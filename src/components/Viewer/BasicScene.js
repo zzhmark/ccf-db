@@ -18,8 +18,32 @@ const BasicScene = ({ children }) => {
   // 以下小配件可以直接通过threejs的函数生成模型对象，然后通过加primitive的方式嵌入r3f
   // 增加两个位于中心的坐标系
   const controls = useControls((state) => state.controls);
-  const ax1 = new THREE.AxesHelper(1000);
-  const ax2 = new THREE.AxesHelper(1000);
+  let axisX = new THREE.ArrowHelper(
+    new THREE.Vector3(1, 0, 0),
+    new THREE.Vector3(-500, 0, 0),
+    1000,
+    0xff0000,
+    20,
+    10
+  );
+  let axisY = new THREE.ArrowHelper(
+    new THREE.Vector3(0, 1, 0).normalize(),
+    new THREE.Vector3(0, -500, 0),
+    1000,
+    0x00ff00,
+    20,
+    10
+  );
+  let axisZ = new THREE.ArrowHelper(
+    new THREE.Vector3(0, 0, 1).normalize(),
+    new THREE.Vector3(0, 0, -500),
+    1000,
+    0x0000ff,
+    20,
+    10
+  );
+  // const ax1 = new THREE.AxesHelper(1000);
+  // const ax2 = new THREE.AxesHelper(1000);
   // 给底面做一个网格
   const grid = new THREE.GridHelper(600, 60, 0x888888, 0x888888);
   grid.position.y = -150;
@@ -38,12 +62,15 @@ const BasicScene = ({ children }) => {
       }
       scene.children.forEach((c) => searchMesh(c));
       oitPass.render(scene, camera, opaqueObjects, transparentObjects);
-    } else {gl.render(scene, camera)}
+    } else {
+      gl.render(scene, camera);
+    }
   }, 1);
 
   return (
     <>
       <Sky
+        visible={controls.background}
         distance={450000} // Camera distance (default=450000)
         inclination={0.8} // Sun elevation angle from 0 to 1 (default=0)
         azimuth={0.5} // Sun rotation around the Y axis from 0 to 1 (default=0.25)
@@ -54,6 +81,7 @@ const BasicScene = ({ children }) => {
         mieDirectionalG={0.15}
       />
       <Stars
+        visible={controls.background}
         radius={1000} // Radius of the inner sphere (default=100)
         depth={5000} // Depth of area where stars should fit (default=50)
         count={5000} // Amount of stars (default=5000)
@@ -69,9 +97,10 @@ const BasicScene = ({ children }) => {
       <pointLight position={[-1000, 0, -1000]} intensity={0.5} />
       <pointLight position={[1000, -1000, 1000]} intensity={0.5} />
       {/* 为了使模型能实时工作，suspense不可少 */}
-      <primitive object={ax1} />
-      <primitive object={ax2} scale={[-1, -1, -1]} />
-      <primitive object={grid} />
+      <primitive object={axisX} visible={controls.axis[0]} />
+      <primitive object={axisY} visible={controls.axis[1]} />
+      <primitive object={axisZ} visible={controls.axis[2]} />
+      <primitive object={grid} visible={controls.grid} />
       <Suspense fallback={null}>{children}</Suspense>
       {/* <Viewcube /> */}
       {/* 右上角的小配件，以后还可以进一步改进 */}
