@@ -1,6 +1,5 @@
 import create from "zustand";
 import produce from "immer";
-import { useControlled } from "_@material-ui_core@4.10.0@@material-ui/core";
 
 // 这里使用Map存储数据，Map可以保证元素的插入顺序不变，并且拥有log2n的效率
 // 设计上，该hook提供了一些简便的modifier，可以根据需要模仿定制
@@ -16,11 +15,36 @@ const useControls = create((set) => ({
     grid: true,
     axis: [true, true, true],
     background: true,
+    slicing: false,
+    sliceX: { visible: true, value: 66 },
+    sliceY: { visible: true, value: 40 },
+    sliceZ: { visible: true, value: 57 },
   },
   setOit: (flag) =>
     set(
       produce((state) => {
         state.controls.oit = flag;
+      })
+    ),
+  setSliceX: (flag, value) =>
+    set(
+      produce((state) => {
+        state.controls.sliceX.visible = flag;
+        state.controls.sliceX.value = value;
+      })
+    ),
+  setSliceY: (flag, value) =>
+    set(
+      produce((state) => {
+        state.controls.sliceY.visible = flag;
+        state.controls.sliceY.value = value;
+      })
+    ),
+  setSliceZ: (flag, value) =>
+    set(
+      produce((state) => {
+        state.controls.sliceZ.visible = flag;
+        state.controls.sliceZ.value = value;
       })
     ),
   setGrid: (flag) =>
@@ -35,10 +59,16 @@ const useControls = create((set) => ({
         state.controls.axis[i] = flag;
       })
     ),
-    setBackground: (flag) =>
+  setBackground: (flag) =>
     set(
       produce((state) => {
         state.controls.background = flag;
+      })
+    ),
+  setSlicing: (flag) =>
+    set(
+      produce((state) => {
+        state.controls.slicing = flag;
       })
     ),
 }));

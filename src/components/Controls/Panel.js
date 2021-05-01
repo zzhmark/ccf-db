@@ -4,16 +4,37 @@ import shallow from "zustand/shallow";
 
 import Switch from "components/IOSSwitch";
 import { ToggleButtonGroup, ToggleButton } from "@material-ui/lab";
-import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+// import Slider from "components/PrettoSlider";
+import Slider from "components/IOSSlider";
+import Collapse from "@material-ui/core/Collapse";
 
 export default function Panel() {
-  const [controls, setOit, setGrid, setAxis, setBackground] = useControls(
-    (state) => [state.controls, state.setOit, state.setGrid, state.setAxis, state.setBackground],
+  const [
+    controls,
+    setOit,
+    setGrid,
+    setAxis,
+    setBackground,
+    setSliceX,
+    setSliceY,
+    setSliceZ,
+    setSlicing,
+  ] = useControls(
+    (state) => [
+      state.controls,
+      state.setOit,
+      state.setGrid,
+      state.setAxis,
+      state.setBackground,
+      state.setSliceX,
+      state.setSliceY,
+      state.setSliceZ,
+      state.setSlicing,
+    ],
     shallow
   );
   const [ax, setAx] = React.useState(() => {
@@ -31,11 +52,8 @@ export default function Panel() {
           <Switch
             checked={controls.oit}
             style={{ marginLeft: "auto" }}
-            onChange={() => {
-              setOit(!controls.oit);
-            }}
-            onClick={(e) => {
-              e.stopPropagation();
+            onChange={(event, value) => {
+              setOit(value);
             }}
           />
         </ListItemIcon>
@@ -46,11 +64,8 @@ export default function Panel() {
           <Switch
             checked={controls.grid}
             style={{ marginLeft: "auto" }}
-            onChange={() => {
-              setGrid(!controls.grid);
-            }}
-            onClick={(e) => {
-              e.stopPropagation();
+            onChange={(event, value) => {
+              setGrid(value);
             }}
           />
         </ListItemIcon>
@@ -62,9 +77,9 @@ export default function Panel() {
             value={ax}
             onChange={(e, v) => {
               setAx(v);
-              setAxis(0, v.includes('x'));
-              setAxis(1, v.includes('y'));
-              setAxis(2, v.includes('z'));
+              setAxis(0, v.includes("x"));
+              setAxis(1, v.includes("y"));
+              setAxis(2, v.includes("z"));
             }}
           >
             <ToggleButton value="x">X</ToggleButton>
@@ -79,15 +94,103 @@ export default function Panel() {
           <Switch
             checked={controls.background}
             style={{ marginLeft: "auto" }}
-            onChange={() => {
-              setBackground(!controls.background);
-            }}
-            onClick={(e) => {
-              e.stopPropagation();
+            onChange={(event, value) => {
+              setBackground(value);
             }}
           />
         </ListItemIcon>
       </ListItem>
+      <ListItem key="slicing">
+        <ListItemText primary="Slicing" secondary="enabling 2D slicing" />
+        <Switch
+          checked={controls.slicing}
+          style={{ marginLeft: "auto" }}
+          onChange={(event, value) => {
+            setSlicing(value);
+          }}
+        />
+      </ListItem>
+      <Collapse in={controls.slicing} timeout="auto" unmountOnExit>
+        <ListItem key="sliceX">
+          <ListItemIcon>
+            <Switch
+              checked={controls.sliceX.visible}
+              style={{ margin: "auto" }}
+              onChange={(event, flag) => {
+                setSliceX(flag, controls.sliceX.value);
+              }}
+            />
+          </ListItemIcon>
+          <ListItemText
+            primary="Slice X"
+            secondary="slicing control for x direction"
+          />
+            <Slider
+              valueLabelDisplay="auto"
+              disabled={!controls.sliceX.visible}
+              min={0}
+              max={131}
+              value={controls.sliceX.value}
+              onChange={(event, value) => {
+                setSliceX(controls.sliceX.visible, value);
+              }}
+            />
+        </ListItem>
+        <ListItem key="sliceY">
+          <ListItemIcon>
+            <Switch
+              checked={controls.sliceY.visible}
+              style={{ margin: "auto" }}
+              onChange={(event, flag) => {
+                setSliceY(flag, controls.sliceY.value);
+              }}
+            />
+          </ListItemIcon>
+          <ListItemText
+            primary="Slice Y"
+            secondary="slicing control for y direction"
+          />
+          <ListItemIcon>
+            <Slider
+              valueLabelDisplay="auto"
+              disabled={!controls.sliceY.visible}
+              min={0}
+              max={79}
+              value={controls.sliceY.value}
+              onChange={(event, value) => {
+                setSliceY(controls.sliceY.visible, value);
+              }}
+            />
+          </ListItemIcon>
+        </ListItem>
+        <ListItem key="sliceZ">
+          <ListItemIcon>
+            <Switch
+              checked={controls.sliceZ.visible}
+              style={{ margin: "auto" }}
+              onChange={(event, flag) => {
+                setSliceZ(flag, controls.sliceZ.value);
+              }}
+            />
+          </ListItemIcon>
+          <ListItemText
+            primary="Slice Z"
+            secondary="slicing control for z direction"
+          />
+          <ListItemIcon>
+            <Slider
+              valueLabelDisplay="auto"
+              disabled={!controls.sliceZ.visible}
+              min={0}
+              max={113}
+              value={controls.sliceZ.value}
+              onChange={(event, value) => {
+                setSliceZ(controls.sliceZ.visible, value);
+              }}
+            />
+          </ListItemIcon>
+        </ListItem>
+      </Collapse>
     </List>
   );
 }

@@ -4,9 +4,8 @@ import * as THREE from "three";
 export default function BrainLoader(props) {
   // const { nodes } = useGLTF(process.env.PUBLIC_URL + props.url);
   const { nodes } = useGLTF('http://192.168.3.174:7000/Gltf/GetGltfByID?id=' + props.id);
-  console.log(props.id)
   return (
-    <primitive object={Object.values(nodes)[0]} visible={props.visible}>
+    <primitive object={Object.values(nodes)[0].clone(true)} visible={props.visible}>
       <meshStandardMaterial
         opacity={props.opacity}
         transparent={props.transparent}

@@ -66,9 +66,7 @@ function Demo() {
 
 
 
-export default function DataControl({ id, chart, type, mode, update, viewer }) {
-  // const [BxChart, CustTooltip] = useCustTooltip.create(Chart, Tooltip);
-
+export default function DataControl({ id, chart, type, mode, update }) {
   switch (type) {
     case "relation matrix":
       return (
@@ -93,7 +91,7 @@ export default function DataControl({ id, chart, type, mode, update, viewer }) {
           {/* <Paper style={{ overflowX: "auto" }}> */}
           <Chart scale={chart.scale} height={500} data={chart.data} autoFit>
             <Axis
-              name={"regions1"}
+              name={"x"}
               title={null}
               grid={{
                 alignTick: false,
@@ -107,7 +105,7 @@ export default function DataControl({ id, chart, type, mode, update, viewer }) {
               }}
             />
             <Axis
-              name={"regions2"}
+              name={"y"}
               title={null}
               grid={{
                 alignTick: false,
@@ -120,14 +118,13 @@ export default function DataControl({ id, chart, type, mode, update, viewer }) {
                 },
               }}
             />
-            <Tooltip enterable>
+            <Tooltip>
               {(title, items) => {
-                console.log(title, items);
                 return <Demo />
               }}
             </Tooltip>
             <Polygon
-              position={"regions1*regions2"}
+              position={"x*y"}
               color={["score", "#BAE7FF-#1890FF-#0050B3"]}
               style={{
                 lineWidth: 1,
@@ -148,8 +145,7 @@ export default function DataControl({ id, chart, type, mode, update, viewer }) {
                         [
                           "viewer",
                           "visible",
-                          data["regions2"],
-                          data["regions1"],
+                          data["i"],
                         ],
                         context.event.gEvent.target.cfg.element.hasState(
                           "selected"

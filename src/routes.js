@@ -25,8 +25,16 @@ import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
 import SearchIcon from "@material-ui/icons/Search";
 import LocationSearchingIcon from "@material-ui/icons/LocationSearching";
 import Search from "views/Search";
+import HomeIcon from '@material-ui/icons/Home';
 
 const dashboardRoutes = [
+  {
+    path: "/welcome",
+    name: "Home",
+    icon: HomeIcon,
+    component: null,
+    layout: "/home",
+  },
   {
     path: "/search",
     name: "Database Search",

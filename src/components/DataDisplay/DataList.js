@@ -21,7 +21,6 @@ import {
 const useStyles = makeStyles(styles);
 
 export default function DataList(props) {
-  const classes = useStyles();
   // 这里的update作为样例只访问test，所以稍作修改
   const [data, update, del] = useData(
     (state) => [state.data, state.update, state.del],
@@ -34,7 +33,6 @@ export default function DataList(props) {
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
-
   return Array.from(data.values(), (data, ind) => (
     <ExpansionPanel
       key={data.id}
@@ -42,7 +40,7 @@ export default function DataList(props) {
       onChange={handleChange(data.id)}
     >
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-        {data.name}
+        {data.title}
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
         <DataControl {...data} update={update} />
