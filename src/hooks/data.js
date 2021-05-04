@@ -3,14 +3,16 @@ import produce from "immer";
 
 const useData = create((set) => ({
   data: new Map(),
-  update: (id, fields, value) =>
+  update: (id, fields, values) =>
     set(
       produce((state) => {
-        fields
-          .slice(0, -1)
-          .reduce((pointer, field) => pointer[field], state.data.get(id))[
-          fields.slice(-1)
-        ] = value;
+        fields.forEach((v, i) => {
+          v
+            .slice(0, -1)
+            .reduce((pointer, field) => pointer[field], state.data.get(id))[
+            v.slice(-1)
+          ] = values[i];
+        });
         return state;
       })
     ),

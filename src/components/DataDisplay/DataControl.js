@@ -17,23 +17,19 @@ import {
   Polygon,
 } from "bizcharts";
 
-
-
-
-
-import {LineChart} from 'bizcharts';
+import { LineChart } from "bizcharts";
 
 // 数据源
 const data = [
-  { year: '1991', value: 3 },
-  { year: '1992', value: 4 },
-  { year: '1993', value: 3.5 },
-  { year: '1994', value: 5 },
-  { year: '1995', value: 4.9 },
-  { year: '1996', value: 6 },
-  { year: '1997', value: 7 },
-  { year: '1998', value: 9 },
-  { year: '1999', value: 13 },
+  { year: "1991", value: 3 },
+  { year: "1992", value: 4 },
+  { year: "1993", value: 3.5 },
+  { year: "1994", value: 5 },
+  { year: "1995", value: 4.9 },
+  { year: "1996", value: 6 },
+  { year: "1997", value: 7 },
+  { year: "1998", value: 9 },
+  { year: "1999", value: 13 },
 ];
 
 function Demo() {
@@ -42,17 +38,17 @@ function Demo() {
       data={data}
       title={{
         visible: true,
-        text: '折线图',
+        text: "折线图",
       }}
       description={{
         visible: true,
-        text: '用平滑的曲线代替折线。',
+        text: "用平滑的曲线代替折线。",
       }}
-      xField='year'
-      yField='value'
-			interactions={[
+      xField="year"
+      yField="value"
+      interactions={[
         {
-          type: 'slider',
+          type: "slider",
           cfg: {
             start: 0,
             end: 1,
@@ -63,9 +59,6 @@ function Demo() {
   );
 }
 
-
-
-
 export default function DataControl({ id, chart, type, mode, update }) {
   switch (type) {
     case "relation matrix":
@@ -74,7 +67,7 @@ export default function DataControl({ id, chart, type, mode, update }) {
           style={{ width: "100%", display: "flex", flexDirection: "column" }}
         >
           {/* 基础显示控制 */}
-          <CardBody>
+          {/* <CardBody>
             <ToggleButtonGroup
               value={mode}
               exclusive
@@ -85,11 +78,14 @@ export default function DataControl({ id, chart, type, mode, update }) {
               <ToggleButton value="bone">bone</ToggleButton>
               <ToggleButton value="brain">brain</ToggleButton>
             </ToggleButtonGroup>
-          </CardBody>
-          {/* <Divider /> */}
-          {/* 内容显示控制 */}
-          {/* <Paper style={{ overflowX: "auto" }}> */}
-          <Chart scale={chart.scale} height={500} data={chart.data} autoFit>
+          </CardBody> */}
+          <Chart
+            scale={chart.scale}
+            height={500}
+            data={chart.data}
+            filter={chart.filter}
+            autoFit
+          >
             <Axis
               name={"x"}
               title={null}
@@ -120,12 +116,12 @@ export default function DataControl({ id, chart, type, mode, update }) {
             />
             <Tooltip>
               {(title, items) => {
-                return <Demo />
+                return <Demo />;
               }}
             </Tooltip>
             <Polygon
               position={"x*y"}
-              color={["score", "#BAE7FF-#1890FF-#0050B3"]}
+              color={chart.color}
               style={{
                 lineWidth: 1,
                 stroke: "#fff",
@@ -139,25 +135,29 @@ export default function DataControl({ id, chart, type, mode, update }) {
                     trigger: "element:click",
                     action: "element-selected:toggle",
                     callback(context) {
-                      let data = context.event.data.data;
+                      let data = context.event.data;
                       update(
                         id,
                         [
-                          "viewer",
-                          "visible",
-                          data["i"],
+                          ["viewer", "color", data.data["i"]],
+                          ["viewer", "load", data.data["i"]],
+                          ["viewer", "visible", data.data["i"]],
                         ],
-                        context.event.gEvent.target.cfg.element.hasState(
-                          "selected"
-                        )
+                        [
+                          data.color,
+                          true,
+                          context.event.gEvent.target.cfg.element.hasState(
+                            "selected"
+                          ),
+                        ]
                       );
                     },
+                    immediate: true,
                   },
                 ],
               }}
             />
           </Chart>
-          {/* </Paper> */}
         </div>
       );
   }

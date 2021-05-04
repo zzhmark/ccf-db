@@ -1,7 +1,6 @@
 import React from "react";
 import { NRRDLoader } from "three/examples/jsm/loaders/NRRDLoader";
 import { useLoader } from "react-three-fiber";
-import { MeshBasicMaterial } from "_three@0.124.0@three";
 
 export default function BrainTemplate({ x, y, z }) {
   const nrrd = useLoader(
@@ -23,7 +22,6 @@ export default function BrainTemplate({ x, y, z }) {
     sliceZ.index = z.value;
     sliceZ.repaint.call(sliceZ);
   }, [z.value]);
-  console.log(nrrd)
   return (
     <group>
       <mesh

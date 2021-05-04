@@ -23,7 +23,7 @@ import { enableMapSet } from "immer";
 
 // core components
 import Admin from "layouts/Admin";
-import Home from 'layouts/Home'
+// import Home from 'layouts/Home'
 import "assets/css/material-dashboard-react.css?v=1.9.0";
 
 const hist = createBrowserHistory();
@@ -32,8 +32,8 @@ ReactDOM.render(
   <Router history={hist}>
     <Switch>
       <Route path="/admin" component={Admin} />
-      <Route path="/home" component={Home} />
-      <Redirect from="/" to="/home/welcome" />
+      {/* <Route path="/home" component={Home} /> */}
+      <Redirect from="/" to="/admin/home" />
     </Switch>
   </Router>,
   document.getElementById("root")

@@ -11,6 +11,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 // import Slider from "components/PrettoSlider";
 import Slider from "components/IOSSlider";
 import Collapse from "@material-ui/core/Collapse";
+// import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 
 export default function Panel() {
   const [
@@ -125,6 +126,7 @@ export default function Panel() {
             primary="Slice X"
             secondary="slicing control for x direction"
           />
+          <ListItemIcon style={{width: "50%"}}>
             <Slider
               valueLabelDisplay="auto"
               disabled={!controls.sliceX.visible}
@@ -135,6 +137,7 @@ export default function Panel() {
                 setSliceX(controls.sliceX.visible, value);
               }}
             />
+          </ListItemIcon>
         </ListItem>
         <ListItem key="sliceY">
           <ListItemIcon>
@@ -150,7 +153,7 @@ export default function Panel() {
             primary="Slice Y"
             secondary="slicing control for y direction"
           />
-          <ListItemIcon>
+          <ListItemIcon style={{width: "50%"}}>
             <Slider
               valueLabelDisplay="auto"
               disabled={!controls.sliceY.visible}
@@ -177,7 +180,7 @@ export default function Panel() {
             primary="Slice Z"
             secondary="slicing control for z direction"
           />
-          <ListItemIcon>
+          <ListItemIcon style={{width: "50%"}}>
             <Slider
               valueLabelDisplay="auto"
               disabled={!controls.sliceZ.visible}

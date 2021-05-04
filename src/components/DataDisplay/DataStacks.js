@@ -12,7 +12,7 @@ export default function DataStacks(props) {
           type={data.type}
           mode={data.mode}
           visible={data.visible}
-          data={data.viewer}
+          viewer={data.viewer}
         ></DataParser>
       ))}
     </group>

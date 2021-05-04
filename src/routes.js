@@ -20,6 +20,7 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import Workbench from "views/Workbench";
 import DataMarket from "views/DataMarket";
 import DataCart from "views/DataCart";
+import Home from "views/Home";
 // import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
 import SearchIcon from "@material-ui/icons/Search";
@@ -29,11 +30,11 @@ import HomeIcon from '@material-ui/icons/Home';
 
 const dashboardRoutes = [
   {
-    path: "/welcome",
+    path: "/home",
     name: "Home",
     icon: HomeIcon,
-    component: null,
-    layout: "/home",
+    component: Home,
+    layout: "/admin",
   },
   {
     path: "/search",
@@ -42,13 +43,13 @@ const dashboardRoutes = [
     component: Search,
     layout: "/admin",
   },
-  {
-    path: "/market",
-    name: "Data Browse",
-    icon: LocalMallOutlinedIcon,
-    component: DataMarket,
-    layout: "/admin",
-  },
+  // {
+  //   path: "/market",
+  //   name: "Data Browse",
+  //   icon: LocalMallOutlinedIcon,
+  //   component: DataMarket,
+  //   layout: "/admin",
+  // },
   {
     path: "/cart",
     name: "Shopping Cart",
