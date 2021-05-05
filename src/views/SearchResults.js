@@ -17,14 +17,11 @@ import Button from "components/CustomButtons/Button";
 import Card from "components/Card/Card";
 import Typography from "@material-ui/core/Typography";
 import Muted from "components/Typography/Muted.js";
-import shallow from "zustand/shallow";
-import useData from "hooks/data";
+import { useData, useStore } from "hooks";
 
-export default function DataBrowse() {
-  const [data, update, set] = useData(
-    (state) => [state.data, state.update, state.set],
-    shallow
-  );
+export default function SearchResults() {
+  const setData = useData((state) => state.set);
+  const setStore = useStore((state) => state.set);
 
   const get_unit = async (id) => {
     // get unit
@@ -81,7 +78,7 @@ export default function DataBrowse() {
     // for (let i in datatable1){
     //   if (datatable1[i]['window'] == '8-13ms') datatable.push(datatable1[i])
     // }
-    set(id, {
+    setData(id, {
       id: id,
       type: "relation matrix",
       title: title,

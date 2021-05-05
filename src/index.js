@@ -20,21 +20,25 @@ import ReactDOM from "react-dom";
 import { createBrowserHistory } from "history";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 import { enableMapSet } from "immer";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 // core components
 import Admin from "layouts/Admin";
 // import Home from 'layouts/Home'
 import "assets/css/material-dashboard-react.css?v=1.9.0";
+const queryClient = new QueryClient();
 
 const hist = createBrowserHistory();
 enableMapSet();
 ReactDOM.render(
-  <Router history={hist}>
-    <Switch>
-      <Route path="/admin" component={Admin} />
-      {/* <Route path="/home" component={Home} /> */}
-      <Redirect from="/" to="/admin/home" />
-    </Switch>
-  </Router>,
+  <QueryClientProvider client={queryClient}>
+    <Router history={hist}>
+      <Switch>
+        <Route path="/admin" component={Admin} />
+        {/* <Route path="/home" component={Home} /> */}
+        <Redirect from="/" to="/admin/home" />
+      </Switch>
+    </Router>
+  </QueryClientProvider>,
   document.getElementById("root")
 );

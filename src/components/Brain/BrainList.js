@@ -17,7 +17,7 @@ import Close from "@material-ui/icons/Close";
 import styles from "assets/jss/material-dashboard-react/components/tasksStyle.js";
 import Muted from "components/Typography/Muted";
 
-import useBrains from "hooks/brains";
+import { useBrains } from "hooks";
 import BrainTag from "./BrainTag";
 import shallow from "zustand/shallow";
 

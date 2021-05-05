@@ -4,6 +4,7 @@ import produce from "immer";
 const useSearch = create((set) => ({
   content: "",
   placeholder: "",
+  reportId: 1,
   setContent: (str) =>
     set(
       produce((state) => {
