@@ -7,7 +7,6 @@ import React from "react";
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
-import Container from "@material-ui/core/Container";
 import CardFooter from "components/Card/CardFooter";
 import CardBody from "components/Card/CardBody";
 import CardHeader from "components/Card/CardHeader";
@@ -15,115 +14,41 @@ import CardIcon from "components/Card/CardIcon";
 import SearchBar from "material-ui-search-bar";
 import Button from "components/CustomButtons/Button";
 import Card from "components/Card/Card";
-import Typography from "@material-ui/core/Typography";
+import { List, ListItem,Typography } from "@material-ui/core";
 import Muted from "components/Typography/Muted.js";
 import { useData, useStore } from "hooks";
+import { pushUnit } from "utils";
+import ChipsArray from "components/Custom/ChipsArray";
+import ItemCard from "components/Custom/ItemCard";
+import FilterCard from "components/Custom/FilterCard";
 
 export default function SearchResults() {
   const setData = useData((state) => state.set);
   const setStore = useStore((state) => state.set);
 
-  const get_unit = async (id) => {
-    // get unit
-    let unit_res = await fetch("http://192.168.3.148:5000/get_unit?id=" + id, {
-      method: "GET",
-      mode: "cors",
-    });
-    let unit_json = await unit_res.json();
-    let [
-      unit_id,
-      strategy_id,
-      frame_id,
-      title,
-      description,
-      mapping,
-      filter,
-    ] = unit_json["records"][0];
-    // get strategy
-    let strategy_res = await fetch(
-      "http://192.168.3.148:5000/get_strategy?id=" + strategy_id,
-      {
-        method: "GET",
-        mode: "cors",
-      }
-    );
-    let strategy_json = await strategy_res.json();
-    // get frame
-    let frame_res = await fetch(
-      "http://192.168.3.148:5000/get_frame?id=" + frame_id,
-      {
-        method: "GET",
-        mode: "cors",
-      }
-    );
-    const { mode } = strategy_json["records"][0][2][0];
-    let frame_json = await frame_res.json();
-    // processing frame
-    let [a, b, c] = ["x", "y", "score"].map((v) =>
-      frame_json["colnames"].indexOf(mapping[v]["colname"])
-    );
-    let datatable = frame_json["records"].map((v, i) => ({
-      i: i,
-      y: mapping["y"]["chart"][v[b]],
-      x: mapping["x"]["chart"][v[a]],
-      score: v[c],
-      ...Object.fromEntries(
-        filter.map((vv) => [
-          vv["column"],
-          v[frame_json["colnames"].indexOf(vv["column"])],
-        ])
-      ),
-    }));
-    // let datatable = []
-    // for (let i in datatable1){
-    //   if (datatable1[i]['window'] == '8-13ms') datatable.push(datatable1[i])
-    // }
-    setData(id, {
-      id: id,
-      type: "relation matrix",
-      title: title,
-      description: description,
-      mode: mode,
-      visible: true,
-      chart: {
-        color: ["score", "#BAE7FF-#1890FF-#0050B3"],
-        filter: filter.map((v) => [
-          v["column"],
-          (x) => v["filter"].reduce((a, b) => a || b == x, true),
-        ]),
-        data: datatable,
-        scale: {
-          x: {
-            values: Object.keys(mapping["x"]["chart"]),
-            ...strategy_json["records"][0][1][0]["chart"]["scale"]["x"],
-          },
-          y: {
-            values: Object.keys(mapping["y"]["chart"]),
-            ...strategy_json["records"][0][1][0]["chart"]["scale"]["y"],
-          },
-        },
-        ...strategy_json["records"][0][1]["chart"],
-      },
-      viewer: {
-        visible: datatable.map(() => false),
-        load: datatable.map(() => false),
-        color: datatable.map(() => null),
-        table: datatable,
-        rowid: Object.values(mapping["y"]["view"]),
-        colid: Object.values(mapping["x"]["view"]),
-      },
-    });
-  };
   return (
-    <>
-      <GridContainer>
-        <GridItem>
-          <SearchBar></SearchBar>
+    <GridContainer justify="space-between">
+      <GridContainer item xs={12} sm={4} lg={3} justify="center">
+        <GridItem xs={12} xl={10}>
+          <FilterCard title={"Filter"} content={"TODO"}></FilterCard>
         </GridItem>
       </GridContainer>
-      <Container>
+      <GridItem xs={12} sm={8} lg={9}>
+        <GridContainer item xs={12} justify="center">
+          <GridItem xs={12}>
+            <List style={{ width: "100%" }}>
+              <ListItem />
+              <ListItem>
+                <SearchBar style={{ width: "100%" }} />
+              </ListItem>
+              <ListItem>
+                <ChipsArray />
+              </ListItem>
+            </List>
+          </GridItem>
+        </GridContainer>
         <GridContainer>
-          <GridItem>
+          <GridItem xs={12} lg={6} xl={4}>
             <Card>
               <CardHeader color="warning">
                 <Typography variant="h5">
@@ -161,7 +86,7 @@ export default function SearchResults() {
                 <Button
                   variant="contained"
                   color="info"
-                  onClick={() => get_unit(1)}
+                  onClick={() => pushUnit(1, setData)}
                 >
                   visualize
                 </Button>
@@ -172,7 +97,7 @@ export default function SearchResults() {
             </Card>
           </GridItem>
         </GridContainer>
-      </Container>
-    </>
+      </GridItem>
+    </GridContainer>
   );
 }

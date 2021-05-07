@@ -1,5 +1,5 @@
 import React from "react";
-import BrainLoader from "components/Brain/BrainLoader";
+import BrainLoader from "../Brain/BrainLoader";
 
 function brain({ viewer, visible }) {
   const { table, colid, rowid, color, load } = viewer;

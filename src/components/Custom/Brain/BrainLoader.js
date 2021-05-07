@@ -1,12 +1,18 @@
 import React from "react";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
+
 export default function BrainLoader(props) {
-  const { nodes } = useGLTF('http://192.168.3.174:7000/Gltf/GetGltfByID?id=' + props.id);
-  const u = Object.values(nodes)[0]['geometry'].clone(true).scale(-1, -1, -1).translate(264, 154.6, 228)
+  const { nodes } = useGLTF(
+    "http://192.168.3.174:7000/Gltf/GetGltfByID?id=" + props.id
+  );
+  const u = Object.values(nodes)[0]
+    ["geometry"].clone(true)
+    .scale(-1, -1, -1)
+    .translate(264, 154.6, 228);
   return (
     <mesh visible={props.visible}>
-      <primitive object={u} attach='geometry' />
+      <primitive object={u} attach="geometry" />
       <meshStandardMaterial
         opacity={props.opacity}
         transparent={props.transparent}

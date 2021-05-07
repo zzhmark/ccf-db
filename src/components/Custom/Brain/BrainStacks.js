@@ -6,7 +6,7 @@
 */
 
 import React from "react";
-import useBrains from "hooks/brains";
+import { useBrains } from "hooks";
 import BrainLoader from "./BrainLoader.js";
 
 export default function BrainStacks(props) {

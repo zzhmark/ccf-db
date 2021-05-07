@@ -9,13 +9,11 @@ import { useFrame, useThree } from "react-three-fiber";
 import { OrbitControls, Sky, Stars } from "@react-three/drei";
 import * as THREE from "three";
 import OitRenderer from "./OitRenderer";
-import useControls from "hooks/controls";
-import BrainTemplate from 'components/Brain/BrainTemplate'
+import { useControls } from "hooks";
+import BrainTemplate from "../Brain/BrainTemplate";
 
 // 小配件
 import Viewcube from "./Viewcube.js";
-
-
 
 const BasicScene = ({ children }) => {
   // 以下小配件可以直接通过threejs的函数生成模型对象，然后通过加primitive的方式嵌入r3f
@@ -106,7 +104,13 @@ const BasicScene = ({ children }) => {
       <primitive object={grid} visible={controls.grid} />
       <Suspense fallback={null}>
         {children}
-        {controls.slicing && <BrainTemplate x={controls.sliceX} y={controls.sliceY} z={controls.sliceZ}/>}
+        {controls.slicing && (
+          <BrainTemplate
+            x={controls.sliceX}
+            y={controls.sliceY}
+            z={controls.sliceZ}
+          />
+        )}
       </Suspense>
       {/* <Viewcube /> */}
       {/* 右上角的小配件，以后还可以进一步改进 */}

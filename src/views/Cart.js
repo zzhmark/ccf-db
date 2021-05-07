@@ -5,33 +5,25 @@
 import React from "react";
 
 // core components
-import GridItem from "components/Grid/GridItem.js";
-import GridContainer from "components/Grid/GridContainer.js";
+import GridItem from "components/Grid/GridItem";
+import GridContainer from "components/Grid/GridContainer";
+import Card from "components/Card/Card";
 import {
-  Table,
-  TableBody,
-  TableContainer,
-  TableCell,
-  TableHead,
-  TableRow,
   Typography,
-  Paper,
-  Collapse,
-  Container,
-  Box,
-  IconButton,
   List,
   ListItem,
   ListItemText,
   ListItemIcon,
 } from "@material-ui/core";
+
 import CloudDownloadOutlinedIcon from "@material-ui/icons/CloudDownloadOutlined";
-import { makeStyles } from "@material-ui/core/styles";
-import FrameCollect from "components/Table/FrameCollect";
-import { useStore } from "hooks";
-import Button from "components/CustomButtons/Button";
-import Card from "components/Card/Card";
+
 import { saveAs } from "file-saver";
+import { useStore } from "hooks";
+
+// custom components
+import FrameCollect from "components/Custom/Data/FrameCollect";
+
 
 export default function Cart() {
   const store = useStore((state) => state.store);

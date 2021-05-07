@@ -18,7 +18,6 @@ import Button from "components/CustomButtons/Button";
 import Avatar from "@material-ui/core/Avatar";
 import styles from "assets/jss/material-dashboard-react/components/sidebarStyle.js";
 import { drawerWidth } from "assets/jss/material-dashboard-react.js";
-import Divider from "@material-ui/core/Divider";
 import Fade from "@material-ui/core/Fade";
 
 const useStyles = makeStyles(styles);

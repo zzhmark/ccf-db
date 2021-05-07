@@ -1,17 +1,22 @@
 import React from "react";
-import useControls from "hooks/controls";
+
+// hooks
+import { useControls } from "hooks";
 import shallow from "zustand/shallow";
 
-import Switch from "components/IOSSwitch";
+// material ui components
 import { ToggleButtonGroup, ToggleButton } from "@material-ui/lab";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-// import Slider from "components/PrettoSlider";
-import Slider from "components/IOSSlider";
-import Collapse from "@material-ui/core/Collapse";
-// import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import {
+  ListItemText,
+  Collapse,
+  List,
+  ListItemIcon,
+  ListItem,
+} from "@material-ui/core";
+
+// custom components
+import Slider from "components/Custom/IOSSlider";
+import Switch from "components/Custom/IOSSwitch";
 
 export default function Panel() {
   const [
@@ -126,7 +131,7 @@ export default function Panel() {
             primary="Slice X"
             secondary="slicing control for x direction"
           />
-          <ListItemIcon style={{width: "50%"}}>
+          <ListItemIcon style={{ width: "50%" }}>
             <Slider
               valueLabelDisplay="auto"
               disabled={!controls.sliceX.visible}
@@ -153,7 +158,7 @@ export default function Panel() {
             primary="Slice Y"
             secondary="slicing control for y direction"
           />
-          <ListItemIcon style={{width: "50%"}}>
+          <ListItemIcon style={{ width: "50%" }}>
             <Slider
               valueLabelDisplay="auto"
               disabled={!controls.sliceY.visible}
@@ -180,7 +185,7 @@ export default function Panel() {
             primary="Slice Z"
             secondary="slicing control for z direction"
           />
-          <ListItemIcon style={{width: "50%"}}>
+          <ListItemIcon style={{ width: "50%" }}>
             <Slider
               valueLabelDisplay="auto"
               disabled={!controls.sliceZ.visible}

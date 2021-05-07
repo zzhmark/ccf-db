@@ -1,5 +1,13 @@
 module.exports = {
   parser: "babel-eslint",
+  rules: {
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  },
   env: {
     es6: true,
     node: true,

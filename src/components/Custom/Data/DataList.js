@@ -10,7 +10,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 // core components
 import styles from "assets/jss/material-dashboard-react/components/tasksStyle.js";
 import shallow from "zustand/shallow";
-import DataControl from "components/DataDisplay/DataControl";
+import DataControl from "./DataControl";
 
 import { useData, useStore } from "hooks";
 import { Button, ExpansionPanelActions } from "@material-ui/core";

@@ -6,172 +6,50 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
 import GridContainer from "components/Grid/GridContainer.js";
-import { Typography, Box, Divider } from "@material-ui/core";
+import {
+  Typography,
+  Box,
+  Divider,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from "@material-ui/core";
 import { useQuery } from "react-query";
-import axios from "axios";
-import Dataframe from "components/Table/Dataframe";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
+import Dataframe from "components/Custom/Data/Dataframe";
 import Button from "components/CustomButtons/Button";
 import { useData, useSearch, useStore } from "hooks";
-
-async function get_collection(id) {
-  const col_res = await axios.get(
-    "http://192.168.3.148:5000/get_collection?id=" + id
-  );
-  const [
-    collection_id,
-    frame_id,
-    literature_id,
-    recipe_id,
-    title,
-    abstract,
-  ] = col_res.data["records"][0];
-  // frame
-  const frame_res = await Promise.all(
-    frame_id.map(
-      async (v) =>
-        await axios.get("http://192.168.3.148:5000/get_frame?id=" + v)
-    )
-  );
-
-  const frame_info_res = await Promise.all(
-    frame_id.map(
-      async (v) =>
-        await axios.get("http://192.168.3.148:5000/get_frame_info?id=" + v)
-    )
-  );
-
-  // literature
-  const lit_res = await Promise.all(
-    literature_id.map(
-      async (v) =>
-        await axios.get("http://192.168.3.148:5000/get_literature?id=" + v)
-    )
-  );
-
-  //recipe
-  const recipe_res = await Promise.all(
-    recipe_id.map(
-      async (v) =>
-        await axios.get("http://192.168.3.148:5000/get_recipe?id=" + v)
-    )
-  );
-
-  return { col_res, frame_res, lit_res, recipe_res, frame_info_res };
-}
+import { pushUnit, getCollection } from "utils";
 
 export default function ReportPage() {
   const id = useSearch((state) => state.reportId);
   const setData = useData((state) => state.set);
   const setStore = useStore((state) => state.set);
 
-  const get_unit = async (id) => {
-    // get unit
-    let unit_res = await fetch("http://192.168.3.148:5000/get_unit?id=" + id, {
-      method: "GET",
-      mode: "cors",
-    });
-    let unit_json = await unit_res.json();
-    let [
-      unit_id,
-      strategy_id,
-      frame_id,
-      title,
-      description,
-      mapping,
-      filter,
-    ] = unit_json["records"][0];
-    // get strategy
-    let strategy_res = await fetch(
-      "http://192.168.3.148:5000/get_strategy?id=" + strategy_id,
-      {
-        method: "GET",
-        mode: "cors",
-      }
-    );
-    let strategy_json = await strategy_res.json();
-    // get frame
-    let frame_res = await fetch(
-      "http://192.168.3.148:5000/get_frame?id=" + frame_id,
-      {
-        method: "GET",
-        mode: "cors",
-      }
-    );
-    const { mode } = strategy_json["records"][0][2][0];
-    let frame_json = await frame_res.json();
-    // processing frame
-    let [a, b, c] = ["x", "y", "score"].map((v) =>
-      frame_json["colnames"].indexOf(mapping[v]["colname"])
-    );
-    let datatable = frame_json["records"].map((v, i) => ({
-      i: i,
-      y: mapping["y"]["chart"][v[b]],
-      x: mapping["x"]["chart"][v[a]],
-      score: v[c],
-      ...Object.fromEntries(
-        filter.map((vv) => [
-          vv["column"],
-          v[frame_json["colnames"].indexOf(vv["column"])],
-        ])
-      ),
-    }));
-    // let datatable = []
-    // for (let i in datatable1){
-    //   if (datatable1[i]['window'] == '8-13ms') datatable.push(datatable1[i])
-    // }
-    setData(id, {
-      id: id,
-      type: "relation matrix",
-      title: title,
-      description: description,
-      mode: mode,
-      visible: true,
-      chart: {
-        color: ["score", "#BAE7FF-#1890FF-#0050B3"],
-        filter: filter.map((v) => [
-          v["column"],
-          (x) => v["filter"].reduce((a, b) => a || b == x, true),
-        ]),
-        data: datatable,
-        scale: {
-          x: {
-            values: Object.keys(mapping["x"]["chart"]),
-            ...strategy_json["records"][0][1][0]["chart"]["scale"]["x"],
-          },
-          y: {
-            values: Object.keys(mapping["y"]["chart"]),
-            ...strategy_json["records"][0][1][0]["chart"]["scale"]["y"],
-          },
-        },
-        ...strategy_json["records"][0][1]["chart"],
-      },
-      viewer: {
-        visible: datatable.map(() => false),
-        load: datatable.map(() => false),
-        color: datatable.map(() => null),
-        table: datatable,
-        rowid: Object.values(mapping["y"]["view"]),
-        colid: Object.values(mapping["x"]["view"]),
-      },
-    });
-  };
   const { data, isLoading, error } = useQuery("collection_info", () =>
-    get_collection(id)
+    getCollection(id)
   );
-  if (isLoading || error) return null;
+  if (id === null || isLoading || error)
+    return (
+      <GridContainer
+        justify="center"
+        alignItems="center"
+        style={{ height: "80vh" }}
+      >
+        <GridItem>
+          <Typography variant="h2" style={{ color: "gray" }}>
+            {id === null
+              ? "Take a collection to inspect"
+              : isLoading
+              ? "Loading..."
+              : "ERROR"}
+          </Typography>
+        </GridItem>
+      </GridContainer>
+    );
   const { col_res, frame_res, lit_res, recipe_res, frame_info_res } = data;
-  const [
-    collection_id,
-    frame_id,
-    literature_id,
-    recipe_id,
-    title,
-    abstract,
-  ] = col_res.data["records"][0];
+  const [title, abstract] = col_res.data["records"][0].slice(4, 6);
+
   return (
     <>
       <GridContainer>
@@ -283,7 +161,9 @@ export default function ReportPage() {
                       <Button
                         color="info"
                         onClick={() => {
-                          v.data.records[0][1].forEach((v) => get_unit(v));
+                          v.data.records[0][1].forEach((v) =>
+                            pushUnit(v, setData)
+                          );
                         }}
                       >
                         visualize

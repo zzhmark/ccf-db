@@ -1,8 +1,8 @@
 import React from "react";
 
 // core components
-import GridItem from "components/Grid/GridItem.js";
-import GridContainer from "components/Grid/GridContainer.js";
+import GridItem from "components/Grid/GridItem";
+import GridContainer from "components/Grid/GridContainer";
 import SearchBar from "material-ui-search-bar";
 import shallow from "zustand/shallow";
 import {

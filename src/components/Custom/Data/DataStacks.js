@@ -1,5 +1,5 @@
 import React from "react";
-import useData from "hooks/data";
+import { useData } from "hooks";
 import DataParser from "./DataParser";
 
 export default function DataStacks(props) {

@@ -7,7 +7,7 @@ import useBrains from "hooks/brains";
 import shallow from "zustand/shallow";
 
 // 苹果按钮样式
-import Switch from "components/IOSSwitch";
+import Switch from "../IOSSwitch";
 import { fade, makeStyles, withStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 

@@ -1,6 +1,7 @@
 import React from "react";
-import Table from "components/Table/VirualizedTable";
+import Table from "./VirtualizedTable";
 import Paper from "@material-ui/core/Paper";
+
 export default function Dataframe(frame) {
   const { records, colnames } = frame;
   const rows = records.map((v) =>

@@ -6,26 +6,28 @@
 import React from "react";
 
 // @material-ui/icons
-import DataUsageIcon from "@material-ui/icons/DataUsage";
-import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import LocalOffer from "@material-ui/icons/LocalOffer";
-import GamesIcon from "@material-ui/icons/Games";
+import {
+  DataUsageIcon,
+  AccessTimeIcon,
+  LocalOffer,
+  GamesIcon,
+} from "@material-ui/icons/DataUsage";
 
 // core components
-import GridItem from "components/Grid/GridItem.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import Card from "components/Card/Card.js";
-import NavPills from "components/NavPills/NavPills.js";
+import GridItem from "components/Grid/GridItem";
+import GridContainer from "components/Grid/GridContainer";
+import Card from "components/Card/Card";
 
-// personal import
-import BasicViewer from "components/Viewer/BasicViewer";
-import BrainTreeView from "components/Brain/BrainTreeView";
-import BrainList from "components/Brain/BrainList";
-import BrainStacks from "components/Brain/BrainStacks";
+// custom components
+import NavPills from "components/Custom/NavPills";
+import BasicViewer from "components/Custom/Viewer/BasicViewer";
+import BrainTreeView from "components/Custom/Brain/BrainTreeView";
+import BrainList from "components/Custom/Brain/BrainList";
+import BrainStacks from "components/Custom/Brain/BrainStacks";
 
-import DataStacks from "components/DataDisplay/DataStacks";
-import DataList from "components/DataDisplay/DataList";
-import Panel from 'components/Controls/Panel'
+import DataStacks from "components/Custom/Data/DataStacks";
+import DataList from "components/Custom/Data/DataList";
+import Panel from "components/Custom/Panel";
 
 export default function Workbench() {
   return (

@@ -7,17 +7,18 @@ import SwipeableViews from "react-swipeable-views";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import CardBody from "components/Card/CardBody.js";
+import { Tabs, Tab } from "@material-ui/core";
 
 // core components
 import GridContainer from "components/Grid/GridContainer";
 import GridItem from "components/Grid/GridItem";
+import CardBody from "components/Card/CardBody.js";
+import Card from "components/Card/Card";
 
 import styles from "assets/jss/material-kit-react/components/navPillsStyle";
-import ScrollDiv from "components/ScrollDiv.js";
-import Card from "components/Card/Card";
+
+// custom components
+import ScrollDiv from "components/Custom/ScrollDiv.js";
 
 const useStyles = makeStyles(styles);
 
