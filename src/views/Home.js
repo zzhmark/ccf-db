@@ -4,24 +4,16 @@ import React from "react";
 import GridItem from "components/Grid/GridItem";
 import GridContainer from "components/Grid/GridContainer";
 import SearchBar from "material-ui-search-bar";
-import shallow from "zustand/shallow";
-import {
-  Table,
-  TableBody,
-  TableContainer,
-  TableCell,
-  TableHead,
-  TableRow,
-  Typography,
-  Paper,
-  Collapse,
-  Container,
-  Box,
-  IconButton,
-} from "@material-ui/core";
+import { Typography, Paper, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+
+import { useSearch } from "hooks";
+import shallow from "zustand/shallow";
+
+import { esGetCollection } from "utils";
+
 const useStyles = makeStyles({
   root: {
     background: (props) =>
@@ -47,7 +39,7 @@ function MyButton(props) {
   return <Button className={classes.root} {...other} />;
 }
 
-export default function Home() {
+export default function Home(props) {
   const useViewport = () => {
     const [width, setWidth] = React.useState(window.innerWidth);
 
@@ -60,7 +52,16 @@ export default function Home() {
     return { width };
   };
   const { width } = useViewport();
-  const classes = useStyles();
+  const [content, setContent, placeholder, setResults] = useSearch(
+    (state) => [
+      state.content,
+      state.setContent,
+      state.placeholder,
+      state.setResults,
+    ],
+    shallow
+  );
+
   return (
     <Box height="90vh" display="flex" flexDirection="column">
       <Box
@@ -79,27 +80,30 @@ export default function Home() {
           </Typography>
         </Box>
       </Box>
-      <GridContainer justify="center" >
-        <GridItem xs={6}>
+      <Box margin />
+      <GridContainer justify="center">
+        <GridItem xs={10} sm={8} md={6} lg={8} xl={6}>
           <SearchBar
-          // value={content}
-          // placeholder={placeholder}
-          // onChange={(v) => {
-          //   setContent(v);
-          //   console.log(content);
-          // }}
-          // onCancelSearch={() => {
-          //   setContent("");
-          // }}
-          // onRequestSearch={() => {
-          //   if (content === "") console.log(placeholder);
-          //   else console.log(content);
-          // }}
+            value={content}
+            placeholder={placeholder}
+            onChange={(v) => {
+              setContent(v);
+              console.log(content);
+            }}
+            onCancelSearch={() => {
+              setContent("");
+            }}
+            onRequestSearch={() => {
+              if (content === "")
+                esGetCollection({ setResults, target: placeholder });
+              else esGetCollection({ setResults, target: content });
+              props.history.push("/admin/search");
+            }}
           />
         </GridItem>
       </GridContainer>
-      <span style={{ marginTop: "1vh", marginBottom: "1vh" }} />
-      <GridContainer justify="center" >
+      {/* <span style={{ marginTop: "1vh", marginBottom: "1vh" }} />
+      <GridContainer justify="center">
         <GridItem xs={2}>
           <Link to="/admin/search">
             <MyButton color="red" fullWidth>
@@ -107,7 +111,6 @@ export default function Home() {
             </MyButton>
           </Link>
         </GridItem>
-        {/* <GridItem xs={1} /> */}
         <GridItem xs={2}>
           <Link to="/admin/workbench">
             <MyButton color="blue" fullWidth>
@@ -115,12 +118,12 @@ export default function Home() {
             </MyButton>
           </Link>
         </GridItem>
-      </GridContainer>
+      </GridContainer> */}
       <Box width="100%" marginTop="auto" marginRight="auto">
         <Box marginLeft="2rem">
           <Typography
             variant={width >= 960 ? (width >= 1280 ? "h1" : "h2") : "h3"}
-            style={{ color: "#f44336"  }}
+            style={{ color: "#f44336" }}
           >
             Functional
           </Typography>

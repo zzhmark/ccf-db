@@ -3,19 +3,53 @@ import produce from "immer";
 
 const useSearch = create((set) => ({
   content: "",
-  placeholder: "",
-  reportId: 1,
-  Chips:[],
-  setChip: (label, func) =>
+  advancedContent: [],
+  placeholder: "example",
+  reportId: null,
+  chips: [],
+  results: [],
+  setResults: (re) =>
     set(
       produce((state) => {
-         state.Chips.push({key:state.Chips.length})
+        state.results = re;
       })
     ),
+  addChip: (title, type, field, value) => {
+    switch (type) {
+      case "range[]":
+        set(
+          produce((state) => {
+            state.chips.push({
+              color: "primary",
+              label: title + ": from " + value.gte + " to " + value.lse,
+              func: (e) =>
+                e["_source"][field] >= value.gte &&
+                e["_source"][field] <= value.lse,
+            });
+            return state;
+          })
+        );
+        break;
+      case "cat":
+        set(
+          produce((state) => {
+            const valueList = Object.keys(value).filter((v) => value[v])
+            state.chips.push({
+              color: "secondary",
+              label: title + ": " + valueList,
+              func: (e) => valueList.includes(e["_source"][field]),
+            });
+            return state;
+          })
+        );
+        break;
+    }
+  },
   delChip: (i) =>
     set(
       produce((state) => {
-        state.reportId = i;
+        state.chips.splice(i, 1);
+        return state;
       })
     ),
   setReportId: (i) =>

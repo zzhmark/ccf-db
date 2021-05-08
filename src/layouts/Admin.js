@@ -36,7 +36,6 @@ const switchRoutes = (
       }
       return null;
     })}
-    <Redirect from="/admin" to="/admin/workbench" />
   </Switch>
 );
 

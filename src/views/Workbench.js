@@ -7,11 +7,11 @@ import React from "react";
 
 // @material-ui/icons
 import {
-  DataUsageIcon,
-  AccessTimeIcon,
+  DataUsage,
+  AccessTime,
   LocalOffer,
-  GamesIcon,
-} from "@material-ui/icons/DataUsage";
+  Games,
+} from "@material-ui/icons";
 
 // core components
 import GridItem from "components/Grid/GridItem";
@@ -67,7 +67,7 @@ export default function Workbench() {
             {
               thinPadding: true,
               tabButton: "Data",
-              tabIcon: DataUsageIcon,
+              tabIcon: DataUsage,
               tabContent: (
                 <div
                   style={{
@@ -82,12 +82,12 @@ export default function Workbench() {
             {
               tabButton: "History",
               thinPadding: true,
-              tabIcon: AccessTimeIcon,
+              tabIcon: AccessTime,
               tabContent: <BrainList />,
             },
             {
               tabButton: "Control",
-              tabIcon: GamesIcon,
+              tabIcon: Games,
               tabContent: <Panel />,
             },
           ]}

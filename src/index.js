@@ -35,7 +35,6 @@ ReactDOM.render(
     <Router history={hist}>
       <Switch>
         <Route path="/admin" component={Admin} />
-        {/* <Route path="/home" component={Home} /> */}
         <Redirect from="/" to="/admin/home" />
       </Switch>
     </Router>

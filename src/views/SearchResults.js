@@ -5,32 +5,55 @@
 import React from "react";
 
 // core components
+import { List, ListItem } from "@material-ui/core";
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
-import CardFooter from "components/Card/CardFooter";
-import CardBody from "components/Card/CardBody";
-import CardHeader from "components/Card/CardHeader";
-import CardIcon from "components/Card/CardIcon";
+
 import SearchBar from "material-ui-search-bar";
-import Button from "components/CustomButtons/Button";
-import Card from "components/Card/Card";
-import { List, ListItem,Typography } from "@material-ui/core";
-import Muted from "components/Typography/Muted.js";
-import { useData, useStore } from "hooks";
-import { pushUnit } from "utils";
+
+// custom components
 import ChipsArray from "components/Custom/ChipsArray";
 import ItemCard from "components/Custom/ItemCard";
 import FilterCard from "components/Custom/FilterCard";
 
-export default function SearchResults() {
+import { useData, useStore, useSearch } from "hooks";
+import shallow from "zustand/shallow";
+
+import img from "assets/img/example1.jpg";
+import { searchFilter, esGetCollection, pushUnit } from "utils";
+import { getCollection } from "utils";
+
+export default function SearchResults(props) {
   const setData = useData((state) => state.set);
   const setStore = useStore((state) => state.set);
+  const [
+    content,
+    setContent,
+    placeholder,
+    setReportId,
+    results,
+    setResults,
+    chips,
+  ] = useSearch(
+    (state) => [
+      state.content,
+      state.setContent,
+      state.placeholder,
+      state.setReportId,
+      state.results,
+      state.setResults,
+      state.chips
+    ],
+    shallow
+  );
 
   return (
-    <GridContainer justify="space-between">
+    <GridContainer justify="space-evenly">
       <GridContainer item xs={12} sm={4} lg={3} justify="center">
         <GridItem xs={12} xl={10}>
-          <FilterCard title={"Filter"} content={"TODO"}></FilterCard>
+          {searchFilter.map((v) => (
+            <FilterCard filter={v} />
+          ))}
         </GridItem>
       </GridContainer>
       <GridItem xs={12} sm={8} lg={9}>
@@ -39,7 +62,22 @@ export default function SearchResults() {
             <List style={{ width: "100%" }}>
               <ListItem />
               <ListItem>
-                <SearchBar style={{ width: "100%" }} />
+                <SearchBar
+                  style={{ width: "100%" }}
+                  value={content}
+                  placeholder={placeholder}
+                  onChange={(v) => {
+                    setContent(v);
+                  }}
+                  onCancelSearch={() => {
+                    setContent("");
+                  }}
+                  onRequestSearch={() => {
+                    if (content === "")
+                      esGetCollection({ setResults, target: placeholder });
+                    else esGetCollection({ setResults, target: content });
+                  }}
+                />
               </ListItem>
               <ListItem>
                 <ChipsArray />
@@ -48,54 +86,38 @@ export default function SearchResults() {
           </GridItem>
         </GridContainer>
         <GridContainer>
-          <GridItem xs={12} lg={6} xl={4}>
-            <Card>
-              <CardHeader color="warning">
-                <Typography variant="h5">
-                  Example: Functional connection from somatosensary cortex to
-                  thalumus
-                </Typography>
-              </CardHeader>
-              <CardBody>
-                <Muted>
-                  Neural activity in the cortical-thalamic-cortical circuits are
-                  crucial for sensation, memory, decision and actions.
-                  Nevertheless, a systematic characterization of
-                  cortical-thalamic functional connectivity has not been
-                  achieved. Here, we developed a high throughput method in awake
-                  mice to systematically map functional connections from the
-                  dorsal cortex to the thalamus, by combing
-                  optogenetic-cortical-inhibition with single-neuron resolution
-                  thalamic recording. Photoinhibition of the cortex resulted in
-                  a rapid reduction of thalamic activity, revealing
-                  topographically-organized corticothalamic excitatory inputs.
-                  Cluster analysis showed that groups of neurons within
-                  individual thalamic nuclei exhibited distinct dynamics. Their
-                  cortical inputs expanded with time and the effects of
-                  photoinhibition were modulated by behavioral states.
-                  Furthermore, we found that individual thalamic neurons
-                  received convergent inputs from widespread cortical regions.
-                  Our results present a framework for collecting, analyzing, and
-                  presenting large electrophysiological datasets with region
-                  specific optogenetic perturbations and serve as a foundation
-                  for further investigation of information processing in the
-                  corticothalamic pathway.
-                </Muted>
-              </CardBody>
-              <CardFooter>
-                <Button
-                  variant="contained"
-                  color="info"
-                  onClick={() => pushUnit(1, setData)}
-                >
-                  visualize
-                </Button>
-                <Button variant="contained" color="primary">
-                  add to cart
-                </Button>
-              </CardFooter>
-            </Card>
-          </GridItem>
+          {chips.reduce((a, b) => a.filter(b.func), results).map((v) => (
+            <GridItem xs={12} lg={6} xl={4}>
+              <ItemCard
+                title={v["_source"]["title"]}
+                content={v["_source"]["title"]}
+                img={img}
+                handleEnter={() => {
+                  setReportId(v["_source"]["collection_id"]);
+                  props.history.push("/admin/report");
+                }}
+                handleViz={async () => {
+                  const { recipe_res } = await getCollection(
+                    v["_source"]["collection_id"]
+                  );
+                  recipe_res.forEach((v) => {
+                    v.data.records[0][1].forEach((v) => pushUnit(v, setData));
+                  });
+                }}
+                handleStore={async () => {
+                  const { frame_info_res, frame_res } = await getCollection(
+                    v["_source"]["collection_id"]
+                  );
+                  frame_res.forEach((v, i) => {
+                    setStore(frame_info_res[i].data.records[0][0], {
+                      info: frame_info_res[i].data,
+                      frame: v.data,
+                    });
+                  });
+                }}
+              />
+            </GridItem>
+          ))}
         </GridContainer>
       </GridItem>
     </GridContainer>
