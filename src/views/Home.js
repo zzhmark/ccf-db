@@ -4,149 +4,266 @@ import React from "react";
 import GridItem from "components/Grid/GridItem";
 import GridContainer from "components/Grid/GridContainer";
 import SearchBar from "material-ui-search-bar";
-import { Typography, Paper, Box } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
+import {
+  Grid,
+  Typography,
+  Paper,
+  Box,
+  Fab,
+  Zoom,
+  ListItem,
+  List,
+  ListItemIcon,
+  IconButton,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  ListItemSecondaryAction,
+} from "@material-ui/core";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-
+import PaletteIcon from "@material-ui/icons/Palette";
 import { useSearch } from "hooks";
 import shallow from "zustand/shallow";
-
+import ReplayIcon from "@material-ui/icons/Replay";
 import { esGetCollection } from "utils";
+import Card from "components/Card/Card";
+import CardHeader from "components/Card/CardHeader";
+import CardBody from "components/Card/CardBody";
+import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import HighlightOffOutlinedIcon from "@material-ui/icons/HighlightOffOutlined";
 
-const useStyles = makeStyles({
-  root: {
-    background: (props) =>
-      props.color === "red"
-        ? "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)"
-        : "linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)",
-    border: 0,
-    borderRadius: 3,
-    boxShadow: (props) =>
-      props.color === "red"
-        ? "0 3px 5px 2px rgba(255, 105, 135, .3)"
-        : "0 3px 5px 2px rgba(33, 203, 243, .3)",
-    color: "white",
-    height: 48,
-    padding: "0 30px",
-    margin: 8,
+const useStyles = makeStyles((theme) => ({
+  fab: {
+    position: "absolute",
+    bottom: theme.spacing(3),
+    right: theme.spacing(4),
   },
-});
-
-function MyButton(props) {
-  const { color, ...other } = props;
-  const classes = useStyles(props);
-  return <Button className={classes.root} {...other} />;
-}
+}));
 
 export default function Home(props) {
+  const classes = useStyles();
+  const theme = useTheme();
+  const [tog, setTog] = React.useState(0);
+  const transitionDuration = {
+    enter: theme.transitions.duration.enteringScreen,
+    exit: theme.transitions.duration.leavingScreen,
+  };
   const useViewport = () => {
     const [width, setWidth] = React.useState(window.innerWidth);
-
     React.useEffect(() => {
       const handleWindowResize = () => setWidth(window.innerWidth);
       window.addEventListener("resize", handleWindowResize);
       return () => window.removeEventListener("resize", handleWindowResize);
     }, []);
-
     return { width };
   };
   const { width } = useViewport();
-  const [content, setContent, placeholder, setResults] = useSearch(
+  const [
+    content,
+    setContent,
+    placeholder,
+    setResults,
+    advancedContent,
+    addAdvancedContent,
+    delAdvancedContent,
+    setAdvancedContent,
+  ] = useSearch(
     (state) => [
       state.content,
       state.setContent,
       state.placeholder,
       state.setResults,
+      state.advancedContent,
+      state.addAdvancedContent,
+      state.delAdvancedContent,
+      state.setAdvancedContent,
     ],
     shallow
   );
 
-  return (
-    <Box height="90vh" display="flex" flexDirection="column">
-      <Box
-        marginBottom="auto"
-        component={Paper}
-        bgcolor="rgb(0,172,193)"
-        width="100%"
-      >
-        <Box display="flex">
-          <Typography
-            variant={width >= 960 ? (width >= 1280 ? "h1" : "h2") : "h3"}
-            // variant="h1"
-            style={{ color: "#ffffff", margin: "auto" }}
-          >
-            <span style={{ color: "black" }}>SEU</span>ALLEN
-          </Typography>
-        </Box>
+  const fabs = [
+    {
+      color: "primary",
+      className: classes.fab,
+      icon: <PaletteIcon style={{ marginRight: theme.spacing(1) }} />,
+      label: "Advanced",
+    },
+    {
+      color: "secondary",
+      className: classes.fab,
+      icon: <ReplayIcon style={{ marginRight: theme.spacing(3) }} />,
+      label: <span style={{ marginRight: theme.spacing(2) }}>Basic</span>,
+    },
+  ];
+
+  const Title = () => (
+    <Box
+      marginBottom="auto"
+      component={Paper}
+      bgcolor="rgb(0,172,193)"
+      width="100%"
+    >
+      <Box display="flex">
+        <Typography
+          variant={width >= 960 ? (width >= 1280 ? "h1" : "h2") : "h3"}
+          style={{ color: "#ffffff", margin: "auto" }}
+        >
+          <span style={{ color: "black" }}>SEU</span>ALLEN
+        </Typography>
       </Box>
+    </Box>
+  );
+
+  const Name = () => (
+    <Box width="100%" marginTop="auto" marginRight="auto">
+      <Box marginLeft="2rem">
+        <Typography
+          variant={width >= 960 ? (width >= 1280 ? "h1" : "h2") : "h3"}
+          style={{ color: "#f44336" }}
+        >
+          Functional
+        </Typography>
+        <Typography
+          variant={width >= 960 ? (width >= 1280 ? "h1" : "h2") : "h3"}
+          style={{ color: "#ff9800" }}
+        >
+          Mouse
+        </Typography>
+        <Typography
+          variant={width >= 960 ? (width >= 1280 ? "h1" : "h2") : "h3"}
+          style={{ color: "#2196f3" }}
+        >
+          Connectome
+        </Typography>
+        <Typography
+          variant={width >= 960 ? (width >= 1280 ? "h1" : "h2") : "h3"}
+          style={{ color: "#4caf50" }}
+        >
+          Database
+        </Typography>
+      </Box>
+    </Box>
+  );
+
+  const BasicSearch = () => (
+    <SearchBar
+      value={content}
+      placeholder={placeholder}
+      onChange={(v) => {
+        setContent(v);
+        console.log(content);
+      }}
+      onCancelSearch={() => {
+        setContent("");
+      }}
+      onRequestSearch={() => {
+        if (content === "")
+          esGetCollection({ setResults, target: placeholder });
+        else esGetCollection({ setResults, target: content });
+        props.history.push("/admin/search");
+      }}
+    />
+  );
+
+  const AdvancedSearch = () => (
+    <Card>
+      <CardHeader color="primary">
+        <Typography variant="h6">Advanced Search</Typography>
+      </CardHeader>
+      <CardBody>
+        <List>
+          {advancedContent.map((v, i) => (
+            <ListItem key={i}>
+              <Grid container justify="space-evenly">
+                <Grid item xs={3}>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-controlled-open-select-label">
+                      Field
+                    </InputLabel>
+                    <Select
+                      labelId="demo-controlled-open-select-label"
+                      id="demo-controlled-open-select"
+                      value={v[0]}
+                      onChange={(e) => {
+                        setAdvancedContent(
+                          i,
+                          e.target.value,
+                          advancedContent[i][1]
+                        );
+                        console.log(advancedContent);
+                      }}
+                    >
+                      <MenuItem value={"title"}>Title</MenuItem>
+                      <MenuItem value={"abstract"}>Abstract</MenuItem>
+                      <MenuItem value={"assay_type"}>Assay Type</MenuItem>
+                      <MenuItem value={"author"}>Author</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={8}>
+                  <TextField fullWidth margin="dense" variant="outlined" />
+                </Grid>
+              </Grid>
+              <ListItemSecondaryAction>
+                <IconButton
+                  color="secondary"
+                  onClick={() => delAdvancedContent(i)}
+                >
+                  <HighlightOffOutlinedIcon />
+                </IconButton>
+              </ListItemSecondaryAction>
+            </ListItem>
+          ))}
+          <ListItem>
+            <Grid container justify="center">
+              <IconButton
+                color="primary"
+                onClick={() => addAdvancedContent(["", ""])}
+              >
+                <AddCircleOutlineIcon />
+              </IconButton>
+            </Grid>
+          </ListItem>
+        </List>
+      </CardBody>
+    </Card>
+  );
+
+  return (
+    <Box height="80vh" display="flex" flexDirection="column">
+      <Title />
       <Box margin />
       <GridContainer justify="center">
         <GridItem xs={10} sm={8} md={6} lg={8} xl={6}>
-          <SearchBar
-            value={content}
-            placeholder={placeholder}
-            onChange={(v) => {
-              setContent(v);
-              console.log(content);
-            }}
-            onCancelSearch={() => {
-              setContent("");
-            }}
-            onRequestSearch={() => {
-              if (content === "")
-                esGetCollection({ setResults, target: placeholder });
-              else esGetCollection({ setResults, target: content });
-              props.history.push("/admin/search");
-            }}
-          />
+          {tog === 0 ? <BasicSearch /> : <AdvancedSearch />}
         </GridItem>
       </GridContainer>
-      {/* <span style={{ marginTop: "1vh", marginBottom: "1vh" }} />
-      <GridContainer justify="center">
-        <GridItem xs={2}>
-          <Link to="/admin/search">
-            <MyButton color="red" fullWidth>
-              Browse
-            </MyButton>
-          </Link>
-        </GridItem>
-        <GridItem xs={2}>
-          <Link to="/admin/workbench">
-            <MyButton color="blue" fullWidth>
-              Advanced
-            </MyButton>
-          </Link>
-        </GridItem>
-      </GridContainer> */}
-      <Box width="100%" marginTop="auto" marginRight="auto">
-        <Box marginLeft="2rem">
-          <Typography
-            variant={width >= 960 ? (width >= 1280 ? "h1" : "h2") : "h3"}
-            style={{ color: "#f44336" }}
+      <Name />
+      {fabs.map((fab, index) => (
+        <Zoom
+          key={fab.color}
+          in={tog === index}
+          timeout={transitionDuration}
+          style={{
+            transitionDelay: `${tog === index ? transitionDuration.exit : 0}ms`,
+          }}
+          unmountOnExit
+        >
+          <Fab
+            variant="extended"
+            aria-label={fab.label}
+            className={fab.className}
+            color={fab.color}
+            onClick={() => setTog(1 - tog)}
           >
-            Functional
-          </Typography>
-          <Typography
-            variant={width >= 960 ? (width >= 1280 ? "h1" : "h2") : "h3"}
-            style={{ color: "#ff9800" }}
-          >
-            Mouse
-          </Typography>
-          <Typography
-            variant={width >= 960 ? (width >= 1280 ? "h1" : "h2") : "h3"}
-            style={{ color: "#2196f3" }}
-          >
-            Connectome
-          </Typography>
-          <Typography
-            variant={width >= 960 ? (width >= 1280 ? "h1" : "h2") : "h3"}
-            style={{ color: "#4caf50" }}
-          >
-            Database
-          </Typography>
-        </Box>
-      </Box>
+            {fab.icon}
+            {fab.label}
+          </Fab>
+        </Zoom>
+      ))}
     </Box>
   );
 }

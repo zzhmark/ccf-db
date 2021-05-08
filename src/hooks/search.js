@@ -8,6 +8,25 @@ const useSearch = create((set) => ({
   reportId: null,
   chips: [],
   results: [],
+  addAdvancedContent: (field, content) =>
+    set(
+      produce((state) => {
+        state.advancedContent.push([field, content]);
+      })
+    ),
+  setAdvancedContent: (i, field, content) =>
+    set(
+      produce((state) => {
+        state.advancedContent[i] = [field, content];
+      })
+    ),
+  delAdvancedContent: (i) =>
+    set(
+      produce((state) => {
+        state.advancedContent.splice(i, 1);
+        return state;
+      })
+    ),
   setResults: (re) =>
     set(
       produce((state) => {
@@ -33,7 +52,7 @@ const useSearch = create((set) => ({
       case "cat":
         set(
           produce((state) => {
-            const valueList = Object.keys(value).filter((v) => value[v])
+            const valueList = Object.keys(value).filter((v) => value[v]);
             state.chips.push({
               color: "secondary",
               label: title + ": " + valueList,
