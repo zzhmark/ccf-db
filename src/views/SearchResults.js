@@ -42,7 +42,7 @@ export default function SearchResults(props) {
       state.setReportId,
       state.results,
       state.setResults,
-      state.chips
+      state.chips,
     ],
     shallow
   );
@@ -51,8 +51,8 @@ export default function SearchResults(props) {
     <GridContainer justify="space-evenly">
       <GridContainer item xs={12} sm={4} lg={3} justify="center">
         <GridItem xs={12} xl={10}>
-          {searchFilter.map((v) => (
-            <FilterCard filter={v} />
+          {searchFilter.map((v, i) => (
+            <FilterCard filter={v} key={i} />
           ))}
         </GridItem>
       </GridContainer>
@@ -86,38 +86,40 @@ export default function SearchResults(props) {
           </GridItem>
         </GridContainer>
         <GridContainer>
-          {chips.reduce((a, b) => a.filter(b.func), results).map((v) => (
-            <GridItem xs={12} lg={6} xl={4}>
-              <ItemCard
-                title={v["_source"]["title"]}
-                content={v["_source"]["title"]}
-                img={img}
-                handleEnter={() => {
-                  setReportId(v["_source"]["collection_id"]);
-                  props.history.push("/admin/report");
-                }}
-                handleViz={async () => {
-                  const { recipe_res } = await getCollection(
-                    v["_source"]["collection_id"]
-                  );
-                  recipe_res.forEach((v) => {
-                    v.data.records[0][1].forEach((v) => pushUnit(v, setData));
-                  });
-                }}
-                handleStore={async () => {
-                  const { frame_info_res, frame_res } = await getCollection(
-                    v["_source"]["collection_id"]
-                  );
-                  frame_res.forEach((v, i) => {
-                    setStore(frame_info_res[i].data.records[0][0], {
-                      info: frame_info_res[i].data,
-                      frame: v.data,
+          {chips
+            .reduce((a, b) => a.filter(b.func), results)
+            .map((v, i) => (
+              <GridItem xs={12} lg={6} xl={4} key={i}>
+                <ItemCard
+                  title={v["_source"]["title"]}
+                  content={v["_source"]["title"]}
+                  img={img}
+                  handleEnter={() => {
+                    setReportId(v["_source"]["collection_id"]);
+                    props.history.push("/admin/report");
+                  }}
+                  handleViz={async () => {
+                    const { recipe_res } = await getCollection(
+                      v["_source"]["collection_id"]
+                    );
+                    recipe_res.forEach((v) => {
+                      v.data.records[0][1].forEach((v) => pushUnit(v, setData));
                     });
-                  });
-                }}
-              />
-            </GridItem>
-          ))}
+                  }}
+                  handleStore={async () => {
+                    const { frame_info_res, frame_res } = await getCollection(
+                      v["_source"]["collection_id"]
+                    );
+                    frame_res.forEach((v, i) => {
+                      setStore(frame_info_res[i].data.records[0][0], {
+                        info: frame_info_res[i].data,
+                        frame: v.data,
+                      });
+                    });
+                  }}
+                />
+              </GridItem>
+            ))}
         </GridContainer>
       </GridItem>
     </GridContainer>

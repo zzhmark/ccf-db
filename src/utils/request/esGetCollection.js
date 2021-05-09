@@ -6,8 +6,11 @@ export default async function esGetCollection({ setResults, target, mode }) {
   switch (mode) {
     case "advanced":
       col_res = await axios.get(
-        "http://192.168.3.148:5000/search_index?index_name=collections" +
-          target.map((v) => v.join("=")).join("&")
+        "http://192.168.3.148:5000/search_index?index_name=collections&" +
+          target
+            .filter((v) => v[0] && v[1])
+            .map((v) => v.join("="))
+            .join("&")
       );
       break;
     default:
@@ -16,5 +19,5 @@ export default async function esGetCollection({ setResults, target, mode }) {
           target
       );
   }
-  setResults(col_res['data'])
+  setResults(col_res["data"]);
 }

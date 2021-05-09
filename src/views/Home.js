@@ -34,6 +34,7 @@ import CardHeader from "components/Card/CardHeader";
 import CardBody from "components/Card/CardBody";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import HighlightOffOutlinedIcon from "@material-ui/icons/HighlightOffOutlined";
+import CardFooter from "components/Card/CardFooter";
 
 const useStyles = makeStyles((theme) => ({
   fab: {
@@ -70,6 +71,7 @@ export default function Home(props) {
     addAdvancedContent,
     delAdvancedContent,
     setAdvancedContent,
+    clearAdvancedContent,
   ] = useSearch(
     (state) => [
       state.content,
@@ -80,6 +82,7 @@ export default function Home(props) {
       state.addAdvancedContent,
       state.delAdvancedContent,
       state.setAdvancedContent,
+      state.clearAdvancedContent,
     ],
     shallow
   );
@@ -180,11 +183,9 @@ export default function Home(props) {
               <Grid container justify="space-evenly">
                 <Grid item xs={3}>
                   <FormControl fullWidth>
-                    <InputLabel id="demo-controlled-open-select-label">
-                      Field
-                    </InputLabel>
+                    <InputLabel id={"inputLabel" + i}>Field</InputLabel>
                     <Select
-                      labelId="demo-controlled-open-select-label"
+                      labelId={"inputLabel" + i}
                       id="demo-controlled-open-select"
                       value={v[0]}
                       onChange={(e) => {
@@ -193,7 +194,6 @@ export default function Home(props) {
                           e.target.value,
                           advancedContent[i][1]
                         );
-                        console.log(advancedContent);
                       }}
                     >
                       <MenuItem value={"title"}>Title</MenuItem>
@@ -204,16 +204,31 @@ export default function Home(props) {
                   </FormControl>
                 </Grid>
                 <Grid item xs={8}>
-                  <TextField fullWidth margin="dense" variant="outlined" />
+                  <TextField
+                    fullWidth
+                    margin="dense"
+                    variant="outlined"
+                    value={v[1]}
+                    autoFocus
+                    onChange={(e) =>
+                      setAdvancedContent(
+                        i,
+                        advancedContent[i][0],
+                        e.target.value
+                      )
+                    }
+                  />
                 </Grid>
               </Grid>
               <ListItemSecondaryAction>
-                <IconButton
-                  color="secondary"
-                  onClick={() => delAdvancedContent(i)}
-                >
-                  <HighlightOffOutlinedIcon />
-                </IconButton>
+                {i > 0 && (
+                  <IconButton
+                    color="secondary"
+                    onClick={() => delAdvancedContent(i)}
+                  >
+                    <HighlightOffOutlinedIcon />
+                  </IconButton>
+                )}
               </ListItemSecondaryAction>
             </ListItem>
           ))}
@@ -229,6 +244,35 @@ export default function Home(props) {
           </ListItem>
         </List>
       </CardBody>
+      <CardFooter>
+        <Grid container justify="space-evenly">
+          <GridItem xs={6} md={4}>
+            <Button
+              fullWidth
+              color="primary"
+              onClick={() => {
+                esGetCollection({
+                  setResults,
+                  target: advancedContent,
+                  mode: "advanced",
+                });
+                props.history.push("/admin/search");
+              }}
+            >
+              Submit
+            </Button>
+          </GridItem>
+          <GridItem xs={6} md={4}>
+            <Button
+              fullWidth
+              color="secondary"
+              onClick={() => clearAdvancedContent()}
+            >
+              Clear
+            </Button>
+          </GridItem>
+        </Grid>
+      </CardFooter>
     </Card>
   );
 

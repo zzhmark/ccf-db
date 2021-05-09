@@ -3,11 +3,18 @@ import produce from "immer";
 
 const useSearch = create((set) => ({
   content: "",
-  advancedContent: [],
+  advancedContent: [["", ""]],
   placeholder: "example",
   reportId: null,
   chips: [],
   results: [],
+  clearAdvancedContent: () =>
+    set(
+      produce((state) => {
+        state.advancedContent = [["", ""]];
+        return state
+      })
+    ),
   addAdvancedContent: (field, content) =>
     set(
       produce((state) => {
