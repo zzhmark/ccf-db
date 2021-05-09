@@ -92,7 +92,7 @@ export default function SearchResults(props) {
               <GridItem xs={12} lg={6} xl={4} key={i}>
                 <ItemCard
                   title={v["_source"]["title"]}
-                  content={v["_source"]["title"]}
+                  content={v["_source"]["abstract"]}
                   img={img}
                   handleEnter={() => {
                     setReportId(v["_source"]["collection_id"]);
