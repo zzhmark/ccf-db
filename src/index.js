@@ -21,7 +21,7 @@ import { createBrowserHistory } from "history";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 import { enableMapSet } from "immer";
 import { QueryClient, QueryClientProvider } from "react-query";
-
+import { Provider } from "jotai";
 // core components
 import Admin from "layouts/Admin";
 // import Home from 'layouts/Home'
@@ -32,12 +32,14 @@ const hist = createBrowserHistory();
 enableMapSet();
 ReactDOM.render(
   <QueryClientProvider client={queryClient}>
-    <Router history={hist}>
-      <Switch>
-        <Route path="/admin" component={Admin} />
-        <Redirect from="/" to="/admin/home" />
-      </Switch>
-    </Router>
+    <Provider>
+      <Router history={hist}>
+        <Switch>
+          <Route path="/admin" component={Admin} />
+          <Redirect from="/" to="/admin/home" />
+        </Switch>
+      </Router>
+    </Provider>
   </QueryClientProvider>,
   document.getElementById("root")
 );

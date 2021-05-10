@@ -157,7 +157,6 @@ export default function Home(props) {
       placeholder={placeholder}
       onChange={(v) => {
         setContent(v);
-        console.log(content);
       }}
       onCancelSearch={() => {
         setContent("");

@@ -2,23 +2,29 @@ import React from "react";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
-export default function BrainLoader(props) {
-  const { nodes } = useGLTF(
-    "http://192.168.3.174:7000/Gltf/GetGltfByID?id=" + props.id
-  );
+export default function BrainLoader({
+  id,
+  visible,
+  opacity,
+  transparent,
+  metalness,
+  roughness,
+  color,
+}) {
+  const { nodes } = useGLTF("http://192.168.3.148:5000/get_draco?id=" + id);
   const u = Object.values(nodes)[0]
     ["geometry"].clone(true)
     .scale(-1, -1, -1)
     .translate(264, 154.6, 228);
   return (
-    <mesh visible={props.visible}>
+    <mesh visible={visible}>
       <primitive object={u} attach="geometry" />
       <meshStandardMaterial
-        opacity={props.opacity}
-        transparent={props.transparent}
-        metalness={props.metalness}
-        roughness={props.roughness}
-        color={props.color}
+        opacity={opacity}
+        transparent={transparent}
+        metalness={metalness}
+        roughness={roughness}
+        color={color}
         side={THREE.DoubleSide}
         depthWrite={false}
       />

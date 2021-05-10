@@ -111,14 +111,11 @@ export default function Home() {
                 placeholder={placeholder}
                 onChange={(v) => {
                   setContent(v);
-                  console.log(content);
                 }}
                 onCancelSearch={() => {
                   setContent("");
                 }}
                 onRequestSearch={() => {
-                  if (content === "") console.log(placeholder);
-                  else console.log(content);
                 }}
               />
             </Box>
