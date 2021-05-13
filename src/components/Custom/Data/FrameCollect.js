@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Box,
@@ -14,12 +13,8 @@ import {
   Typography,
   Paper,
 } from "@material-ui/core";
-import {
-  Close,
-  KeyboardArrowDown,
-  KeyboardArrowUp,
-} from "@material-ui/icons";
-import Frame from "./Dataframe";
+import { Close, KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
+import DataFrame from "./Dataframe";
 import { useStore } from "hooks";
 
 const useRowStyles = makeStyles({
@@ -30,8 +25,7 @@ const useRowStyles = makeStyles({
   },
 });
 
-function Row(props) {
-  const { row, children } = props;
+function Row({ row, children, id }) {
   const [open, setOpen] = React.useState(false);
   const classes = useRowStyles();
   const del = useStore((state) => state.del);
@@ -47,7 +41,7 @@ function Row(props) {
             {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
           </IconButton>
         </TableCell>
-        {row.slice(1, 3).map((v) => (
+        {row.map((v) => (
           <TableCell>{v}</TableCell>
         ))}
         <TableCell>
@@ -56,7 +50,7 @@ function Row(props) {
             className={classes.tableActionButton}
             onClick={(e) => {
               e.stopPropagation();
-              del(row[0]);
+              del(id);
             }}
           >
             <Close
@@ -82,24 +76,6 @@ function Row(props) {
   );
 }
 
-Row.propTypes = {
-  row: PropTypes.shape({
-    calories: PropTypes.number.isRequired,
-    carbs: PropTypes.number.isRequired,
-    fat: PropTypes.number.isRequired,
-    history: PropTypes.arrayOf(
-      PropTypes.shape({
-        amount: PropTypes.number.isRequired,
-        customerId: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    protein: PropTypes.number.isRequired,
-  }).isRequired,
-};
-
 export default function CollapsibleTable({ header, body }) {
   return (
     <TableContainer component={Paper}>
@@ -113,11 +89,14 @@ export default function CollapsibleTable({ header, body }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {body.map((v) => (
-            <Row key={v[0]} row={v[1].info.records[0]}>
-              {Frame(v[1].frame)}
-            </Row>
-          ))}
+          {body.map((v, i) => {
+            const { title, description, dataframe, orient } = v[1];
+            return (
+              <Row key={i} row={[title, description]} id={v[0]}>
+                {DataFrame({dataframe, orient})}
+              </Row>
+            );
+          })}
         </TableBody>
       </Table>
     </TableContainer>

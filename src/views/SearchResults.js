@@ -20,7 +20,7 @@ import { useData, useStore, useSearch } from "hooks";
 import shallow from "zustand/shallow";
 
 import img from "assets/img/example1.jpg";
-import { searchFilter, esGetCollection, pushUnit } from "utils";
+import { searchFilter, esGetCollection, pushIngredient } from "utils";
 import { getCollection } from "utils";
 
 export default function SearchResults(props) {
@@ -98,23 +98,22 @@ export default function SearchResults(props) {
                     setReportId(v["_source"]["collection_id"]);
                     props.history.push("/admin/report");
                   }}
-                  handleViz={async () => {
+                  handleVis={async () => {
                     const { recipe_res } = await getCollection(
                       v["_source"]["collection_id"]
                     );
                     recipe_res.forEach((v) => {
-                      v.data.records[0][1].forEach((v) => pushUnit(v, setData));
+                      v.data["ingredient_id"].forEach((v) =>
+                        pushIngredient(v["$oid"], setData)
+                      );
                     });
                   }}
                   handleStore={async () => {
-                    const { frame_info_res, frame_res } = await getCollection(
+                    const { df_res } = await getCollection(
                       v["_source"]["collection_id"]
                     );
-                    frame_res.forEach((v, i) => {
-                      setStore(frame_info_res[i].data.records[0][0], {
-                        info: frame_info_res[i].data,
-                        frame: v.data,
-                      });
+                    df_res.forEach((v) => {
+                      setStore(v.data.['_id']["$oid"], v.data);
                     });
                   }}
                 />

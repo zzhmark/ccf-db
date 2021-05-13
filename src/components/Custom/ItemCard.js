@@ -18,7 +18,7 @@ export default function ItemCard({
   handleEnter,
   img,
   handleStore,
-  handleViz,
+  handleVis,
 }) {
   return (
     <Card>
@@ -43,7 +43,7 @@ export default function ItemCard({
         <Button size="small" color="primary" onClick={handleStore}>
           Add all data to cart
         </Button>
-        <Button size="small" color="secondary" onClick={handleViz}>
+        <Button size="small" color="secondary" onClick={handleVis}>
           Visualize all recipes
         </Button>
       </CardActions>

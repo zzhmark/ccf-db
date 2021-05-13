@@ -24,7 +24,6 @@ import { useStore } from "hooks";
 // custom components
 import FrameCollect from "components/Custom/Data/FrameCollect";
 
-
 export default function Cart() {
   const store = useStore((state) => state.store);
   return store.size > 0 ? (
@@ -42,20 +41,34 @@ export default function Cart() {
               button
               onClick={() => {
                 Array.from(store).forEach((v) => {
-                  const { info, frame } = v[1];
+                  const { title, orient, dataframe } = v[1];
+                  let rows, colnames;
+                  switch (orient) {
+                    case "columns":
+                      colnames = Object.keys(dataframe);
+                      rows = Object.values(dataframe)
+                        .map((series, i) =>
+                          Object.values(series).map((v) => ({
+                            [colnames[i]]: v,
+                          }))
+                        )
+                        .reduce((a, b) => a.map((v, i) => ({ ...v, ...b[i] })));
+                      break;
+                    default:
+                      rows = dataframe;
+                      colnames = Object.keys(Object.values(dataframe)[0]);
+                  }
                   let blob = new Blob(
                     [
-                      frame["colnames"].join("\t"),
+                      colnames.join("\t"),
                       "\n",
-                      frame["records"]
-                        .map((v) => v.join("\t"))
-                        .join("\n"),
+                      rows.map((v) => Object.values(v).join("\t")).join("\n"),
                     ],
                     {
                       type: "text/plain;charset=utf-8",
                     }
                   );
-                  saveAs(blob, info["records"][0][1] + ".txt");
+                  saveAs(blob, title + ".txt");
                 });
               }}
             >

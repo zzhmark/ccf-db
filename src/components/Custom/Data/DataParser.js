@@ -3,7 +3,6 @@ import BrainLoader from "../Brain/BrainLoader";
 
 function brain({ viewer, visible }) {
   const { table, colid, rowid, color, load } = viewer;
-
   return (
     <group>
       {table.map((v, i) => {
@@ -38,10 +37,10 @@ function brain({ viewer, visible }) {
 }
 
 export default function DataParser(props) {
-  const { type, mode, viewer, visible } = props;
+  const { type, viewer, visible } = props;
   switch (type) {
     case "relation matrix":
-      switch (mode) {
+      switch (viewer.mode) {
         case "brain":
           return brain({ viewer, visible });
       }

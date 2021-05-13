@@ -11,9 +11,14 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import styles from "assets/jss/material-dashboard-react/components/tasksStyle.js";
 import shallow from "zustand/shallow";
 import DataControl from "./DataControl";
-
+import axios from "axios";
 import { useData, useStore } from "hooks";
-import { Button, ExpansionPanelActions } from "@material-ui/core";
+import {
+  Button,
+  ExpansionPanelActions,
+  Typography,
+  Container,
+} from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
@@ -31,30 +36,6 @@ export default function DataList(props) {
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
-  const get_frame = async (id) => {
-    // get unit
-    let unit_res = await fetch("http://192.168.3.148:5000/get_unit?id=" + id, {
-      method: "GET",
-      mode: "cors",
-    });
-    let unit_json = await unit_res.json();
-    const frame_id = unit_json["records"][0][2];
-    // get frame
-    let frame_res = await fetch("http://192.168.3.148:5000/get_frame?id=" + frame_id, {
-      method: "GET",
-      mode: "cors",
-    });
-    let frame_json = await frame_res.json();
-    let frame_info_res = await fetch(
-      "http://192.168.3.148:5000/get_frame_info?id=" + frame_id,
-      {
-        method: "GET",
-        mode: "cors",
-      }
-    );
-    let frame_info_json = await frame_info_res.json();
-    setStore(frame_info_json['records'][0][0], {info: frame_info_json, frame: frame_json})
-  };
   return Array.from(data.values(), (data, ind) => (
     <ExpansionPanel
       key={data.id}
@@ -65,13 +46,19 @@ export default function DataList(props) {
         {data.title}
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
-        <DataControl {...data} update={update} />
+        <Container>
+          <Typography variant="body2">{data.description}</Typography>
+          <DataControl {...data} update={update} />
+        </Container>
       </ExpansionPanelDetails>
       <ExpansionPanelActions>
         <Button
           color="primary"
-          onClick={() => {
-            get_frame(data.id)
+          onClick={async () => {
+            const df_res = await axios.get(
+              "http://192.168.3.148:5000/get_dataframe?oid=" + data["dataframe_id"]
+            );
+            setStore(df_res.data._id["$oid"], df_res.data);
           }}
         >
           Add to cart

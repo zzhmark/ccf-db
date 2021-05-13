@@ -18,6 +18,7 @@ import {
 } from "bizcharts";
 
 import { LineChart } from "bizcharts";
+import { Typography } from "_@material-ui_core@4.10.0@@material-ui/core";
 
 // 数据源
 const data = [
@@ -59,13 +60,14 @@ function Demo() {
   );
 }
 
-export default function DataControl({ id, chart, type, mode, update }) {
+export default function DataControl({ id, chart, type, viewer, update }) {
   switch (type) {
     case "relation matrix":
       return (
         <div
           style={{ width: "100%", display: "flex", flexDirection: "column" }}
         >
+          
           {/* 基础显示控制 */}
           {/* <CardBody>
             <ToggleButtonGroup

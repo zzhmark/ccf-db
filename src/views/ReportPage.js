@@ -14,18 +14,42 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Grid,
 } from "@material-ui/core";
 import { useQuery } from "react-query";
 import Dataframe from "components/Custom/Data/Dataframe";
 import Button from "components/CustomButtons/Button";
 import { useData, useSearch, useStore } from "hooks";
-import { pushUnit, getCollection } from "utils";
+import { pushIngredient, getCollection } from "utils";
+import {
+  ContactSupportOutlined,
+  Title,
+} from "_@material-ui_icons@4.9.1@@material-ui/icons";
+import ReactLoading from "react-loading";
 
 export default function ReportPage() {
   const id = useSearch((state) => state.reportId);
+  if (id === null)
+    return (
+      <Grid
+        container
+        justify="center"
+        alignItems="center"
+        style={{ height: "80vh" }}
+      >
+        <GridItem>
+          <Typography variant="h2" style={{ color: "gray" }}>
+            "Take a collection to inspect"
+          </Typography>
+        </GridItem>
+      </Grid>
+    );
+  else return ReportPageContent(id);
+}
+
+function ReportPageContent(id) {
   const setData = useData((state) => state.set);
   const setStore = useStore((state) => state.set);
-
   const { data, isLoading, error } = useQuery("collection_info", () =>
     getCollection(id)
   );
@@ -38,17 +62,19 @@ export default function ReportPage() {
       >
         <GridItem>
           <Typography variant="h2" style={{ color: "gray" }}>
-            {id === null
-              ? "Take a collection to inspect"
-              : isLoading
-              ? "Loading..."
-              : "ERROR"}
+            {isLoading ? (
+              <Grid container justify="center">
+                <ReactLoading type="bars" color="#666666" />
+              </Grid>
+            ) : (
+              "ERROR"
+            )}
           </Typography>
         </GridItem>
       </GridContainer>
     );
-  const { col_res, frame_res, lit_res, recipe_res, frame_info_res } = data;
-  const [title, abstract] = col_res.data["records"][0].slice(4, 6);
+  const { col_res, df_res, ref_res, recipe_res } = data;
+  const { title, description } = col_res.data;
 
   return (
     <>
@@ -62,9 +88,9 @@ export default function ReportPage() {
         <GridItem xs={12} md={9}>
           <Card>
             <CardHeader color="primary">
-              <Typography variant="h2">Abstract</Typography>
+              <Typography variant="h2">Description</Typography>
             </CardHeader>
-            <CardBody>{abstract}</CardBody>
+            <CardBody>{description}</CardBody>
           </Card>
         </GridItem>
       </GridContainer>
@@ -72,35 +98,37 @@ export default function ReportPage() {
         <GridItem xs={12} md={9}>
           <Card>
             <CardHeader color="danger">
-              <Typography variant="h2">Literatures</Typography>
+              <Typography variant="h2">References</Typography>
             </CardHeader>
             <CardBody>
-              {lit_res.map((v, i) => (
-                <div key={i}>
-                  <Typography variant="h5">{v.data.records[0][1]}</Typography>
-                  <Divider />
-
-                  <Typography variant="caption">
-                    {v.data.records[0][2]}
-                  </Typography>
-                  <Typography variant="subtitle2">
-                    {v.data.records[0][4]}
-                  </Typography>
-                  <Typography variant="body2">
-                    {v.data.records[0][3]}
-                  </Typography>
-                  {v.data.records[0][5] && (
-                    <Typography variant="body1">
-                      PMID: {v.data.records[0][5]}
+              {ref_res.map((v, i) => {
+                const {
+                  title,
+                  abstract,
+                  publish_date,
+                  authors,
+                  PMID,
+                  DOI,
+                } = v.data;
+                const date_parse = new Date(publish_date["$date"]);
+                return (
+                  <div key={i}>
+                    <Typography variant="h5">{title}</Typography>
+                    <Divider />
+                    <Typography variant="caption">
+                      {authors.join(", ")}
                     </Typography>
-                  )}
-                  {v.data.records[0][6] && (
-                    <Typography variant="body1">
-                      DOI: {v.data.records[0][6]}
+                    <Typography variant="subtitle2">
+                      {date_parse.toISOString().split("T")[0]}
                     </Typography>
-                  )}
-                </div>
-              ))}
+                    <Typography variant="body2">{abstract}</Typography>
+                    {PMID && (
+                      <Typography variant="body1">PMID: {PMID}</Typography>
+                    )}
+                    {DOI && <Typography variant="body1">DOI: {DOI}</Typography>}
+                  </div>
+                );
+              })}
             </CardBody>
           </Card>
         </GridItem>
@@ -109,36 +137,32 @@ export default function ReportPage() {
         <GridItem xs={12} md={9}>
           <Card>
             <CardHeader color="info">
-              <Typography variant="h2">Dataframes</Typography>
+              <Typography variant="h2">Associated Data</Typography>
             </CardHeader>
             <CardBody>
-              {frame_res.map((v, i) => (
-                <div key={i}>
-                  <Typography variant="h6">
-                    {frame_info_res[i].data.records[0][1]}
-                  </Typography>
-                  <Typography variant="subtitle1">
-                    {frame_info_res[i].data.records[0][2]}
-                  </Typography>
-                  {Dataframe(v.data)}
-                  <List>
-                    <ListItem>
-                      <ListItemText />
-                      <Button
-                        color="primary"
-                        onClick={() => {
-                          setStore(frame_info_res[i].data.records[0][0], {
-                            info: frame_info_res[i].data,
-                            frame: v.data,
-                          });
-                        }}
-                      >
-                        Add to cart
-                      </Button>
-                    </ListItem>
-                  </List>
-                </div>
-              ))}
+              {df_res.map((v, i) => {
+                const { title, description, dataframe, _id, orient } = v.data;
+                return (
+                  <div key={i}>
+                    <Typography variant="h6">{title}</Typography>
+                    <Typography variant="subtitle1">{description}</Typography>
+                    {Dataframe({ dataframe, orient })}
+                    <List>
+                      <ListItem>
+                        <ListItemText />
+                        <Button
+                          color="primary"
+                          onClick={() => {
+                            setStore(_id["$oid"], v.data);
+                          }}
+                        >
+                          Add to cart
+                        </Button>
+                      </ListItem>
+                    </List>
+                  </div>
+                );
+              })}
             </CardBody>
           </Card>
         </GridItem>
@@ -150,28 +174,28 @@ export default function ReportPage() {
               <Typography variant="h2">Visualization Recipes</Typography>
             </CardHeader>
             <CardBody>
-              {recipe_res.map((v) => (
-                <List>
-                  <ListItem key={v.data.records[0][0]}>
-                    <ListItemText
-                      primary={v.data.records[0][2]}
-                      secondary={v.data.records[0][3]}
-                    />
-                    <ListItemIcon>
-                      <Button
-                        color="info"
-                        onClick={() => {
-                          v.data.records[0][1].forEach((v) =>
-                            pushUnit(v, setData)
-                          );
-                        }}
-                      >
-                        visualize
-                      </Button>
-                    </ListItemIcon>
-                  </ListItem>
-                </List>
-              ))}
+              {recipe_res.map((v) => {
+                const { title, description } = v.data;
+                return (
+                  <List>
+                    <ListItem key={Title}>
+                      <ListItemText primary={title} secondary={description} />
+                      <ListItemIcon>
+                        <Button
+                          color="info"
+                          onClick={() => {
+                            v.data["ingredient_id"].forEach((v) =>
+                              pushIngredient(v["$oid"], setData)
+                            );
+                          }}
+                        >
+                          visualize
+                        </Button>
+                      </ListItemIcon>
+                    </ListItem>
+                  </List>
+                );
+              })}
             </CardBody>
           </Card>
         </GridItem>
