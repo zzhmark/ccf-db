@@ -4,14 +4,14 @@ import {
   Box,
   Collapse,
   IconButton,
+  Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
-  Paper,
+  Typography
 } from "@material-ui/core";
 import { Close, KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
 import DataFrame from "./Dataframe";
@@ -20,9 +20,9 @@ import { useStore } from "hooks";
 const useRowStyles = makeStyles({
   root: {
     "& > *": {
-      borderBottom: "unset",
-    },
-  },
+      borderBottom: "unset"
+    }
+  }
 });
 
 function Row({ row, children, id }) {
@@ -93,7 +93,7 @@ export default function CollapsibleTable({ header, body }) {
             const { title, description, dataframe, orient } = v[1];
             return (
               <Row key={i} row={[title, description]} id={v[0]}>
-                {DataFrame({dataframe, orient})}
+                {DataFrame({ dataframe, orient })}
               </Row>
             );
           })}

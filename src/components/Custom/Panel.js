@@ -5,14 +5,8 @@ import { useControls } from "hooks";
 import shallow from "zustand/shallow";
 
 // material ui components
-import { ToggleButtonGroup, ToggleButton } from "@material-ui/lab";
-import {
-  ListItemText,
-  Collapse,
-  List,
-  ListItemIcon,
-  ListItem,
-} from "@material-ui/core";
+import { ToggleButton, ToggleButtonGroup } from "@material-ui/lab";
+import { Collapse, List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 
 // custom components
 import Slider from "components/Custom/IOSSlider";
@@ -28,7 +22,7 @@ export default function Panel() {
     setSliceX,
     setSliceY,
     setSliceZ,
-    setSlicing,
+    setSlicing
   ] = useControls(
     (state) => [
       state.controls,
@@ -39,7 +33,7 @@ export default function Panel() {
       state.setSliceX,
       state.setSliceY,
       state.setSliceZ,
-      state.setSlicing,
+      state.setSlicing
     ],
     shallow
   );

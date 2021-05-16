@@ -57,7 +57,7 @@ export default async function getCollection(id) {
   const ref_res = await Promise.all(
     reference_id.map(
       async (v) =>
-        await axios.get("http://192.168.3.148:5000/get_reference?oid=" + v['$oid'])
+        await axios.get("http://192.168.3.148:5000/get_reference?oid=" + v["$oid"])
     )
   );
 
@@ -65,7 +65,7 @@ export default async function getCollection(id) {
   const df_res = await Promise.all(
     dataframe_id.map(
       async (v) =>
-        await axios.get("http://192.168.3.148:5000/get_dataframe?oid=" + v['$oid'])
+        await axios.get("http://192.168.3.148:5000/get_dataframe?oid=" + v["$oid"])
     )
   );
 
@@ -73,7 +73,7 @@ export default async function getCollection(id) {
   const recipe_res = await Promise.all(
     recipe_id.map(
       async (v) =>
-        await axios.get("http://192.168.3.148:5000/get_recipe?oid=" + v['$oid'])
+        await axios.get("http://192.168.3.148:5000/get_recipe?oid=" + v["$oid"])
     )
   );
 

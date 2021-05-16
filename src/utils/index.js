@@ -9,5 +9,5 @@ export {
   getCollection,
   esGetCollection,
   searchFilter,
-  getBrainMetadata,
+  getBrainMetadata
 };

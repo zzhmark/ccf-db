@@ -33,7 +33,7 @@ const signupPageStyle = {
       display: "block",
       left: "0",
       top: "0",
-      content: '""'
+      content: "\"\""
     },
     "& footer li a,& footer li a:hover,& footer li a:active": {
       color: "#FFFFFF"

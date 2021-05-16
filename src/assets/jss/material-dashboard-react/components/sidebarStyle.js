@@ -1,18 +1,18 @@
 import {
-  drawerWidth,
-  transition,
-  boxShadow,
-  defaultFont,
-  primaryColor,
-  primaryBoxShadow,
-  infoColor,
-  successColor,
-  warningColor,
-  dangerColor,
-  whiteColor,
-  grayColor,
   blackColor,
-  hexToRgb
+  boxShadow,
+  dangerColor,
+  defaultFont,
+  drawerWidth,
+  grayColor,
+  hexToRgb,
+  infoColor,
+  primaryBoxShadow,
+  primaryColor,
+  successColor,
+  transition,
+  warningColor,
+  whiteColor
 } from "assets/jss/material-dashboard-react.js";
 
 const sidebarStyle = theme => ({
@@ -65,7 +65,7 @@ const sidebarStyle = theme => ({
     padding: "15px 15px",
     zIndex: "4",
     "&:after": {
-      content: '""',
+      content: "\"\"",
       position: "absolute",
       bottom: "0",
 
@@ -122,7 +122,7 @@ const sidebarStyle = theme => ({
       zIndex: "3",
       width: "100%",
       height: "100%",
-      content: '""',
+      content: "\"\"",
       display: "block",
       background: blackColor,
       opacity: ".8"

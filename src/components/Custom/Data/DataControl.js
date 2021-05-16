@@ -1,74 +1,51 @@
 import React from "react";
-import { ToggleButtonGroup, ToggleButton } from "@material-ui/lab";
 // import Paper from "@material-ui/core/Paper";
-import CardBody from "components/Card/CardBody";
 // import Divider from "@material-ui/core/Divider/Divider";
+import { Chart, Interaction, LineChart, Polygon, Tooltip } from "bizcharts";
 
-import {
-  Chart,
-  Area,
-  Line,
-  Point,
-  Tooltip,
-  Axis,
-  View,
-  Label,
-  Interaction,
-  Polygon,
-} from "bizcharts";
-
-import { LineChart } from "bizcharts";
-import { Typography } from "_@material-ui_core@4.10.0@@material-ui/core";
-
-// 数据源
-const data = [
-  { year: "1991", value: 3 },
-  { year: "1992", value: 4 },
-  { year: "1993", value: 3.5 },
-  { year: "1994", value: 5 },
-  { year: "1995", value: 4.9 },
-  { year: "1996", value: 6 },
-  { year: "1997", value: 7 },
-  { year: "1998", value: 9 },
-  { year: "1999", value: 13 },
-];
-
-function Demo() {
+function SubLineChart({ title, items }) {
   return (
     <LineChart
-      data={data}
-      title={{
-        visible: true,
-        text: "折线图",
-      }}
-      description={{
-        visible: true,
-        text: "用平滑的曲线代替折线。",
-      }}
-      xField="year"
-      yField="value"
-      interactions={[
-        {
-          type: "slider",
-          cfg: {
-            start: 0,
-            end: 1,
-          },
-        },
-      ]}
+      data={items[0].data["PSTH"]}
+      // title={{
+      //   visible: true,
+      //   text: "折线图",
+      // }}
+      // description={{
+      //   visible: true,
+      //   text: "用平滑的曲线代替折线。",
+      // }}
+      xField="timestamp"
+      yField="strength"
+      // interactions={[
+      //   {
+      //     type: "slider",
+      //     cfg: {
+      //       start: 0,
+      //       end: 1,
+      //     },
+      //   },
+      // ]}
     />
   );
 }
 
-export default function DataControl({ id, chart, type, viewer, update }) {
+export default function DataControl({
+                                      id,
+                                      chart,
+                                      type,
+                                      color,
+                                      data,
+                                      viewer,
+                                      update,
+                                      subChart
+                                    }) {
   switch (type) {
     case "relation matrix":
       return (
         <div
           style={{ width: "100%", display: "flex", flexDirection: "column" }}
         >
-          
-          {/* 基础显示控制 */}
           {/* <CardBody>
             <ToggleButtonGroup
               value={mode}
@@ -81,54 +58,20 @@ export default function DataControl({ id, chart, type, viewer, update }) {
               <ToggleButton value="brain">brain</ToggleButton>
             </ToggleButtonGroup>
           </CardBody> */}
-          <Chart
-            scale={chart.scale}
-            height={500}
-            data={chart.data}
-            filter={chart.filter}
-            autoFit
-          >
-            <Axis
-              name={"x"}
-              title={null}
-              grid={{
-                alignTick: false,
-                line: {
-                  style: {
-                    lineWidth: 1,
-                    lineDash: null,
-                    stroke: "#f0f0f0",
-                  },
-                },
-              }}
-            />
-            <Axis
-              name={"y"}
-              title={null}
-              grid={{
-                alignTick: false,
-                line: {
-                  style: {
-                    lineWidth: 1,
-                    lineDash: null,
-                    stroke: "#f0f0f0",
-                  },
-                },
-              }}
-            />
+          <Chart {...chart} data={data} height={500} autoFit>
             <Tooltip>
               {(title, items) => {
-                return <Demo />;
+                return <SubLineChart title={title} items={items} />;
               }}
             </Tooltip>
             <Polygon
-              position={"x*y"}
+              position={chart.mapping["x"] + "*" + chart.mapping["y"]}
               color={chart.color}
               style={{
                 lineWidth: 1,
-                stroke: "#fff",
+                stroke: "#fff"
               }}
-            ></Polygon>
+            />
             <Interaction
               type={"element-selected"}
               config={{
@@ -141,22 +84,22 @@ export default function DataControl({ id, chart, type, viewer, update }) {
                       update(
                         id,
                         [
-                          ["viewer", "color", data.data["i"]],
-                          ["viewer", "load", data.data["i"]],
-                          ["viewer", "visible", data.data["i"]],
+                          ["viewer", "color", data.data["row"]],
+                          ["viewer", "load", data.data["row"]],
+                          ["viewer", "visible", data.data["row"]]
                         ],
                         [
                           data.color,
                           true,
                           context.event.gEvent.target.cfg.element.hasState(
                             "selected"
-                          ),
+                          )
                         ]
                       );
                     },
-                    immediate: true,
-                  },
-                ],
+                    immediate: true
+                  }
+                ]
               }}
             />
           </Chart>

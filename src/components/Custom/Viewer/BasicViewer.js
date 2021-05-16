@@ -12,7 +12,7 @@ import BasicScene from "./BasicScene";
 const BasicViewer = ({ canvasStyle, cameraStyle, children }) => {
   return (
     <>
-      <Canvas style={canvasStyle} camera={cameraStyle} >
+      <Canvas style={canvasStyle} camera={cameraStyle}>
         <BasicScene>{children}</BasicScene>
       </Canvas>
       <Loader />

@@ -7,7 +7,6 @@ import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 // core components
-
 import styles from "assets/jss/material-dashboard-react/components/cardAvatarStyle.js";
 
 const useStyles = makeStyles(styles);

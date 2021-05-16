@@ -6,12 +6,7 @@
 import React from "react";
 
 // @material-ui/icons
-import {
-  DataUsage,
-  AccessTime,
-  LocalOffer,
-  Games,
-} from "@material-ui/icons";
+import { AccessTime, DataUsage, Games, LocalOffer } from "@material-ui/icons";
 
 // core components
 import GridItem from "components/Grid/GridItem";
@@ -37,11 +32,11 @@ export default function Workbench() {
           <BasicViewer
             canvasStyle={{
               height: "calc(min(80vw, 80vh))",
-              backgroundColor: "#e6e6e3",
+              backgroundColor: "#e6e6e3"
             }}
             cameraStyle={{
               far: 10000,
-              position: [300, 300, 300],
+              position: [300, 300, 300]
             }}
           >
             <BrainStacks />
@@ -59,10 +54,10 @@ export default function Workbench() {
               tabContent: (
                 <BrainTreeView
                   treeviewStyle={{
-                    height: "calc(min(80vw, 80vh) - 10rem)",
+                    height: "calc(min(80vw, 80vh) - 10rem)"
                   }}
                 />
-              ),
+              )
             },
             {
               thinPadding: true,
@@ -72,24 +67,24 @@ export default function Workbench() {
                 <div
                   style={{
                     height: "calc(min(80vw, 80vh) - 9.1rem)",
-                    padding: "0.5rem",
+                    padding: "0.5rem"
                   }}
                 >
                   <DataList />
                 </div>
-              ),
+              )
             },
             {
               tabButton: "History",
               thinPadding: true,
               tabIcon: AccessTime,
-              tabContent: <BrainList />,
+              tabContent: <BrainList />
             },
             {
               tabButton: "Control",
               tabIcon: Games,
-              tabContent: <Panel />,
-            },
+              tabContent: <Panel />
+            }
           ]}
         />
       </GridItem>

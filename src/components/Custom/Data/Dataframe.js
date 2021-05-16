@@ -15,7 +15,7 @@ export default function Dataframe({ dataframe, orient }) {
       break;
     default:
       rows = dataframe;
-      colnames = Object.keys(Object.values(dataframe)[0])
+      colnames = Object.keys(Object.values(dataframe)[0]);
   }
   return (
     <Paper style={{ height: "30rem", marginTop: "2rem", marginBottom: "2rem" }}>
@@ -25,7 +25,7 @@ export default function Dataframe({ dataframe, orient }) {
         columns={colnames.map((v) => ({
           width: 1000,
           label: v,
-          dataKey: v,
+          dataKey: v
         }))}
       />
     </Paper>

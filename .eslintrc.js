@@ -1,13 +1,13 @@
 module.exports = {
   parser: "babel-eslint",
-  rules: {
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto"
-      }
-    ]
-  },
+  // rules: {
+  //   "prettier/prettier": [
+  //     "error",
+  //     {
+  //       "endOfLine": "auto"
+  //     }
+  //   ]
+  // },
   env: {
     es6: true,
     node: true,
@@ -24,6 +24,6 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:prettier/recommended"
+    // "plugin:prettier/recommended"
   ]
 };

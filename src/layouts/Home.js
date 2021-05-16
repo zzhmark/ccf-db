@@ -9,18 +9,11 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
-import { Switch, Route, Redirect } from "react-router-dom";
-import {
-  Paper,
-  Typography,
-  Card,
-  CardContent,
-  CardHeader,
-} from "@material-ui/core";
+import { NavLink, Redirect, Route, Switch } from "react-router-dom";
+import { Card, CardContent, CardHeader, Paper, Typography } from "@material-ui/core";
 import Viewer from "components/Viewer/BasicViewer";
 import routes from "routes.js";
 import bgimage from "assets/img/seu_big.jpg";
-import { NavLink } from "react-router-dom";
 
 const switchRoutes = (
   <Switch>
@@ -46,7 +39,7 @@ export default function Home() {
       state.content,
       state.placeholder,
       state.setContent,
-      state.setPlaceholder,
+      state.setPlaceholder
     ],
     shallow
   );
@@ -136,7 +129,7 @@ export default function Home() {
                 </Grid>
                 <Grid item xs={6}>
                   <NavLink
-                    to={'/admin/search'}
+                    to={"/admin/search"}
                     activeClassName="active"
                   >
                     <Button
@@ -190,7 +183,7 @@ export default function Home() {
           style={{
             backgroundImage: "url(" + bgimage + ")",
             backgroundPositionY: "45%",
-            backgroundSize: "cover",
+            backgroundSize: "cover"
           }}
           direction="column"
           // spacing={3}
@@ -205,7 +198,7 @@ export default function Home() {
               <Grid item md={8}>
                 <Card
                   style={{
-                    backgroundColor: "#dddddddd",
+                    backgroundColor: "#dddddddd"
                   }}
                 >
                   <CardHeader
@@ -267,5 +260,5 @@ export default function Home() {
 }
 
 Home.defaultProps = {
-  placeholder: "Search",
+  placeholder: "Search"
 };

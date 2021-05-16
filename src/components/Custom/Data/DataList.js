@@ -13,12 +13,7 @@ import shallow from "zustand/shallow";
 import DataControl from "./DataControl";
 import axios from "axios";
 import { useData, useStore } from "hooks";
-import {
-  Button,
-  ExpansionPanelActions,
-  Typography,
-  Container,
-} from "@material-ui/core";
+import { Button, Container, ExpansionPanelActions, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 

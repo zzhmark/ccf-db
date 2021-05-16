@@ -6,25 +6,13 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
 import GridContainer from "components/Grid/GridContainer.js";
-import {
-  Typography,
-  Box,
-  Divider,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Grid,
-} from "@material-ui/core";
+import { Box, Divider, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@material-ui/core";
 import { useQuery } from "react-query";
 import Dataframe from "components/Custom/Data/Dataframe";
 import Button from "components/CustomButtons/Button";
 import { useData, useSearch, useStore } from "hooks";
-import { pushIngredient, getCollection } from "utils";
-import {
-  ContactSupportOutlined,
-  Title,
-} from "_@material-ui_icons@4.9.1@@material-ui/icons";
+import { getCollection, pushIngredient } from "utils";
+import { Title } from "_@material-ui_icons@4.9.1@@material-ui/icons";
 import ReactLoading from "react-loading";
 
 export default function ReportPage() {
@@ -108,7 +96,7 @@ function ReportPageContent(id) {
                   publish_date,
                   authors,
                   PMID,
-                  DOI,
+                  DOI
                 } = v.data;
                 const date_parse = new Date(publish_date["$date"]);
                 return (

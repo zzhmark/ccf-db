@@ -1,8 +1,8 @@
-import { Scene, Matrix4 } from "three";
-import React, { useRef, useMemo, useState } from "react";
-import { useFrame, useThree, createPortal } from "react-three-fiber";
-import { useCamera, OrthographicCamera } from "@react-three/drei";
 import * as THREE from "three";
+import { Matrix4, Scene } from "three";
+import React, { useMemo, useRef, useState } from "react";
+import { createPortal, useFrame, useThree } from "react-three-fiber";
+import { OrthographicCamera, useCamera } from "@react-three/drei";
 
 export default function Viewcube() {
   const { gl, scene, camera, size } = useThree();

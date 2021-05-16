@@ -5,7 +5,7 @@ import shallow from "zustand/shallow";
 // 苹果按钮样式
 import Switch from "../IOSSwitch";
 import { fade, withStyles } from "@material-ui/core/styles";
-import { IconButton, Grid } from "@material-ui/core";
+import { Grid, IconButton } from "@material-ui/core";
 
 import GetAppIcon from "@material-ui/icons/GetApp";
 import BrainTag from "./BrainTag";
@@ -27,22 +27,22 @@ const setTreeItemOpenAtom = atom(null, (get, set, id) => {
   const flag = temp[id] === undefined ? true : !temp[id];
   set(treeItemOpenAtom, {
     ...temp,
-    [id]: flag,
+    [id]: flag
   });
 });
 
 const StyledTreeItem = withStyles((theme) => ({
   iconContainer: {
     "& .close": {
-      opacity: 0.3,
+      opacity: 0.3
     },
-    marginRight: "1%",
+    marginRight: "1%"
   },
   group: {
     marginLeft: 7,
     paddingLeft: 9,
-    borderLeft: `1px dashed ${fade(theme.palette.text.primary, 0.4)}`,
-  },
+    borderLeft: `1px dashed ${fade(theme.palette.text.primary, 0.4)}`
+  }
 }))((props) => <TreeItem {...props} />);
 
 export default function BrainTreeStack({ children }) {
@@ -87,7 +87,7 @@ function BrainTreeItem({ node, children }) {
             style={{
               marginTop: "auto",
               marginRight: "1rem",
-              marginBottom: "auto",
+              marginBottom: "auto"
             }}
           >
             <BrainTag color={node.color}>{node.name}</BrainTag>
@@ -96,7 +96,7 @@ function BrainTreeItem({ node, children }) {
             style={{
               marginTop: "auto",
               marginRight: "auto",
-              marginBottom: "auto",
+              marginBottom: "auto"
             }}
           >
             <Muted>{node.description}</Muted>
@@ -104,7 +104,7 @@ function BrainTreeItem({ node, children }) {
           <span
             style={{
               marginTop: "auto",
-              marginBottom: "auto",
+              marginBottom: "auto"
             }}
           >
             {!brains.has(node.id) ? (

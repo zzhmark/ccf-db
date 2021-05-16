@@ -12,7 +12,7 @@ const useSearch = create((set) => ({
     set(
       produce((state) => {
         state.advancedContent = [["", ""]];
-        return state
+        return state;
       })
     ),
   addAdvancedContent: (field, content) =>
@@ -50,7 +50,7 @@ const useSearch = create((set) => ({
               label: title + ": from " + value.gte + " to " + value.lse,
               func: (e) =>
                 e["_source"][field] >= value.gte &&
-                e["_source"][field] <= value.lse,
+                e["_source"][field] <= value.lse
             });
             return state;
           })
@@ -63,7 +63,7 @@ const useSearch = create((set) => ({
             state.chips.push({
               color: "secondary",
               label: title + ": " + valueList,
-              func: (e) => valueList.includes(e["_source"][field]),
+              func: (e) => valueList.includes(e["_source"][field])
             });
             return state;
           })
@@ -95,7 +95,7 @@ const useSearch = create((set) => ({
       produce((state) => {
         state.placeholder = str;
       })
-    ),
+    )
 }));
 
 export default useSearch;

@@ -5,22 +5,21 @@ import GridItem from "components/Grid/GridItem";
 import GridContainer from "components/Grid/GridContainer";
 import SearchBar from "material-ui-search-bar";
 import {
-  Grid,
-  Typography,
-  Paper,
   Box,
   Fab,
-  Zoom,
-  ListItem,
-  List,
-  ListItemIcon,
-  IconButton,
   FormControl,
+  Grid,
+  IconButton,
   InputLabel,
+  List,
+  ListItem,
+  ListItemSecondaryAction,
   MenuItem,
+  Paper,
   Select,
   TextField,
-  ListItemSecondaryAction,
+  Typography,
+  Zoom
 } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -40,8 +39,8 @@ const useStyles = makeStyles((theme) => ({
   fab: {
     position: "absolute",
     bottom: theme.spacing(3),
-    right: theme.spacing(4),
-  },
+    right: theme.spacing(4)
+  }
 }));
 
 export default function Home(props) {
@@ -50,7 +49,7 @@ export default function Home(props) {
   const [tog, setTog] = React.useState(0);
   const transitionDuration = {
     enter: theme.transitions.duration.enteringScreen,
-    exit: theme.transitions.duration.leavingScreen,
+    exit: theme.transitions.duration.leavingScreen
   };
   const useViewport = () => {
     const [width, setWidth] = React.useState(window.innerWidth);
@@ -71,7 +70,7 @@ export default function Home(props) {
     addAdvancedContent,
     delAdvancedContent,
     setAdvancedContent,
-    clearAdvancedContent,
+    clearAdvancedContent
   ] = useSearch(
     (state) => [
       state.content,
@@ -82,7 +81,7 @@ export default function Home(props) {
       state.addAdvancedContent,
       state.delAdvancedContent,
       state.setAdvancedContent,
-      state.clearAdvancedContent,
+      state.clearAdvancedContent
     ],
     shallow
   );
@@ -92,14 +91,14 @@ export default function Home(props) {
       color: "primary",
       className: classes.fab,
       icon: <PaletteIcon style={{ marginRight: theme.spacing(1) }} />,
-      label: "Advanced",
+      label: "Advanced"
     },
     {
       color: "secondary",
       className: classes.fab,
       icon: <ReplayIcon style={{ marginRight: theme.spacing(3) }} />,
-      label: <span style={{ marginRight: theme.spacing(2) }}>Basic</span>,
-    },
+      label: <span style={{ marginRight: theme.spacing(2) }}>Basic</span>
+    }
   ];
 
   const Title = () => (
@@ -253,7 +252,7 @@ export default function Home(props) {
                 esGetCollection({
                   setResults,
                   target: advancedContent,
-                  mode: "advanced",
+                  mode: "advanced"
                 });
                 props.history.push("/admin/search");
               }}
@@ -291,7 +290,7 @@ export default function Home(props) {
           in={tog === index}
           timeout={transitionDuration}
           style={{
-            transitionDelay: `${tog === index ? transitionDuration.exit : 0}ms`,
+            transitionDelay: `${tog === index ? transitionDuration.exit : 0}ms`
           }}
           unmountOnExit
         >

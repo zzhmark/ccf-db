@@ -13,5 +13,5 @@ export default function BBox(props) {
 }
 
 BBox.defaultProps = {
-  color: "cyan",
+  color: "cyan"
 };

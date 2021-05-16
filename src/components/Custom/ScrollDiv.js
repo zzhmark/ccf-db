@@ -11,7 +11,7 @@ export default function ScrollDiv(props) {
       ps = new PerfectScrollbar(cont.current, {
         suppressScrollX: true,
         suppressScrollY: false,
-        wheelPropagation: true,
+        wheelPropagation: true
       });
     }
     // Specify how to clean up after this effect:

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ffd93a9a-7e80-4a7d-8ad9-376969ffa5d5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/Mouse.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/Mouse.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/css/material-dashboard-react.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/material-dashboard-react.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/github/react.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/github/react.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/checkboxAdnRadioStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/checkboxAdnRadioStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/buttonStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/buttonStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/cardAvatarStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/cardAvatarStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/cardHeaderStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/cardHeaderStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/cardIconStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/cardIconStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/cardStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/cardStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/customInputStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/customInputStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/footerStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/footerStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/headerLinksStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/headerLinksStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/headerStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/headerStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/navPillsStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/navPillsStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/rtlHeaderLinksStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/rtlHeaderLinksStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/sidebarStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/sidebarStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/snackbarContentStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/snackbarContentStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/tableStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/tableStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/tasksStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/tasksStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/typographyStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/components/typographyStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/dropdownStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/dropdownStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/layouts/adminStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/layouts/adminStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/layouts/rtlStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/layouts/rtlStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/tooltipStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/tooltipStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/views/dashboardStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/views/dashboardStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/views/iconsStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/views/iconsStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/views/rtlStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-dashboard-react/views/rtlStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-kit-react.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-kit-react.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/badgeStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/badgeStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/buttonStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/buttonStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/cardHeaderStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/cardHeaderStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/customDropdownStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/customDropdownStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/customInputStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/customInputStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/customLinearProgressStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/customLinearProgressStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/headerLinksStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/headerLinksStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/headerStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/headerStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/infoStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/infoStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/navPillsStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/navPillsStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/paginationStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/paginationStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/snackbarContentStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/snackbarContentStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/typographyStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-kit-react/components/typographyStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-kit-react/customCheckboxRadioSwitch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-kit-react/customCheckboxRadioSwitch.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-kit-react/popoverStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-kit-react/popoverStyles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-kit-react/tooltipsStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-kit-react/tooltipsStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-kit-react/views/componentsSections/typographyStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-kit-react/views/componentsSections/typographyStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jss/material-kit-react/views/loginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/jss/material-kit-react/views/loginPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Card/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card/Card.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Card/CardAvatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card/CardAvatar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Card/CardBody.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card/CardBody.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Card/CardFooter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card/CardFooter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Card/CardHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card/CardHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Card/CardIcon.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card/CardIcon.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/Brain/BrainList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Brain/BrainList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/Brain/BrainLoader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Brain/BrainLoader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/Brain/BrainTag.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Brain/BrainTag.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/Brain/BrainTreeElement.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Brain/BrainTreeElement.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/Brain/BrainTreeView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Brain/BrainTreeView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/ChipsArray.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/ChipsArray.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/Data/DataControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Data/DataControl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/Data/DataList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Data/DataList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/Data/Dataframe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Data/Dataframe.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/Data/FrameCollect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Data/FrameCollect.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/Data/VirtualizedTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Data/VirtualizedTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/FilterCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/FilterCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/IOSSlider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/IOSSlider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/IOSSwitch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/IOSSwitch.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/ItemCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/ItemCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/NavPills.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/NavPills.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/Panel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Panel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/PrettoSlider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/PrettoSlider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/ScrollDiv.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/ScrollDiv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Sidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/Viewer/BBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Viewer/BBox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/Viewer/BasicScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Viewer/BasicScene.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/Viewer/BasicViewer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Viewer/BasicViewer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/Viewer/OitRenderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Viewer/OitRenderer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Custom/Viewer/Viewcube.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Viewer/Viewcube.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FixedPlugin/FixedPlugin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FixedPlugin/FixedPlugin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Footer/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbars/AdminNavbarLinks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbars/AdminNavbarLinks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbars/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbars/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/brains.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/brains.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/controls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/controls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/Admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/Admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/RTL.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/RTL.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/options/searchFilter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/options/searchFilter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/request/esGetCollection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/request/esGetCollection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/request/getBrainMetadata.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/request/getBrainMetadata.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/request/getCollection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/request/getCollection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/request/pushIngredient.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/request/pushIngredient.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/ReportPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/ReportPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/SearchResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/SearchResults.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Workbench.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Workbench.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/index.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsBowerSettings">
+    <node-interpreter value="project" />
+    <bower-package value="" />
+    <bower.json value="$PROJECT_DIR$/bower.json" />
+  </component>
+  <component name="ProjectId" id="1sbYhDGCFg9u2fk9b74Io2mWYJl" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="npm.run">
+    <configuration name="node" type="NodeJSConfigurationType" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="run" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="start" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Node.js.node" />
+      <item itemvalue="npm.run" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ffd93a9a-7e80-4a7d-8ad9-376969ffa5d5" name="Default Changelist" comment="" />
+      <created>1621142873676</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1621142873676</updated>
+      <workItem from="1621142876040" duration="2400000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

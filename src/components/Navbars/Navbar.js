@@ -20,6 +20,7 @@ const useStyles = makeStyles(styles);
 
 export default function Header(props) {
   const classes = useStyles();
+
   function makeBrand() {
     var name;
     props.routes.map((prop) => {
@@ -30,9 +31,10 @@ export default function Header(props) {
     });
     return name;
   }
+
   const { color } = props;
   const appBarClasses = classNames({
-    [" " + classes[color]]: color,
+    [" " + classes[color]]: color
   });
   return (
     <AppBar className={classes.appBar + appBarClasses}>
@@ -64,5 +66,5 @@ Header.propTypes = {
   color: PropTypes.oneOf(["primary", "info", "success", "warning", "danger"]),
   rtlActive: PropTypes.bool,
   handleDrawerToggle: PropTypes.func,
-  routes: PropTypes.arrayOf(PropTypes.object),
+  routes: PropTypes.arrayOf(PropTypes.object)
 };

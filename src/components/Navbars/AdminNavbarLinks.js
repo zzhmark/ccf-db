@@ -52,13 +52,13 @@ export default function AdminNavbarLinks() {
       <div className={classes.searchWrapper}>
         <CustomInput
           formControlProps={{
-            className: classes.margin + " " + classes.search,
+            className: classes.margin + " " + classes.search
           }}
           inputProps={{
             placeholder: "Database Search",
             inputProps: {
-              "aria-label": "Search",
-            },
+              "aria-label": "Search"
+            }
           }}
         />
         <Button color="white" aria-label="edit" justIcon round>
@@ -112,7 +112,7 @@ export default function AdminNavbarLinks() {
               id="notification-menu-list-grow"
               style={{
                 transformOrigin:
-                  placement === "bottom" ? "center top" : "center bottom",
+                  placement === "bottom" ? "center top" : "center bottom"
               }}
             >
               <Paper>
@@ -187,7 +187,7 @@ export default function AdminNavbarLinks() {
               id="profile-menu-list-grow"
               style={{
                 transformOrigin:
-                  placement === "bottom" ? "center top" : "center bottom",
+                  placement === "bottom" ? "center top" : "center bottom"
               }}
             >
               <Paper>

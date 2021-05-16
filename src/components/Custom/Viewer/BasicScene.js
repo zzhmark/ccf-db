@@ -13,7 +13,6 @@ import { useControls } from "hooks";
 import BrainTemplate from "../Brain/BrainTemplate";
 
 // 小配件
-import Viewcube from "./Viewcube.js";
 
 const BasicScene = ({ children }) => {
   // 以下小配件可以直接通过threejs的函数生成模型对象，然后通过加primitive的方式嵌入r3f
@@ -55,12 +54,14 @@ const BasicScene = ({ children }) => {
     if (controls.oit) {
       let opaqueObjects = [];
       let transparentObjects = [];
+
       function searchMesh(a) {
         if (a.type == "Mesh") {
           if (a.material.transparent) transparentObjects.push(a);
           else opaqueObjects.push(a);
         } else if (a.type == "Group") a.children.forEach(searchMesh);
       }
+
       scene.children.forEach((c) => searchMesh(c));
       oitPass.render(scene, camera, opaqueObjects, transparentObjects);
     } else {

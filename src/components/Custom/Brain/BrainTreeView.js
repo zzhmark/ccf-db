@@ -8,14 +8,14 @@ import KeyboardArrowRightOutlinedIcon from "@material-ui/icons/KeyboardArrowRigh
 
 // treeview
 import { TreeView } from "@material-ui/lab/";
-import BrainTreeStack from './BrainTreeElement'
+import BrainTreeStack from "./BrainTreeElement";
 
 // styles
 const OpenIcon = () => (
   <KeyboardArrowRightOutlinedIcon
     style={{
       width: "1rem",
-      height: "1rem",
+      height: "1rem"
     }}
   ></KeyboardArrowRightOutlinedIcon>
 );
@@ -24,7 +24,7 @@ const CloseIcon = () => (
   <KeyboardArrowDownOutlinedIcon
     style={{
       width: "1rem",
-      height: "1rem",
+      height: "1rem"
     }}
   ></KeyboardArrowDownOutlinedIcon>
 );
@@ -33,8 +33,8 @@ const useStyles = makeStyles({
   root: {
     height: "30vh",
     flexGrow: 1,
-    width: "100%",
-  },
+    width: "100%"
+  }
 });
 
 export default function BrainTreeView(props) {

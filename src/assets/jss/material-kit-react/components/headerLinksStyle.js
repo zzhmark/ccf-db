@@ -25,7 +25,7 @@ const headerLinksStyle = theme => ({
       width: "100%",
       "&:after": {
         width: "calc(100% - 30px)",
-        content: '""',
+        content: "\"\"",
         display: "block",
         height: "1px",
         marginLeft: "15px",
