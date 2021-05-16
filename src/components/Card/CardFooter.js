@@ -20,7 +20,7 @@ export default function CardFooter(props) {
     [classes.cardFooterProfile]: profile,
     [classes.cardFooterStats]: stats,
     [classes.cardFooterChart]: chart,
-    [className]: className !== undefined
+    [className]: className !== undefined,
   });
   return (
     <div className={cardFooterClasses} {...rest}>
@@ -35,5 +35,5 @@ CardFooter.propTypes = {
   profile: PropTypes.bool,
   stats: PropTypes.bool,
   chart: PropTypes.bool,
-  children: PropTypes.node
+  children: PropTypes.node,
 };

@@ -8,7 +8,13 @@ import React from "react";
 import GridItem from "components/Grid/GridItem";
 import GridContainer from "components/Grid/GridContainer";
 import Card from "components/Card/Card";
-import { List, ListItem, ListItemIcon, ListItemText, Typography } from "@material-ui/core";
+import {
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+} from "@material-ui/core";
 
 import CloudDownloadOutlinedIcon from "@material-ui/icons/CloudDownloadOutlined";
 
@@ -43,7 +49,7 @@ export default function Cart() {
                       rows = Object.values(dataframe)
                         .map((series, i) =>
                           Object.values(series).map((v) => ({
-                            [colnames[i]]: v
+                            [colnames[i]]: v,
                           }))
                         )
                         .reduce((a, b) => a.map((v, i) => ({ ...v, ...b[i] })));
@@ -56,10 +62,10 @@ export default function Cart() {
                     [
                       colnames.join("\t"),
                       "\n",
-                      rows.map((v) => Object.values(v).join("\t")).join("\n")
+                      rows.map((v) => Object.values(v).join("\t")).join("\n"),
                     ],
                     {
-                      type: "text/plain;charset=utf-8"
+                      type: "text/plain;charset=utf-8",
                     }
                   );
                   saveAs(blob, title + ".txt");

@@ -8,14 +8,14 @@ export class OitRenderer {
       minFilter: THREE.NearestFilter,
       magFilter: THREE.NearestFilter,
       format: THREE.RGBAFormat,
-      type: THREE.FloatType
+      type: THREE.FloatType,
     });
 
     this.alphaTarget = new THREE.WebGLRenderTarget(size.width, size.height, {
       minFilter: THREE.NearestFilter,
       magFilter: THREE.NearestFilter,
       format: THREE.RedFormat,
-      type: THREE.FloatType
+      type: THREE.FloatType,
     });
 
     this.opaqueTarget = new THREE.WebGLRenderTarget(size.width, size.height, {
@@ -23,16 +23,16 @@ export class OitRenderer {
       magFilter: THREE.NearestFilter,
       format: THREE.RGBAFormat,
       type: THREE.FloatType,
-      stencilBuffer: false
+      stencilBuffer: false,
     });
     this.opaqueTarget.depthTexture = new THREE.DepthTexture({
-      type: THREE.FloatType
+      type: THREE.FloatType,
     });
 
     // 全局uniforms，这里单独存储，在compile之前赋值给shader，而不作用于material
     this.globalUniforms = {
       uScreenSize: { value: new THREE.Vector2(size.width, size.height) },
-      uOpaqueDepth: { value: this.opaqueTarget.depthTexture }
+      uOpaqueDepth: { value: this.opaqueTarget.depthTexture },
     };
 
     // 输出场景的材质和着色器算法
@@ -40,7 +40,7 @@ export class OitRenderer {
       uniforms: {
         uAccumulate: { value: null },
         uAccumulateAlpha: { value: null },
-        uOpaque: { value: null }
+        uOpaque: { value: null },
       },
       vertexShader: `
       varying vec2 vUv;
@@ -75,7 +75,7 @@ export class OitRenderer {
 			}`,
       blending: THREE.CustomBlending,
       blendSrc: THREE.OneFactor,
-      blendDst: THREE.OneMinusSrcAlphaFactor
+      blendDst: THREE.OneMinusSrcAlphaFactor,
     });
 
     this.quadCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
@@ -173,7 +173,7 @@ export class OitRenderer {
     return {
       materialSrc: material,
       materialColor: materialColor,
-      materialAlpha: materialAlpha
+      materialAlpha: materialAlpha,
     };
   }
 
@@ -209,8 +209,10 @@ export class OitRenderer {
       transparentObjects[i].material.visible = true;
     }
     // 输出渲染，更新材质纹理
-    this.compositingMaterial.uniforms.uAccumulate.value = this.colorTarget.texture;
-    this.compositingMaterial.uniforms.uAccumulateAlpha.value = this.alphaTarget.texture;
+    this.compositingMaterial.uniforms.uAccumulate.value =
+      this.colorTarget.texture;
+    this.compositingMaterial.uniforms.uAccumulateAlpha.value =
+      this.alphaTarget.texture;
     this.compositingMaterial.uniforms.uOpaque.value = this.opaqueTarget.texture;
     this.renderer.setRenderTarget(null);
     this.renderer.render(this.quadScene, this.quadCamera);

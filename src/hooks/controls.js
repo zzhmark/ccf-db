@@ -18,7 +18,7 @@ const useControls = create((set) => ({
     slicing: false,
     sliceX: { visible: true, value: 66 },
     sliceY: { visible: true, value: 40 },
-    sliceZ: { visible: true, value: 57 }
+    sliceZ: { visible: true, value: 57 },
   },
   setOit: (flag) =>
     set(
@@ -70,7 +70,7 @@ const useControls = create((set) => ({
       produce((state) => {
         state.controls.slicing = flag;
       })
-    )
+    ),
 }));
 
 export default useControls;

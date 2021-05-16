@@ -30,7 +30,7 @@ export default function BrainList(props) {
   );
   const { rtlActive } = props;
   const tableCellClasses = classnames(classes.tableCell, {
-    [classes.tableCellRTL]: rtlActive
+    [classes.tableCellRTL]: rtlActive,
   });
   const toggleVisible = (id) =>
     update(id, ["visible"], !brains.get(id).visible);
@@ -50,7 +50,7 @@ export default function BrainList(props) {
               className={tableCellClasses}
               align="right"
               style={{
-                paddingRight: "1rem"
+                paddingRight: "1rem",
               }}
             >
               <Checkbox

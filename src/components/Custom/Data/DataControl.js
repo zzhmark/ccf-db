@@ -31,15 +31,15 @@ function SubLineChart({ title, items }) {
 }
 
 export default function DataControl({
-                                      id,
-                                      chart,
-                                      type,
-                                      color,
-                                      data,
-                                      viewer,
-                                      update,
-                                      subChart
-                                    }) {
+  id,
+  chart,
+  type,
+  color,
+  data,
+  viewer,
+  update,
+  subChart,
+}) {
   switch (type) {
     case "relation matrix":
       return (
@@ -69,7 +69,7 @@ export default function DataControl({
               color={chart.color}
               style={{
                 lineWidth: 1,
-                stroke: "#fff"
+                stroke: "#fff",
               }}
             />
             <Interaction
@@ -86,20 +86,20 @@ export default function DataControl({
                         [
                           ["viewer", "color", data.data["row"]],
                           ["viewer", "load", data.data["row"]],
-                          ["viewer", "visible", data.data["row"]]
+                          ["viewer", "visible", data.data["row"]],
                         ],
                         [
                           data.color,
                           true,
                           context.event.gEvent.target.cfg.element.hasState(
                             "selected"
-                          )
+                          ),
                         ]
                       );
                     },
-                    immediate: true
-                  }
-                ]
+                    immediate: true,
+                  },
+                ],
               }}
             />
           </Chart>

@@ -11,7 +11,7 @@ const useStore = create((set) => ({
             .slice(0, -1)
             .reduce((pointer, field) => pointer[field], state.data.get(id))[
             v.slice(-1)
-            ] = values[i];
+          ] = values[i];
         });
         return state;
       })
@@ -29,7 +29,7 @@ const useStore = create((set) => ({
         state.store.set(id, element);
         return state;
       })
-    )
+    ),
 }));
 
 export default useStore;

@@ -2,13 +2,12 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Switch from "@material-ui/core/Switch";
 
-
 export default withStyles((theme) => ({
   root: {
     width: 48,
     height: 26,
     padding: 0,
-    margin: theme.spacing(1)
+    margin: theme.spacing(1),
   },
   switchBase: {
     padding: 1,
@@ -18,27 +17,27 @@ export default withStyles((theme) => ({
       "& + $track": {
         backgroundColor: "#52d469",
         opacity: 1,
-        border: "none"
-      }
+        border: "none",
+      },
     },
     "&$focusVisible $thumb": {
       color: "#52d869",
-      border: "6px solid #fff"
-    }
+      border: "6px solid #fff",
+    },
   },
   thumb: {
     width: 24,
-    height: 24
+    height: 24,
   },
   track: {
     borderRadius: 26 / 2,
     border: `1px solid ${theme.palette.grey[400]}`,
     backgroundColor: theme.palette.grey[50],
     opacity: 1,
-    transition: theme.transitions.create(["background-color", "border"])
+    transition: theme.transitions.create(["background-color", "border"]),
   },
   checked: {},
-  focusVisible: {}
+  focusVisible: {},
 }))(({ classes, ...props }) => {
   return (
     <Switch
@@ -49,7 +48,7 @@ export default withStyles((theme) => ({
         switchBase: classes.switchBase,
         thumb: classes.thumb,
         track: classes.track,
-        checked: classes.checked
+        checked: classes.checked,
       }}
       {...props}
     />

@@ -10,7 +10,13 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import { NavLink, Redirect, Route, Switch } from "react-router-dom";
-import { Card, CardContent, CardHeader, Paper, Typography } from "@material-ui/core";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  Paper,
+  Typography,
+} from "@material-ui/core";
 import Viewer from "components/Viewer/BasicViewer";
 import routes from "routes.js";
 import bgimage from "assets/img/seu_big.jpg";
@@ -39,7 +45,7 @@ export default function Home() {
       state.content,
       state.placeholder,
       state.setContent,
-      state.setPlaceholder
+      state.setPlaceholder,
     ],
     shallow
   );
@@ -108,8 +114,7 @@ export default function Home() {
                 onCancelSearch={() => {
                   setContent("");
                 }}
-                onRequestSearch={() => {
-                }}
+                onRequestSearch={() => {}}
               />
             </Box>
             <Box padding>
@@ -128,10 +133,7 @@ export default function Home() {
                   </Button>
                 </Grid>
                 <Grid item xs={6}>
-                  <NavLink
-                    to={"/admin/search"}
-                    activeClassName="active"
-                  >
+                  <NavLink to={"/admin/search"} activeClassName="active">
                     <Button
                       fullWidth
                       variant="contained"
@@ -183,7 +185,7 @@ export default function Home() {
           style={{
             backgroundImage: "url(" + bgimage + ")",
             backgroundPositionY: "45%",
-            backgroundSize: "cover"
+            backgroundSize: "cover",
           }}
           direction="column"
           // spacing={3}
@@ -198,7 +200,7 @@ export default function Home() {
               <Grid item md={8}>
                 <Card
                   style={{
-                    backgroundColor: "#dddddddd"
+                    backgroundColor: "#dddddddd",
                   }}
                 >
                   <CardHeader
@@ -260,5 +262,5 @@ export default function Home() {
 }
 
 Home.defaultProps = {
-  placeholder: "Search"
+  placeholder: "Search",
 };

@@ -3,16 +3,22 @@ import Card from "components/Card/Card";
 import CardBody from "components/Card/CardBody";
 import CardHeader from "components/Card/CardHeader";
 import Muted from "components/Typography/Muted";
-import { Button, CardActionArea, CardActions, CardMedia, Typography } from "@material-ui/core";
+import {
+  Button,
+  CardActionArea,
+  CardActions,
+  CardMedia,
+  Typography,
+} from "@material-ui/core";
 
 export default function ItemCard({
-                                   title,
-                                   content,
-                                   handleEnter,
-                                   img,
-                                   handleStore,
-                                   handleVis
-                                 }) {
+  title,
+  content,
+  handleEnter,
+  img,
+  handleStore,
+  handleVis,
+}) {
   return (
     <Card>
       <CardActionArea onClick={handleEnter}>

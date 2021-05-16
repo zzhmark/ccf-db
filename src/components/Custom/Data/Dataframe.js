@@ -25,7 +25,7 @@ export default function Dataframe({ dataframe, orient }) {
         columns={colnames.map((v) => ({
           width: 1000,
           label: v,
-          dataKey: v
+          dataKey: v,
         }))}
       />
     </Paper>

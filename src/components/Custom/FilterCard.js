@@ -11,14 +11,17 @@ import {
   ListItem,
   ListItemSecondaryAction,
   ListItemText,
-  Typography
+  Typography,
 } from "@material-ui/core";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
 
 // date
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
-import { KeyboardDatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import {
+  KeyboardDatePicker,
+  MuiPickersUtilsProvider,
+} from "@material-ui/pickers";
 import AddIcon from "@material-ui/icons/Add";
 import { useSearch } from "hooks";
 
@@ -30,7 +33,7 @@ export default function FilterCard({ filter }) {
       if (filter.field === "date") {
         initValue = {
           gte: new Date().toJSON().split("T")[0],
-          lse: new Date().toJSON().split("T")[0]
+          lse: new Date().toJSON().split("T")[0],
         };
         break;
       }
@@ -73,11 +76,11 @@ export default function FilterCard({ filter }) {
                       onChange={(date) => {
                         setValue({
                           ...value,
-                          gte: date.toJSON().split("T")[0]
+                          gte: date.toJSON().split("T")[0],
                         });
                       }}
                       KeyboardButtonProps={{
-                        "aria-label": "change date"
+                        "aria-label": "change date",
                       }}
                     />
                   </Grid>
@@ -94,11 +97,11 @@ export default function FilterCard({ filter }) {
                       onChange={(date) => {
                         setValue({
                           ...value,
-                          lse: date.toJSON().split("T")[0]
+                          lse: date.toJSON().split("T")[0],
                         });
                       }}
                       KeyboardButtonProps={{
-                        "aria-label": "change date"
+                        "aria-label": "change date",
                       }}
                     />
                   </Grid>
@@ -106,23 +109,23 @@ export default function FilterCard({ filter }) {
               </MuiPickersUtilsProvider>
             )}
             {filter.type === "cat" &&
-            filter.values.map((v) => (
-              <ListItem>
-                <ListItemText>{v}</ListItemText>
-                <ListItemSecondaryAction>
-                  <Checkbox
-                    checked={value[v]}
-                    name={v}
-                    onChange={(e) => {
-                      setValue({
-                        ...value,
-                        [e.target.name]: e.target.checked
-                      });
-                    }}
-                  />
-                </ListItemSecondaryAction>
-              </ListItem>
-            ))}
+              filter.values.map((v) => (
+                <ListItem>
+                  <ListItemText>{v}</ListItemText>
+                  <ListItemSecondaryAction>
+                    <Checkbox
+                      checked={value[v]}
+                      name={v}
+                      onChange={(e) => {
+                        setValue({
+                          ...value,
+                          [e.target.name]: e.target.checked,
+                        });
+                      }}
+                    />
+                  </ListItemSecondaryAction>
+                </ListItem>
+              ))}
           </List>
         </CardBody>
         <CardActions>

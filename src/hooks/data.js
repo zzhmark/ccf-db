@@ -11,7 +11,7 @@ const useData = create((set) => ({
             .slice(0, -1)
             .reduce((pointer, field) => pointer[field], state.data.get(id))[
             v.slice(-1)
-            ] = values[i];
+          ] = values[i];
         });
         return state;
       })
@@ -34,12 +34,11 @@ const useData = create((set) => ({
     set(
       produce((state) => {
         state.data.set(id, {
-          id: id
-
+          id: id,
         });
         return state;
       })
-    )
+    ),
 }));
 
 export default useData;

@@ -17,7 +17,7 @@ const tooltipStyle = {
       ", 0.2)",
     maxWidth: "200px",
     textAlign: "center",
-    fontFamily: "\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+    fontFamily: '"Helvetica Neue",Helvetica,Arial,sans-serif',
     fontSize: "12px",
     fontStyle: "normal",
     fontWeight: "400",
@@ -28,7 +28,7 @@ const tooltipStyle = {
     wordSpacing: "normal",
     wordWrap: "normal",
     whiteSpace: "normal",
-    lineBreak: "auto"
-  }
+    lineBreak: "auto",
+  },
 };
 export default tooltipStyle;

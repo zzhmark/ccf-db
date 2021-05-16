@@ -4,8 +4,7 @@ export default async function pushIngredient(ingredient_id, setData) {
   const ing_res = await axios.get(
     process.env.REACT_APP_API_URL + "/get_ingredient?oid=" + ingredient_id
   );
-  const { dataframe_id, options, title, description } =
-    ing_res.data;
+  const { dataframe_id, options, title, description } = ing_res.data;
   const { viewer, chart } = options;
   // get frame
   const df_res = await axios.get(
@@ -31,16 +30,16 @@ export default async function pushIngredient(ingredient_id, setData) {
         }
         return [
           f.column,
-          (x) => f.filter.reduce((a, b) => a || func(b, x), true)
+          (x) => f.filter.reduce((a, b) => a || func(b, x), true),
         ];
-      })
+      }),
     },
     viewer: {
       visible: dataframe.map(() => false),
       load: dataframe.map(() => false),
       color: dataframe.map(() => null),
       table: dataframe,
-      ...viewer
-    }
+      ...viewer,
+    },
   });
 }

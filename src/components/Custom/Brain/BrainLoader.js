@@ -3,14 +3,14 @@ import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
 export default function BrainLoader({
-                                      id,
-                                      visible,
-                                      opacity,
-                                      transparent,
-                                      metalness,
-                                      roughness,
-                                      color
-                                    }) {
+  id,
+  visible,
+  opacity,
+  transparent,
+  metalness,
+  roughness,
+  color,
+}) {
   const { nodes } = useGLTF("http://192.168.3.148:5000/get_draco?id=" + id);
   const u = Object.values(nodes)[0]
     ["geometry"].clone(true)
@@ -40,5 +40,5 @@ BrainLoader.defaultProps = {
   roughness: 0.9,
   side: THREE.DoubleSide,
   depthWrite: false,
-  color: "#f0f0f0"
+  color: "#f0f0f0",
 };

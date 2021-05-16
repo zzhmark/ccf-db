@@ -29,36 +29,36 @@ const dashboardRoutes = [
     name: "Home",
     icon: HomeIcon,
     component: Home,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     path: "/search",
     name: "Search Results",
     icon: SearchIcon,
     component: SearchResults,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     path: "/report",
     name: "Data Report",
     icon: AssignmentRoundedIcon,
     component: ReportPage,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     path: "/storage",
     name: "My Storage",
     icon: ShoppingCartIcon,
     component: Cart,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     path: "/workbench",
     name: "3D Workbench",
     icon: LocationSearchingIcon,
     component: Workbench,
-    layout: "/admin"
-  }
+    layout: "/admin",
+  },
 ];
 
 export default dashboardRoutes;

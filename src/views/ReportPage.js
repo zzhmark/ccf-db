@@ -6,7 +6,16 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
 import GridContainer from "components/Grid/GridContainer.js";
-import { Box, Divider, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@material-ui/core";
+import {
+  Box,
+  Divider,
+  Grid,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+} from "@material-ui/core";
 import { useQuery } from "react-query";
 import Dataframe from "components/Custom/Data/Dataframe";
 import Button from "components/CustomButtons/Button";
@@ -90,14 +99,8 @@ function ReportPageContent(id) {
             </CardHeader>
             <CardBody>
               {ref_res.map((v, i) => {
-                const {
-                  title,
-                  abstract,
-                  publish_date,
-                  authors,
-                  PMID,
-                  DOI
-                } = v.data;
+                const { title, abstract, publish_date, authors, PMID, DOI } =
+                  v.data;
                 const date_parse = new Date(publish_date["$date"]);
                 return (
                   <div key={i}>

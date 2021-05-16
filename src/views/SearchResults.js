@@ -20,7 +20,12 @@ import { useData, useSearch, useStore } from "hooks";
 import shallow from "zustand/shallow";
 
 import img from "assets/img/example1.jpg";
-import { esGetCollection, getCollection, pushIngredient, searchFilter } from "utils";
+import {
+  esGetCollection,
+  getCollection,
+  pushIngredient,
+  searchFilter,
+} from "utils";
 
 export default function SearchResults(props) {
   const setData = useData((state) => state.set);
@@ -32,7 +37,7 @@ export default function SearchResults(props) {
     setReportId,
     results,
     setResults,
-    chips
+    chips,
   ] = useSearch(
     (state) => [
       state.content,
@@ -41,7 +46,7 @@ export default function SearchResults(props) {
       state.setReportId,
       state.results,
       state.setResults,
-      state.chips
+      state.chips,
     ],
     shallow
   );
@@ -112,7 +117,7 @@ export default function SearchResults(props) {
                       v["_source"]["collection_id"]
                     );
                     df_res.forEach((v) => {
-                      setStore(v.data.["_id"]["$oid"], v.data);
+                      setStore(v.data["_id"]["$oid"], v.data);
                     });
                   }}
                 />

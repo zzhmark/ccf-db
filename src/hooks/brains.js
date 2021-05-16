@@ -18,7 +18,7 @@ const useBrains = create((set) => ({
           .slice(0, -1)
           .reduce((pointer, field) => pointer[field], state.brains.get(id))[
           fields.slice(-1)
-          ] = value;
+        ] = value;
         return state;
       })
     ),
@@ -35,7 +35,7 @@ const useBrains = create((set) => ({
         state.brains.set(id, element);
         return state;
       })
-    )
+    ),
 }));
 
 export default useBrains;

@@ -28,20 +28,20 @@ const useDrawerStyles = makeStyles((theme) => ({
     overflowX: "hidden",
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    })
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
   drawerClose: {
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
+      duration: theme.transitions.duration.leavingScreen,
     }),
     overflowX: "hidden",
     width: theme.spacing(7) + 1,
     [theme.breakpoints.up("sm")]: {
-      width: theme.spacing(8) + 1
-    }
-  }
+      width: theme.spacing(8) + 1,
+    },
+  },
 }));
 
 const useHover = () => {
@@ -54,7 +54,7 @@ const useHover = () => {
       },
       onMouseOut() {
         setHovered(false);
-      }
+      },
     }),
     []
   );
@@ -80,15 +80,15 @@ export default function Sidebar(props) {
         if (prop.path === "/upgrade-to-pro") {
           activePro = classes.activePro + " ";
           listItemClasses = classNames({
-            [" " + classes[color]]: true
+            [" " + classes[color]]: true,
           });
         } else {
           listItemClasses = classNames({
-            [" " + classes[color]]: activeRoute(prop.layout + prop.path)
+            [" " + classes[color]]: activeRoute(prop.layout + prop.path),
           });
         }
         const whiteFontClasses = classNames({
-          [" " + classes.whiteFont]: activeRoute(prop.layout + prop.path)
+          [" " + classes.whiteFont]: activeRoute(prop.layout + prop.path),
         });
         return (
           <NavLink
@@ -101,7 +101,7 @@ export default function Sidebar(props) {
               {typeof prop.icon === "string" ? (
                 <Icon
                   className={classNames(classes.itemIcon, whiteFontClasses, {
-                    [classes.itemIconRTL]: props.rtlActive
+                    [classes.itemIconRTL]: props.rtlActive,
                   })}
                 >
                   {prop.icon}
@@ -109,14 +109,14 @@ export default function Sidebar(props) {
               ) : (
                 <prop.icon
                   className={classNames(classes.itemIcon, whiteFontClasses, {
-                    [classes.itemIconRTL]: props.rtlActive
+                    [classes.itemIconRTL]: props.rtlActive,
                   })}
                 />
               )}
               <ListItemText
                 primary={props.rtlActive ? prop.rtlName : prop.name}
                 className={classNames(classes.itemText, whiteFontClasses, {
-                  [classes.itemTextRTL]: props.rtlActive
+                  [classes.itemTextRTL]: props.rtlActive,
                 })}
                 disableTypography={true}
               />
@@ -131,7 +131,7 @@ export default function Sidebar(props) {
       <a
         href="https://braintell.org/seu-allen/"
         className={classNames(classes.logoLink, {
-          [classes.logoLinkRTL]: props.rtlActive
+          [classes.logoLinkRTL]: props.rtlActive,
         })}
         target="_blank"
       >
@@ -145,17 +145,17 @@ export default function Sidebar(props) {
             fontFamily: [
               "-apple-system",
               "BlinkMacSystemFont",
-              "\"Segoe UI\"",
+              '"Segoe UI"',
               "Roboto",
-              "\"Helvetica Neue\"",
+              '"Helvetica Neue"',
               "Arial",
               "sans-serif",
-              "\"Apple Color Emoji\"",
-              "\"Segoe UI Emoji\"",
-              "\"Segoe UI Symbol\""
+              '"Apple Color Emoji"',
+              '"Segoe UI Emoji"',
+              '"Segoe UI Symbol"',
             ].join(","),
             display: "flex",
-            width: "100%"
+            width: "100%",
           }}
         >
           <Fade in={open}>
@@ -174,12 +174,12 @@ export default function Sidebar(props) {
           open={props.open}
           classes={{
             paper: classNames(classes.drawerPaper, {
-              [classes.drawerPaperRTL]: props.rtlActive
-            })
+              [classes.drawerPaperRTL]: props.rtlActive,
+            }),
           }}
           onClose={props.handleDrawerToggle}
           ModalProps={{
-            keepMounted: true // Better open performance on mobile.
+            keepMounted: true, // Better open performance on mobile.
           }}
         >
           {brand}
@@ -204,8 +204,8 @@ export default function Sidebar(props) {
             paper: classNames(classes.drawerPaper, {
               [classes.drawerPaperRTL]: props.rtlActive,
               [drawerClasses.drawerOpen]: open,
-              [drawerClasses.drawerClose]: !open
-            })
+              [drawerClasses.drawerClose]: !open,
+            }),
           }}
         >
           {brand}
@@ -230,5 +230,5 @@ Sidebar.propTypes = {
   image: PropTypes.string,
   logoText: PropTypes.string,
   routes: PropTypes.arrayOf(PropTypes.object),
-  open: PropTypes.bool
+  open: PropTypes.bool,
 };

@@ -11,7 +11,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography
+  Typography,
 } from "@material-ui/core";
 import { Close, KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
 import DataFrame from "./Dataframe";
@@ -20,9 +20,9 @@ import { useStore } from "hooks";
 const useRowStyles = makeStyles({
   root: {
     "& > *": {
-      borderBottom: "unset"
-    }
-  }
+      borderBottom: "unset",
+    },
+  },
 });
 
 function Row({ row, children, id }) {

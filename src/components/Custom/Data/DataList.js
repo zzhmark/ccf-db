@@ -13,7 +13,12 @@ import shallow from "zustand/shallow";
 import DataControl from "./DataControl";
 import axios from "axios";
 import { useData, useStore } from "hooks";
-import { Button, Container, ExpansionPanelActions, Typography } from "@material-ui/core";
+import {
+  Button,
+  Container,
+  ExpansionPanelActions,
+  Typography,
+} from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
@@ -51,7 +56,8 @@ export default function DataList(props) {
           color="primary"
           onClick={async () => {
             const df_res = await axios.get(
-              "http://192.168.3.148:5000/get_dataframe?oid=" + data["dataframe_id"]
+              "http://192.168.3.148:5000/get_dataframe?oid=" +
+                data["dataframe_id"]
             );
             setStore(df_res.data._id["$oid"], df_res.data);
           }}
