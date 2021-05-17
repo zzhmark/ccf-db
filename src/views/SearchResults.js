@@ -21,14 +21,14 @@ import shallow from "zustand/shallow";
 
 import img from "assets/img/example1.jpg";
 import {
-  esGetCollection,
-  getCollection,
-  pushIngredient,
+  get_collection_es,
+  get_collection,
+  get_ingredient,
   searchFilter,
 } from "utils";
 
 export default function SearchResults(props) {
-  const setData = useData((state) => state.set);
+  const addData = useData((state) => state.addData);
   const setStore = useStore((state) => state.set);
   const [
     content,
@@ -76,10 +76,17 @@ export default function SearchResults(props) {
                   onCancelSearch={() => {
                     setContent("");
                   }}
-                  onRequestSearch={() => {
+                  onRequestSearch={async () => {
+                    let result;
                     if (content === "")
-                      esGetCollection({ setResults, target: placeholder });
-                    else esGetCollection({ setResults, target: content });
+                      result = await get_collection_es({
+                        target: placeholder,
+                      });
+                    else
+                      result = await get_collection_es({
+                        target: content,
+                      });
+                    setResults(result);
                   }}
                 />
               </ListItem>
@@ -103,17 +110,21 @@ export default function SearchResults(props) {
                     props.history.push("/admin/report");
                   }}
                   handleVis={async () => {
-                    const { recipe_res } = await getCollection(
+                    const { recipe_res } = await get_collection(
                       v["_source"]["collection_id"]
                     );
                     recipe_res.forEach((v) => {
-                      v.data["ingredient_id"].forEach((v) =>
-                        pushIngredient(v["$oid"], setData)
-                      );
+                      v.data["ingredient_id"].forEach(async (v) => {
+                        const id = v["$oid"];
+                        const { ingredient, dataframe } = await get_ingredient(
+                          id
+                        );
+                        addData(id, ingredient, dataframe);
+                      });
                     });
                   }}
                   handleStore={async () => {
-                    const { df_res } = await getCollection(
+                    const { df_res } = await get_collection(
                       v["_source"]["collection_id"]
                     );
                     df_res.forEach((v) => {

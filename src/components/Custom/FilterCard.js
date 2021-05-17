@@ -26,7 +26,7 @@ import AddIcon from "@material-ui/icons/Add";
 import { useSearch } from "hooks";
 
 export default function FilterCard({ filter }) {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   let initValue;
   switch (filter.type) {
     case "range[]":
@@ -109,8 +109,8 @@ export default function FilterCard({ filter }) {
               </MuiPickersUtilsProvider>
             )}
             {filter.type === "cat" &&
-              filter.values.map((v) => (
-                <ListItem>
+              filter.values.map((v, i) => (
+                <ListItem key={i}>
                   <ListItemText>{v}</ListItemText>
                   <ListItemSecondaryAction>
                     <Checkbox

@@ -8,11 +8,22 @@ import React from "react";
 import { Canvas } from "react-three-fiber";
 import { Loader } from "@react-three/drei";
 import BasicScene from "./BasicScene";
+import { useViewport } from "utils";
+import { useControls } from "hooks";
 
-const BasicViewer = ({ canvasStyle, cameraStyle, children }) => {
+const BasicViewer = ({ children }) => {
+  const { width } = useViewport();
+  const camera = useControls((state) => state.controls.camera);
+
   return (
     <>
-      <Canvas style={canvasStyle} camera={cameraStyle}>
+      <Canvas
+        style={{
+          height: width >= 960 ? "calc(min(80vw, 80vh)" : "40vh",
+          backgroundColor: "#e6e6e3",
+        }}
+        camera={camera}
+      >
         <BasicScene>{children}</BasicScene>
       </Canvas>
       <Loader />

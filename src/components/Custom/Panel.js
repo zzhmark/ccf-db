@@ -5,13 +5,13 @@ import { useControls } from "hooks";
 import shallow from "zustand/shallow";
 
 // material ui components
-import { ToggleButton, ToggleButtonGroup } from "@material-ui/lab";
+import { ToggleButtonGroup, ToggleButton } from "@material-ui/lab";
 import {
+  ListItemText,
   Collapse,
   List,
-  ListItem,
   ListItemIcon,
-  ListItemText,
+  ListItem,
 } from "@material-ui/core";
 
 // custom components
@@ -43,13 +43,6 @@ export default function Panel() {
     ],
     shallow
   );
-  const [ax, setAx] = React.useState(() => {
-    let t = [];
-    if (controls.axis[0]) t.push("x");
-    if (controls.axis[1]) t.push("y");
-    if (controls.axis[2]) t.push("z");
-    return t;
-  });
   return (
     <List>
       <ListItem key="oit">
@@ -80,13 +73,8 @@ export default function Panel() {
         <ListItemText primary="Axis" secondary="toggle X, Y, Z axis" />
         <ListItemIcon>
           <ToggleButtonGroup
-            value={ax}
-            onChange={(e, v) => {
-              setAx(v);
-              setAxis(0, v.includes("x"));
-              setAxis(1, v.includes("y"));
-              setAxis(2, v.includes("z"));
-            }}
+            value={controls.axis}
+            onChange={(e, v) => setAxis(v)}
           >
             <ToggleButton value="x">X</ToggleButton>
             <ToggleButton value="y">Y</ToggleButton>

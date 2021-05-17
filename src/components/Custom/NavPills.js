@@ -16,14 +16,17 @@ import CardBody from "components/Card/CardBody.js";
 import Card from "components/Card/Card";
 
 import styles from "assets/jss/material-kit-react/components/navPillsStyle";
+import { atom, useAtom } from "jotai";
 
 // custom components
 import ScrollDiv from "components/Custom/ScrollDiv.js";
 
 const useStyles = makeStyles(styles);
 
+const activePill = atom(0);
+
 export default function NavPills(props) {
-  const [active, setActive] = React.useState(props.active);
+  const [active, setActive] = useAtom(activePill);
   const handleChange = (event, active) => {
     setActive(active);
   };

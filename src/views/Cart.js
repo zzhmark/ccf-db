@@ -22,7 +22,7 @@ import { saveAs } from "file-saver";
 import { useStore } from "hooks";
 
 // custom components
-import FrameCollect from "components/Custom/Data/FrameCollect";
+import FrameCollect from "components/Custom/Data/Tables/FrameCollect";
 
 export default function Cart() {
   const store = useStore((state) => state.store);

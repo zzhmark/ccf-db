@@ -10,7 +10,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 // core components
 import styles from "assets/jss/material-dashboard-react/components/tasksStyle.js";
 import shallow from "zustand/shallow";
-import DataControl from "./DataControl";
+import DataChart from "./Charts/DataChart";
 import axios from "axios";
 import { useData, useStore } from "hooks";
 import {
@@ -36,7 +36,7 @@ export default function DataList(props) {
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
-  return Array.from(data.values(), (data, ind) => (
+  return Array.from(data.values(), (data) => (
     <ExpansionPanel
       key={data.id}
       expanded={expanded === data.id}
@@ -48,7 +48,10 @@ export default function DataList(props) {
       <ExpansionPanelDetails>
         <Container>
           <Typography variant="body2">{data.description}</Typography>
-          <DataControl {...data} update={update} />
+          <DataChart
+            {...data}
+            update={(fields, values) => update(data.id, fields, values)}
+          />
         </Container>
       </ExpansionPanelDetails>
       <ExpansionPanelActions>
@@ -56,7 +59,8 @@ export default function DataList(props) {
           color="primary"
           onClick={async () => {
             const df_res = await axios.get(
-              "http://192.168.3.148:5000/get_dataframe?oid=" +
+              process.env.REACT_APP_API_URL +
+                "/get_dataframe?oid=" +
                 data["dataframe_id"]
             );
             setStore(df_res.data._id["$oid"], df_res.data);

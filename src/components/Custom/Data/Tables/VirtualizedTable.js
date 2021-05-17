@@ -65,7 +65,7 @@ class MuiVirtualizedTable extends React.PureComponent {
             : "left"
         }
       >
-        {cellData}
+        {String(cellData)}
       </TableCell>
     );
   };

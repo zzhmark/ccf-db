@@ -33,8 +33,41 @@ const useData = create((set) => ({
   addData: (id, ingredient, dataframe) =>
     set(
       produce((state) => {
+        const { dataframe_id, options, title, description } = ingredient;
+        const { chart, type, mapping, colormap } = options;
         state.data.set(id, {
           id: id,
+          type: type,
+          title: title,
+          description: description,
+          visible: true,
+          dataframe_id: dataframe_id["$oid"],
+          data: dataframe.map((v, i) => ({
+            ...v,
+            _row: i,
+            _visible: false,
+            _load: false,
+          })),
+          viewer: {
+            load: dataframe.map(() => false),
+            visible: dataframe.map(() => true),
+          },
+          chart: {
+            ...chart,
+            filter: chart.filter.map((f) => {
+              let func;
+              switch (f.type) {
+                default:
+                  func = (a, b) => a == b;
+              }
+              return [
+                f.column,
+                (x) => f.filter.reduce((a, b) => a || func(b, x), true),
+              ];
+            }),
+          },
+          colormap: colormap,
+          mapping: mapping,
         });
         return state;
       })

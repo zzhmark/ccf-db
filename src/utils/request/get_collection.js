@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// export default async function getCollection(id) {
+// export default async function get_collection(id) {
 //   const col_res = await axios.get(
 //     "http://192.168.3.148:5000/get_collection?id=" + id
 //   );
@@ -46,10 +46,10 @@ import axios from "axios";
 //   return { col_res, frame_res, lit_res, recipe_res, frame_info_res };
 // }
 
-export default async function getCollection(id) {
+export default async function get_collection(id) {
   // collection
   const col_res = await axios.get(
-    "http://192.168.3.148:5000/get_collection?oid=" + id
+    process.env.REACT_APP_API_URL + "/get_collection?oid=" + id
   );
   const { dataframe_id, recipe_id, reference_id } = col_res.data;
 
@@ -58,7 +58,7 @@ export default async function getCollection(id) {
     reference_id.map(
       async (v) =>
         await axios.get(
-          "http://192.168.3.148:5000/get_reference?oid=" + v["$oid"]
+          process.env.REACT_APP_API_URL + "/get_reference?oid=" + v["$oid"]
         )
     )
   );
@@ -68,7 +68,7 @@ export default async function getCollection(id) {
     dataframe_id.map(
       async (v) =>
         await axios.get(
-          "http://192.168.3.148:5000/get_dataframe?oid=" + v["$oid"]
+          process.env.REACT_APP_API_URL + "/get_dataframe?oid=" + v["$oid"]
         )
     )
   );
@@ -77,7 +77,9 @@ export default async function getCollection(id) {
   const recipe_res = await Promise.all(
     recipe_id.map(
       async (v) =>
-        await axios.get("http://192.168.3.148:5000/get_recipe?oid=" + v["$oid"])
+        await axios.get(
+          process.env.REACT_APP_API_URL + "/get_recipe?oid=" + v["$oid"]
+        )
     )
   );
 

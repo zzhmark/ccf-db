@@ -14,7 +14,7 @@ import Muted from "components/Typography/Muted";
 // treeview
 import { TreeItem } from "@material-ui/lab/";
 
-import { getBrainMetadata } from "utils";
+import { get_brain_metadata } from "utils";
 import { useQuery } from "react-query";
 
 import ReactLoading from "react-loading";
@@ -47,7 +47,7 @@ const StyledTreeItem = withStyles((theme) => ({
 
 export default function BrainTreeStack({ children }) {
   const { data, isLoading, error } = useQuery(["treeNodes", children], () =>
-    getBrainMetadata(children)
+    get_brain_metadata(children)
   );
   if (error) return null;
   if (isLoading)

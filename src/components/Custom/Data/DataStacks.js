@@ -1,19 +1,13 @@
 import React from "react";
 import { useData } from "hooks";
-import DataParser from "./DataParser";
+import DataViewer from "./Views/DataViewer";
 
-export default function DataStacks(props) {
+export default function DataStacks() {
   const data = useData((state) => state.data);
   return (
     <group name="data">
-      {Array.from(data.values(), (data, ind) => (
-        <DataParser
-          key={ind}
-          type={data.type}
-          mode={data.mode}
-          visible={data.visible}
-          viewer={data.viewer}
-        ></DataParser>
+      {Array.from(data.values(), (data, i) => (
+        <DataViewer {...data} key={i} />
       ))}
     </group>
   );

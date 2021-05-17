@@ -27,14 +27,18 @@ import PaletteIcon from "@material-ui/icons/Palette";
 import { useSearch } from "hooks";
 import shallow from "zustand/shallow";
 import ReplayIcon from "@material-ui/icons/Replay";
-import { esGetCollection } from "utils";
+import { get_collection_es } from "utils";
 import Card from "components/Card/Card";
 import CardHeader from "components/Card/CardHeader";
 import CardBody from "components/Card/CardBody";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import HighlightOffOutlinedIcon from "@material-ui/icons/HighlightOffOutlined";
 import CardFooter from "components/Card/CardFooter";
+import { atom, useAtom } from "jotai";
 
+import { useViewport } from "utils";
+
+const advPan = atom(0);
 const useStyles = makeStyles((theme) => ({
   fab: {
     position: "absolute",
@@ -46,19 +50,10 @@ const useStyles = makeStyles((theme) => ({
 export default function Home(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const [tog, setTog] = React.useState(0);
+  const [tog, setTog] = useAtom(advPan);
   const transitionDuration = {
     enter: theme.transitions.duration.enteringScreen,
     exit: theme.transitions.duration.leavingScreen,
-  };
-  const useViewport = () => {
-    const [width, setWidth] = React.useState(window.innerWidth);
-    React.useEffect(() => {
-      const handleWindowResize = () => setWidth(window.innerWidth);
-      window.addEventListener("resize", handleWindowResize);
-      return () => window.removeEventListener("resize", handleWindowResize);
-    }, []);
-    return { width };
   };
   const { width } = useViewport();
   const [
@@ -160,10 +155,17 @@ export default function Home(props) {
       onCancelSearch={() => {
         setContent("");
       }}
-      onRequestSearch={() => {
+      onRequestSearch={async () => {
+        let result;
         if (content === "")
-          esGetCollection({ setResults, target: placeholder });
-        else esGetCollection({ setResults, target: content });
+          result = await get_collection_es({
+            target: placeholder,
+          });
+        else
+          result = await get_collection_es({
+            target: content,
+          });
+        setResults(result);
         props.history.push("/admin/search");
       }}
     />
@@ -248,12 +250,12 @@ export default function Home(props) {
             <Button
               fullWidth
               color="primary"
-              onClick={() => {
-                esGetCollection({
-                  setResults,
+              onClick={async () => {
+                const result = await get_collection_es({
                   target: advancedContent,
                   mode: "advanced",
                 });
+                setResults(result);
                 props.history.push("/admin/search");
               }}
             >

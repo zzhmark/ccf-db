@@ -17,10 +17,10 @@ import {
   Typography,
 } from "@material-ui/core";
 import { useQuery } from "react-query";
-import Dataframe from "components/Custom/Data/Dataframe";
+import Dataframe from "components/Custom/Data/Tables/Dataframe";
 import Button from "components/CustomButtons/Button";
 import { useData, useSearch, useStore } from "hooks";
-import { getCollection, pushIngredient } from "utils";
+import { get_collection, get_ingredient } from "utils";
 import { Title } from "_@material-ui_icons@4.9.1@@material-ui/icons";
 import ReactLoading from "react-loading";
 
@@ -36,7 +36,7 @@ export default function ReportPage() {
       >
         <GridItem>
           <Typography variant="h2" style={{ color: "gray" }}>
-            "Take a collection to inspect"
+            Take a collection to inspect
           </Typography>
         </GridItem>
       </Grid>
@@ -45,10 +45,10 @@ export default function ReportPage() {
 }
 
 function ReportPageContent(id) {
-  const setData = useData((state) => state.set);
+  const addData = useData((state) => state.addData);
   const setStore = useStore((state) => state.set);
   const { data, isLoading, error } = useQuery("collection_info", () =>
-    getCollection(id)
+    get_collection(id)
   );
   if (id === null || isLoading || error)
     return (
@@ -165,19 +165,22 @@ function ReportPageContent(id) {
               <Typography variant="h2">Visualization Recipes</Typography>
             </CardHeader>
             <CardBody>
-              {recipe_res.map((v) => {
+              {recipe_res.map((v, i) => {
                 const { title, description } = v.data;
                 return (
-                  <List>
+                  <List key={i}>
                     <ListItem key={Title}>
                       <ListItemText primary={title} secondary={description} />
                       <ListItemIcon>
                         <Button
                           color="info"
                           onClick={() => {
-                            v.data["ingredient_id"].forEach((v) =>
-                              pushIngredient(v["$oid"], setData)
-                            );
+                            v.data["ingredient_id"].forEach(async (v) => {
+                              const id = v["$oid"];
+                              const { ingredient, dataframe } =
+                                await get_ingredient(id);
+                              addData(id, ingredient, dataframe);
+                            });
                           }}
                         >
                           visualize

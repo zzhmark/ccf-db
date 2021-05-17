@@ -13,13 +13,20 @@ const useControls = create((set) => ({
   controls: {
     oit: false,
     grid: true,
-    axis: [true, true, true],
+    axis: ["x", "y", "z"],
     background: true,
     slicing: false,
     sliceX: { visible: true, value: 66 },
     sliceY: { visible: true, value: 40 },
     sliceZ: { visible: true, value: 57 },
+    camera: { far: 10000, position: [300, 200, 300] },
   },
+  setCamera: (camera) =>
+    set(
+      produce((state) => {
+        state.controls.camera = camera;
+      })
+    ),
   setOit: (flag) =>
     set(
       produce((state) => {
@@ -53,10 +60,10 @@ const useControls = create((set) => ({
         state.controls.grid = flag;
       })
     ),
-  setAxis: (i, flag) =>
+  setAxis: (val) =>
     set(
       produce((state) => {
-        state.controls.axis[i] = flag;
+        state.controls.axis = val;
       })
     ),
   setBackground: (flag) =>

@@ -24,21 +24,15 @@ import DataStacks from "components/Custom/Data/DataStacks";
 import DataList from "components/Custom/Data/DataList";
 import Panel from "components/Custom/Panel";
 
+import { useViewport } from "utils";
+
 export default function Workbench() {
+  const { width } = useViewport;
   return (
     <GridContainer>
       <GridItem xs={12} sm={12} md={12} lg={12} xl={8}>
         <Card>
-          <BasicViewer
-            canvasStyle={{
-              height: "calc(min(80vw, 80vh))",
-              backgroundColor: "#e6e6e3",
-            }}
-            cameraStyle={{
-              far: 10000,
-              position: [300, 300, 300],
-            }}
-          >
+          <BasicViewer>
             <BrainStacks />
             <DataStacks />
           </BasicViewer>
