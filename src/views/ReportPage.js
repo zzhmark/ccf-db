@@ -21,7 +21,7 @@ import Dataframe from "components/Custom/Data/Tables/Dataframe";
 import Button from "components/CustomButtons/Button";
 import { useData, useSearch, useStore } from "hooks";
 import { get_collection, get_ingredient } from "utils";
-import { Title } from "_@material-ui_icons@4.9.1@@material-ui/icons";
+import { Title } from "@material-ui/icons";
 import ReactLoading from "react-loading";
 
 export default function ReportPage() {
