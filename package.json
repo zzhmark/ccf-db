@@ -1,6 +1,6 @@
 {
-  "name": "home",
-  "version": "1.9.0",
+  "name": "Functional Mouse Connectome Database",
+  "version": "1.0.0",
   "description": "Functional Mouse Connectome Database. By ZZH",
   "private": false,
   "main": "dist/index.js",
