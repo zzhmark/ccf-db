@@ -1,21 +1,17 @@
 {
-  "name": "material-dashboard-react",
-  "homepage": "https://github.com/creativetimofficial/material-dashboard-react",
+  "name": "Functional Mouse Connectome Database",
+  "homepage": "https://github.com/zzhmark/ccf-db",
   "authors": [
-    "creative-tim"
+    "Zuohan Zhao"
   ],
-  "description": "A Badass Material-UI Kit based on Material Design",
+  "description": "Front end",
   "main": "public/index.html",
   "keywords": [
-    "material",
-    "design",
+    "react",
     "material-ui",
-    "material",
-    "design",
-    "google",
-    "twitter"
+    "material"
   ],
-  "license": "Creative TIM License",
+  "license": "MIT License",
   "ignore": [
     "**/.*",
     "node_modules",
