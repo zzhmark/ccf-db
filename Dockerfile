@@ -1,8 +1,13 @@
-FROM node:14
-WORKDIR /home/fmcd/ccf-db
+# build
+FROM node:14 as build
+WORKDIR /app
 COPY package*.json ./
-RUN npm config set registry https://registry.npm.taobao.org && npm install -g serve && npm install
+RUN npm config set registry https://registry.npm.taobao.org && npm install --production
 COPY . .
 RUN npm run build
-EXPOSE 3000
-CMD ["serve","-s", "build"]
+# production
+FROM nginx:stable
+COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /app/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+CMD ["nginx","-g", "daemon off;"]
