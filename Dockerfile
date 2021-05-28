@@ -4,7 +4,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm config set registry https://registry.npm.taobao.org && npm install --production
 COPY . .
-RUN ${BACKEND_URL:+REACT_APP_API_URL=${BACKEND_URL}} npm run build
+RUN npm run build
 
 # production
 FROM nginx:stable

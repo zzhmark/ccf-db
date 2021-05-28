@@ -2,40 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffd93a9a-7e80-4a7d-8ad9-376969ffa5d5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Custom/Data/Charts/DataChart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Custom/Data/Charts/HeatmapLine.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Custom/Data/Views/DataViewer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/request/get_ingredient.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/useViewport.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Custom/Brain/BrainLoader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Brain/BrainLoader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Custom/Brain/BrainTreeElement.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Brain/BrainTreeElement.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Custom/Data/DataControl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Custom/Data/DataList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Data/DataList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Custom/Data/DataParser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Data/Views/BrainModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Custom/Data/DataStacks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Data/DataStacks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Custom/Data/Dataframe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Data/Tables/Dataframe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Custom/Data/FrameCollect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Data/Tables/FrameCollect.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Custom/Data/VirtualizedTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Data/Tables/VirtualizedTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Custom/FilterCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/FilterCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Custom/NavPills.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/NavPills.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Custom/Panel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Panel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Custom/Viewer/BasicScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Viewer/BasicScene.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Custom/Viewer/BasicViewer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Custom/Viewer/BasicViewer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/controls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/controls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/request/esGetCollection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/request/get_collection_es.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/request/getBrainMetadata.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/request/get_brain_metadata.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/request/getCollection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/request/get_collection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/request/pushIngredient.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/ReportPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/ReportPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/SearchResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/SearchResults.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Workbench.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Workbench.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +17,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="searching_image_feature" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JsBowerSettings">
@@ -63,8 +35,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -90,6 +64,16 @@
     <configuration name="node" type="NodeJSConfigurationType" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
+    <configuration name="run build" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="run" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="start" />
@@ -99,6 +83,7 @@
     </configuration>
     <list>
       <item itemvalue="Node.js.node" />
+      <item itemvalue="npm.run build" />
       <item itemvalue="npm.run" />
     </list>
   </component>
@@ -114,7 +99,10 @@
       <option name="presentableId" value="Default" />
       <updated>1621142873676</updated>
       <workItem from="1621142876040" duration="3694000" />
-      <workItem from="1621148260746" duration="35619000" />
+      <workItem from="1621148260746" duration="37945000" />
+      <workItem from="1621846059492" duration="2032000" />
+      <workItem from="1621953438059" duration="1429000" />
+      <workItem from="1622183799002" duration="613000" />
     </task>
     <servers />
   </component>
@@ -126,11 +114,24 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="swc_feature" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
