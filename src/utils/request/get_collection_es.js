@@ -6,7 +6,8 @@ export default async function get_collection_es({ target, mode }) {
   switch (mode) {
     case "advanced":
       col_res = await axios.get(
-        process.env.REACT_APP_API_URL +
+        "http://" +
+          document.location.hostname +
           "/search_index?index_name=collection&" +
           target
             .filter((v) => v[0] && v[1])
@@ -16,7 +17,7 @@ export default async function get_collection_es({ target, mode }) {
       break;
     default:
       col_res = await axios.get(
-        process.env.REACT_APP_API_URL +
+        document.location.hostname +
           "/search_index_basic?index_name=collection&content=" +
           target
       );
