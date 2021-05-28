@@ -59,7 +59,10 @@ export default function DataList(props) {
           color="primary"
           onClick={async () => {
             const df_res = await axios.get(
-              document.location.hostname +
+              document.location.protocol +
+                "//" +
+                document.location.hostname +
+                "/api" +
                 "/get_dataframe?oid=" +
                 data["dataframe_id"]
             );

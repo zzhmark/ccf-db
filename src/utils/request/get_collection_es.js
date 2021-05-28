@@ -6,8 +6,10 @@ export default async function get_collection_es({ target, mode }) {
   switch (mode) {
     case "advanced":
       col_res = await axios.get(
-        "http://" +
+        document.location.protocol +
+          "//" +
           document.location.hostname +
+          "/api" +
           "/search_index?index_name=collection&" +
           target
             .filter((v) => v[0] && v[1])
@@ -17,7 +19,10 @@ export default async function get_collection_es({ target, mode }) {
       break;
     default:
       col_res = await axios.get(
-        document.location.hostname +
+        document.location.protocol +
+          "//" +
+          document.location.hostname +
+          "/api" +
           "/search_index_basic?index_name=collection&content=" +
           target
       );
