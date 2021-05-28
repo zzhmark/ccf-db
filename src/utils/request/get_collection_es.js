@@ -6,7 +6,8 @@ export default async function get_collection_es({ target, mode }) {
   switch (mode) {
     case "advanced":
       col_res = await axios.get(
-        "http://" +
+        document.location.protocol +
+          "//" +
           document.location.hostname +
           "/search_index?index_name=collection&" +
           target
@@ -17,7 +18,9 @@ export default async function get_collection_es({ target, mode }) {
       break;
     default:
       col_res = await axios.get(
-        document.location.hostname +
+        document.location.protocol +
+          "//" +
+          document.location.hostname +
           "/search_index_basic?index_name=collection&content=" +
           target
       );

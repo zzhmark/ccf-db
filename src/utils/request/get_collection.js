@@ -49,7 +49,11 @@ import axios from "axios";
 export default async function get_collection(id) {
   // collection
   const col_res = await axios.get(
-    document.location.hostname + "/get_collection?oid=" + id
+    document.location.protocol +
+      "//" +
+      document.location.hostname +
+      "/get_collection?oid=" +
+      id
   );
   const { dataframe_id, recipe_id, reference_id } = col_res.data;
 
@@ -58,7 +62,11 @@ export default async function get_collection(id) {
     reference_id.map(
       async (v) =>
         await axios.get(
-          document.location.hostname + "/get_reference?oid=" + v["$oid"]
+          document.location.protocol +
+            "//" +
+            document.location.hostname +
+            "/get_reference?oid=" +
+            v["$oid"]
         )
     )
   );
@@ -68,7 +76,11 @@ export default async function get_collection(id) {
     dataframe_id.map(
       async (v) =>
         await axios.get(
-          document.location.hostname + "/get_dataframe?oid=" + v["$oid"]
+          document.location.protocol +
+            "//" +
+            document.location.hostname +
+            "/get_dataframe?oid=" +
+            v["$oid"]
         )
     )
   );
@@ -78,7 +90,11 @@ export default async function get_collection(id) {
     recipe_id.map(
       async (v) =>
         await axios.get(
-          document.location.hostname + "/get_recipe?oid=" + v["$oid"]
+          document.location.protocol +
+            "//" +
+            document.location.hostname +
+            "/get_recipe?oid=" +
+            v["$oid"]
         )
     )
   );

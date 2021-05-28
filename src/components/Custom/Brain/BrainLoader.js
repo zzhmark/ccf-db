@@ -11,7 +11,13 @@ export default function BrainLoader({
   roughness,
   color,
 }) {
-  const { nodes } = useGLTF(document.location.hostname + "/get_draco?id=" + id);
+  const { nodes } = useGLTF(
+    document.location.protocol +
+      "//" +
+      document.location.hostname +
+      "/get_draco?id=" +
+      id
+  );
   const u = Object.values(nodes)[0]
     ["geometry"].clone(true)
     .scale(-1, -1, -1)
