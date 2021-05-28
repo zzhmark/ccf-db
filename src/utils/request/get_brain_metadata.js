@@ -5,6 +5,7 @@ export default async function get_brain_metadata(id) {
     document.location.protocol +
       "//" +
       document.location.hostname +
+      "/api" +
       "/get_brain_metadata?" +
       id.map((v) => "id=" + v).join("&")
   );

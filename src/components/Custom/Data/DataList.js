@@ -62,6 +62,7 @@ export default function DataList(props) {
               document.location.protocol +
                 "//" +
                 document.location.hostname +
+                "/api" +
                 "/get_dataframe?oid=" +
                 data["dataframe_id"]
             );

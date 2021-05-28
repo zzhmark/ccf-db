@@ -9,6 +9,7 @@ export default async function get_collection_es({ target, mode }) {
         document.location.protocol +
           "//" +
           document.location.hostname +
+          "/api" +
           "/search_index?index_name=collection&" +
           target
             .filter((v) => v[0] && v[1])
@@ -21,6 +22,7 @@ export default async function get_collection_es({ target, mode }) {
         document.location.protocol +
           "//" +
           document.location.hostname +
+          "/api" +
           "/search_index_basic?index_name=collection&content=" +
           target
       );

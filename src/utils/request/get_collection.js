@@ -52,6 +52,7 @@ export default async function get_collection(id) {
     document.location.protocol +
       "//" +
       document.location.hostname +
+      "/api" +
       "/get_collection?oid=" +
       id
   );
@@ -65,6 +66,7 @@ export default async function get_collection(id) {
           document.location.protocol +
             "//" +
             document.location.hostname +
+            "/api" +
             "/get_reference?oid=" +
             v["$oid"]
         )
@@ -79,6 +81,7 @@ export default async function get_collection(id) {
           document.location.protocol +
             "//" +
             document.location.hostname +
+            "/api" +
             "/get_dataframe?oid=" +
             v["$oid"]
         )
@@ -93,6 +96,7 @@ export default async function get_collection(id) {
           document.location.protocol +
             "//" +
             document.location.hostname +
+            "/api" +
             "/get_recipe?oid=" +
             v["$oid"]
         )

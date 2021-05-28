@@ -15,6 +15,7 @@ export default function BrainLoader({
     document.location.protocol +
       "//" +
       document.location.hostname +
+      "/api" +
       "/get_draco?id=" +
       id
   );

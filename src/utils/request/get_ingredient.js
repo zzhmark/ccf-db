@@ -5,6 +5,7 @@ export default async function get_ingredient(ingredient_id) {
     document.location.protocol +
       "//" +
       document.location.hostname +
+      "/api" +
       "/get_ingredient?oid=" +
       ingredient_id
   );
@@ -14,6 +15,7 @@ export default async function get_ingredient(ingredient_id) {
     document.location.protocol +
       "//" +
       document.location.hostname +
+      "/api" +
       "/get_dataframe?oid=" +
       dataframe_id["$oid"]
   );
